@@ -2,39 +2,78 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Privacy Policy – OpenTTD Online</title>
   <meta name="description" content="Privacy Policy for openttdonline.com, the browser-playable version of OpenTTD." />
   <link rel="icon" href="/favicon.png" />
 
   <style>
-    :root {
-      --bg: #0e1117;
-      --card: #171a22;
-      --text: #e6edf3;
-      --muted: #97a3b6;
-      --accent: #f59e0b; /* amber */
-      --accent-2: #22c55e; /* green */
-      --maxw: 1100px;
-      --radius: 14px;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    :root{
+      --bg:#0e1117; --card:#171a22; --text:#e6edf3; --muted:#97a3b6;
+      --accent:#f59e0b; --accent-2:#22c55e; --maxw:1100px; --radius:14px;
+      --shadow:0 10px 30px rgba(0,0,0,.35); --space:24px;
     }
-    * { box-sizing: border-box }
-    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; }
-    a { color: inherit; text-decoration: none }
-    .container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 24px }
-    header { position: sticky; top: 0; backdrop-filter: saturate(140%) blur(6px); background: rgba(14,17,23,.75); border-bottom: 1px solid #232838; z-index: 10 }
-    .nav { display:flex; align-items:center; gap:18px; padding: 10px 0 }
-    .nav .brand { display:flex; align-items:center; gap:10px; font-weight:700 }
-    .pill { padding: 6px 10px; border: 1px solid #2a3145; border-radius: 999px; color: var(--muted); font-size: 12px }
-    .cta { display:inline-block; background: linear-gradient(180deg, var(--accent), #dd8a05); color:#111; padding:10px 16px; font-weight:700; border-radius:12px; border: 0; }
-    .cta.secondary { background: #22293a; color: var(--text); border: 1px solid #2a3145 }
-    main.container { padding-top: 28px; }
-    .card { background: var(--card); border:1px solid #232838; border-radius: var(--radius); padding:18px; box-shadow: var(--shadow) }
-    h1 { font-size: clamp(26px, 4vw, 36px); margin: 0 0 6px }
-    h2 { font-size: 20px; margin-top: 22px }
-    p, li { color: var(--muted) }
-    footer { padding: 28px 0 60px; color: var(--muted); border-top:1px solid #232838 }
+    *{box-sizing:border-box}
+    html,body{
+      margin:0; padding:0; background:var(--bg); color:var(--text);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+      -webkit-text-size-adjust:100%;
+    }
+    a{color:inherit;text-decoration:none}
+
+    .container{width:100%;max-width:var(--maxw);margin:0 auto;padding:var(--space)}
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter:saturate(140%) blur(6px);
+      background:rgba(14,17,23,.78);
+      border-bottom:1px solid #232838;
+      padding-top: env(safe-area-inset-top);
+    }
+    .nav{display:flex;align-items:center;gap:18px;padding:10px 0}
+    .nav .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+    .pill{
+      padding:8px 12px;border:1px solid #2a3145;border-radius:999px;
+      color:var(--muted);font-size:12px;line-height:1
+    }
+    .cta{
+      display:inline-flex;align-items:center;justify-content:center;min-height:44px;
+      background:linear-gradient(180deg,var(--accent),#dd8a05);color:#111;
+      padding:10px 16px;font-weight:700;border-radius:12px;border:0;cursor:pointer
+    }
+    .cta.secondary{background:#22293a;color:var(--text);border:1px solid #2a3145}
+    main.container{padding-top:28px}
+
+    .card{
+      background:var(--card);border:1px solid #232838;border-radius:var(--radius);
+      padding:18px;box-shadow:var(--shadow)
+    }
+    h1{font-size:clamp(26px,4vw,36px);margin:0 0 6px}
+    h2{font-size:20px;margin-top:22px}
+    p,li{color:var(--muted)}
+
+    footer{padding:28px 0 60px;color:var(--muted);border-top:1px solid #232838}
+
+    /* Mobile-first enhancements */
+    @media (max-width: 720px){
+      :root{--space:18px}
+      .nav{gap:12px}
+      .pill{display:none} /* save header space on small screens */
+      .cta{width:100%}    /* full-width tap targets when used */
+      main.container{padding-top:20px}
+      .card{padding:16px}
+      h2{margin-top:18px}
+      footer{padding:22px 0 44px}
+      .footer-row{gap:8px}
+    }
+    @media (max-width: 420px){
+      .container{padding:16px}
+      .cta{padding:12px 14px}
+    }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      *{scroll-behavior:auto}
+    }
   </style>
 </head>
 <body>
@@ -46,7 +85,7 @@
         OpenTTD Online
       </div>
       <span class="pill">OpenTTD 14.1 • Browser Play</span>
-      <div style="margin-left:auto; display:flex; gap:10px;">
+      <div style="margin-left:auto;display:flex;gap:10px;flex-wrap:wrap;min-width:180px;">
         <a class="cta secondary" href="/">Home</a>
         <a class="cta" href="/play" rel="noopener">Launch Game</a>
       </div>
@@ -106,7 +145,7 @@
 
   <footer>
     <div class="container">
-      <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+      <div class="footer-row" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
         <img src="/favicon.png" alt="" width="18" height="18" />
         <span>© <span id="y"></span> Overgrown Games</span>
         <span>•</span>
