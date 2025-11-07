@@ -15,7 +15,7 @@ The WebAssembly build of OpenTTD used by this app is hosted at:
 👉 https://swords02.github.io/openttd-ios-web/
 
 OpenTTD is licensed under the GNU General Public License version 2.0
-This game is open-source; you can view and download the source files at https://github.com/swords02/openttd-ios-web
+This game is open-source; you can view and download the source files at https://github.com/swords02/openttd-online
 
 🧩 Credits:
 - OpenTTD — Original open-source project by the OpenTTD team
