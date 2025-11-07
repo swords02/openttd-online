@@ -12,7 +12,7 @@ Open Transport Simulator, or OpenTTD, is a simulation game based upon the popula
 - Community extensions: Supports NewGRF content and other open add-ons directly from the official OpenTTD servers.
 
 The WebAssembly build of OpenTTD used by this app is hosted at:
-👉 https://swords02.github.io/openttd-ios-web/
+👉 https://swords02.github.io/openttd-online/play
 
 OpenTTD is licensed under the GNU General Public License version 2.0
 This game is open-source; you can view and download the source files at https://github.com/swords02/openttd-online
