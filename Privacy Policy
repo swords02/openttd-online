@@ -1,0 +1,14 @@
+Privacy Policy — OpenTTD iOS Web
+
+This app does not collect, store, or share any personal data.
+It simply displays a hosted version of the open-source game OpenTTD (GPLv2) using a WebView.
+
+The app does not use analytics, tracking, or third-party login services.
+Network access is limited to loading the hosted game site at https://swords02.github.io/openttd-ios-web
+ and the official OpenTTD content servers.
+
+For information about the OpenTTD project, visit https://www.openttd.org
+OpenTTD Privacy Policy: https://www.openttd.org/policy
+.
+
+Contact: owengerke@gmail.com
