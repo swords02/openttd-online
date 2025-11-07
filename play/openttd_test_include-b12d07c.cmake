@@ -1,0 +1,5 @@
+if(EXISTS "/src/build/openttd_test_tests-b12d07c.cmake")
+  include("/src/build/openttd_test_tests-b12d07c.cmake")
+else()
+  add_test(openttd_test_NOT_BUILT-b12d07c openttd_test_NOT_BUILT-b12d07c)
+endif()

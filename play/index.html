@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OpenTTD Online</title>
+      
+  <!-- Primary SEO Meta Tags -->
+  <meta name="title" content="Play OpenTTD 14.1 Online – Free Browser Version (No Download)" />
+  <meta name="description" content="Play the full version of OpenTTD 14.1 instantly in your browser. No installation or downloads needed. Import and export your save files, use Online Content, and enjoy the classic Transport Tycoon experience anywhere!" />
+  <meta name="keywords" content="OpenTTD online, play OpenTTD in browser, OpenTTD web version, Transport Tycoon online, OpenTTD no download, play OpenTTD free, open source tycoon game, OpenTTD HTML5, browser transport tycoon, play OpenTTD now" />
+  <meta name="author" content="OpenTTD Online" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://openttdonline.com/" />
+  <meta property="og:title" content="Play OpenTTD 14.1 Online – Free Browser Version (No Download)" />
+  <meta property="og:description" content="Play OpenTTD instantly in your browser! Import saves, access Online Content, and experience the full Transport Tycoon game without installing anything." />
+  <meta property="og:image" content="https://openttdonline.com/thumbnail.jpg" />
+  <meta property="og:site_name" content="OpenTTD Online" />
+      
+<link rel="canonical" href="https://openttdonline.com/" />
+
+<!-- CSP: allow OpenTTD endpoints (+ Cloudflare beacon if Pages injects it). -->
+<meta http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self' data: blob:;
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://static.cloudflareinsights.com;
+        style-src 'self' 'unsafe-inline';
+        img-src 'self' data: blob:;
+        font-src 'self' data:;
+        object-src 'none';
+        worker-src 'self' blob:;
+        base-uri 'self';
+        connect-src
+          'self'
+          https://cdn.openttd.org
+          https://servers.openttd.org
+          https://bananas.openttd.org
+          wss://bananas-server.openttd.org
+          https://content.openttd.org
+          wss://content.openttd.org:3978
+          https://cloudflareinsights.com;
+        upgrade-insecure-requests;
+      ">
+
+<link rel="icon" type="image/png" href="favicon.png">
+
+<style>
+  html,body{margin:0;padding:0;height:100%;width:100%;background:#1a1a1a;overflow:hidden}
+  #canvas{width:100%;height:100%;display:block;background:#1a1a1a;cursor:none;z-index:1;position:relative}
+
+  /* Overlay + loading */
+  #overlay{position:fixed;inset:0;display:flex;justify-content:center;align-items:center;transition:opacity .4s ease;pointer-events:none;z-index:2}
+  #box{max-width:720px;text-align:center;color:#eee;font:15px/1.4 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  #box h2{margin:.2rem 0 .4rem;font-weight:600;font-size:18px;color:#fff}
+  #logo{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);max-width:250px;opacity:0;z-index:2;transition:opacity .6s ease}
+
+  /* --- Toolbar (compact vertical) --- */
+  #toolbar{
+    position:fixed;
+    top:54px;left:10px;z-index:3;
+    background:rgba(0,0,0,.55);
+    border:1px solid #333;border-radius:8px;
+    padding:6px 8px;
+    backdrop-filter:blur(2px);
+    display:none;                /* hidden by default */
+    flex-direction:column !important;
+    gap:4px !important;
+    width:160px !important;      /* compact width */
+    min-width:160px !important;
+    box-sizing:border-box;
+  }
+  #toolbar button{
+    color:#eee;background:#222;border:1px solid #444;border-radius:6px;
+    padding:5px 8px;cursor:pointer;width:100%;text-align:left;
+    font-size:12.5px;line-height:1.2;transition:background .15s;
+  }
+  #toolbar button:hover{background:#2b2b2b}
+
+  /* Link under buttons */
+  #toolbar a {
+    color:#4fc3f7;text-decoration:none;text-align:center;
+    font-size:12.5px;padding:4px 0;margin-top:4px;
+    border-top:1px solid #333;
+  }
+  #toolbar a:hover { color:#81d4fa;text-decoration:underline; }
+
+  /* On-screen toggle button */
+  #toolbar-toggle{
+    position:fixed;top:10px;left:10px;z-index:4;
+    width:38px;height:38px;border-radius:9999px;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(0,0,0,.65);color:#eee;border:1px solid #333;
+    user-select:none;backdrop-filter:blur(2px);
+    opacity:0;animation:fadeIn 0.4s ease forwards 0.3s;
+  }
+  @keyframes fadeIn { to { opacity:1; } }
+  #toolbar-toggle:hover{background:rgba(0,0,0,.78)}
+  #toolbar-toggle .icon{font-size:18px;line-height:1}
+  #toolbar-toggle[aria-pressed="true"]{outline:2px solid #4caf50;outline-offset:1px}
+
+  #filesystem{
+    display:none;position:fixed;bottom:10px;right:10px;
+    background:rgba(0,0,0,.6);padding:8px 10px;border-radius:8px;
+    color:#fff;font-size:13px;border:1px solid #333;z-index:3
+  }
+  .error{color:#ff6b6b}
+
+  /* Hide system cursor globally; show pointer over toolbar & toggle */
+  html, body, canvas, #canvas, * { cursor: none !important; }
+  #toolbar, #toolbar *, #toolbar-toggle, #toolbar-toggle * { cursor: pointer !important; }
+</style>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9145511719373088"
+     crossorigin="anonymous"></script>
+      
+</head>
+
+<body>
+  <!-- Toggle -->
+  <button id="toolbar-toggle" type="button" aria-label="Toggle tools" aria-pressed="false" title="Tools">
+    <span class="icon">☰</span>
+  </button>
+
+  <!-- Toolbar -->
+  <div id="toolbar">
+    <button type="button" onclick="exportSave()">Export Save</button>
+    <button type="button" onclick="importSave()">Import Save</button>
+    <button type="button" onclick="exportScenario()">Export Scenario</button>
+    <button type="button" onclick="importScenario()">Import Scenario</button>
+    <button type="button" onclick="exportHeightmap()">Export Heightmap</button>
+    <button type="button" onclick="importHeightmap()">Import Heightmap</button>
+    <a href="https://embed.openttdonline.com/" target="_blank" rel="noopener">Embed to page</a>
+  </div>
+
+  <canvas id="canvas" tabindex="-1"></canvas>
+
+  <div id="overlay">
+    <div id="box">
+      <h2 id="title">(0 / 42) Loading ...</h2>
+      <p id="message">Preparing game ...</p>
+    </div>
+  </div>
+
+  <img id="logo" src="overgrown.png" alt="Overgrown logo">
+  <div id="filesystem">Saving files…</div>
+
+  <script>
+    /* --- Paths --- */
+    const LIVE_ROOT  = '/home/web_user/.openttd';           // where OpenTTD reads/writes
+    const SAVE_DIR   = LIVE_ROOT + '/save/';
+    const SCEN_DIR   = LIVE_ROOT + '/scenario/';
+    const HEIGHT_DIR = LIVE_ROOT + '/scenario/heightmap/';
+
+    const IDB_ROOT   = '/idb';                               // our IndexedDB mount
+    const IDB_MIRROR = IDB_ROOT + LIVE_ROOT;                 // mirror path inside IDBFS
+
+    /* UI refs */
+    const toolbar   = document.getElementById('toolbar');
+    const toggleBtn = document.getElementById('toolbar-toggle');
+    const logo      = document.getElementById('logo');
+
+    /* Toolbar toggle + persistence */
+    const TOOLBAR_KEY = 'openttd_toolbar_visible';
+    function setToolbar(visible, {persist=true} = {}){
+      toolbar.style.display = visible ? 'flex' : 'none';
+      toggleBtn.setAttribute('aria-pressed', visible ? 'true' : 'false');
+      if (persist) { try{ localStorage.setItem(TOOLBAR_KEY, visible ? '1' : '0'); }catch(_){} }
+    }
+    toggleBtn.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      setToolbar(toolbar.style.display !== 'flex');
+    });
+    try{ setToolbar(localStorage.getItem(TOOLBAR_KEY) === '1', {persist:false}); }catch(_){ setToolbar(false,{persist:false}); }
+
+    /* Auto-hide on outside click/tap + Esc */
+    function clickOutsideHandler(e){
+      const isOutside = !toolbar.contains(e.target) && !toggleBtn.contains(e.target);
+      if (toolbar.style.display === 'flex' && isOutside) setToolbar(false);
+    }
+    document.addEventListener('mousedown', clickOutsideHandler);
+    document.addEventListener('touchstart', clickOutsideHandler, {passive:true});
+    document.addEventListener('keydown', (e)=>{
+      if (e.key === 'Escape' && toolbar.style.display === 'flex') setToolbar(false);
+    });
+
+    /* Overlay helpers */
+    function showGameUI(){
+      const ov=document.getElementById('overlay');
+      ov.style.opacity=0;
+      setTimeout(()=>{ov.style.display='none';},400);
+      logo.style.opacity=0;
+      setTimeout(()=>logo.style.display='none',600);
+    }
+    function showOverlay(title,msg){
+      const ov=document.getElementById('overlay');
+      ov.style.display='flex'; ov.style.opacity=1;
+      if(title)document.getElementById('title').textContent=title;
+      if(msg)document.getElementById('message').innerHTML=msg;
+      logo.style.opacity=1;
+    }
+
+    /* ---------- IDBFS at /idb (mirror strategy) ---------- */
+    let __idbReady = false;
+
+    function mkdirp(path){
+      const parts = path.replace(/\/+$/,'').split('/').filter(Boolean);
+      let cur=''; for(const p of parts){ cur+='/'+p; try{ FS.mkdir(cur); }catch(_){/*exists*/} }
+    }
+    function exists(path){
+      try{ FS.stat(path); return true; }catch(_){ return false; }
+    }
+    function readdirSafe(dir){
+      try { return FS.readdir(dir).filter(f=>f!=='.'&&f!=='..'); } catch(_) { return []; }
+    }
+    function copyFile(src, dst){
+      const data = FS.readFile(src);
+      mkdirp(dst.substring(0, dst.lastIndexOf('/')));
+      FS.writeFile(dst, data);
+    }
+    function copyTree(srcDir, dstDir){
+      mkdirp(dstDir);
+      for(const name of readdirSafe(srcDir)){
+        const s = srcDir + '/' + name;
+        const d = dstDir + '/' + name;
+        const st = FS.stat(s);
+        if (st.mode && (st.mode & 0x4000)) { // S_IFDIR
+          copyTree(s, d);
+        } else {
+          copyFile(s, d);
+        }
+      }
+    }
+
+    function ensureIDBMounted() {
+      return new Promise((resolve, reject) => {
+        try {
+          if (__idbReady) return resolve();
+          mkdirp(IDB_ROOT);
+          // If not mounted yet, mount IDBFS at /idb
+          let mounted = false;
+          try { mounted = !!FS.lookupPath(IDB_ROOT).node.mounted; } catch(_) {}
+          if (!mounted) {
+            FS.mount(IDBFS, {}, IDB_ROOT);
+          }
+          FS.syncfs(true, (err) => {
+            if (err) { console.error('IDBFS initial sync failed', err); reject(err); return; }
+            __idbReady = true;
+            // After pulling from IndexedDB, restore into the live tree
+            if (exists(IDB_MIRROR)) {
+              mkdirp(LIVE_ROOT);
+              copyTree(IDB_MIRROR, LIVE_ROOT);
+            }
+            resolve();
+          });
+        } catch (e) {
+          console.error('IDBFS mount error', e);
+          reject(e);
+        }
+      });
+    }
+
+    function persistToIDB() {
+      return new Promise((resolve, reject) => {
+        try {
+          // Mirror live tree -> /idb mirror
+          mkdirp(IDB_MIRROR);
+          copyTree(LIVE_ROOT, IDB_MIRROR);
+          FS.syncfs(false, (err) => err ? reject(err) : resolve());
+        } catch (e) { reject(e); }
+      });
+    }
+
+    // Emergency flush on unload
+    window.addEventListener('beforeunload', () => {
+      try { FS && FS.syncfs && FS.syncfs(false, ()=>{}); } catch(_) {}
+    });
+
+    // Small autosync so in-game saves persist without pressing anything (every 10s)
+    setInterval(() => {
+      if (__idbReady) {
+        try { persistToIDB().catch(()=>{}); } catch(_) {}
+      }
+    }, 10000);
+
+    /* FS helpers */
+    function newestByMtime(dir, exts){
+      try{
+        const items = FS.readdir(dir)
+          .filter(f=>f!=='.'&&f!=='..')
+          .filter(f=>{
+            const low=f.toLowerCase();
+            return (Array.isArray(exts)? exts : [exts]).some(ext=>low.endsWith(ext));
+          });
+        if(!items.length) return null;
+        let best = items[0], t = 0;
+        for(const f of items){ const st=FS.stat(dir+f); if(st && st.mtime>t){ best=f; t=st.mtime; } }
+        return best;
+      }catch(_){ return null; }
+    }
+
+    /* Emscripten Module */
+    var Module = window.Module || {};
+    Module.preRun=[]; Module.postRun=[]; Module.arguments=[];
+    Module.totalDependencies=42; Module.doneDependencies=0; Module.lastDependencies=1;
+
+    // Mount /idb and restore before the game starts
+    Module.preRun.push(function(){
+      return ensureIDBMounted().catch(()=>{ /* let game start anyway */ });
+    });
+
+    Module.print  = (...a)=>console.log(a.join(' '));
+    Module.printErr = (...a)=>console.error(a.join(' '));
+
+    Module.canvas = (()=>{
+      var e=document.getElementById("canvas");
+      e.addEventListener("webglcontextlost",ev=>{
+        alert("WebGL context lost. Reload the page."); ev.preventDefault();
+      },false);
+      return e;
+    })();
+
+    Module.setStatus = function(e){
+      const n=e&&e.match&&e.match(/^([^(]+)\((\d+(\.\d+)?)\/(\d+)\)$/);
+      if(n) e = `(${n[2]} / ${n[4]}) ${n[1]}`;
+      document.getElementById("message").innerHTML = e || '';
+      if(e==='Running...') showGameUI();
+    };
+    Module.monitorRunDependencies = function(e){
+      if(e<Module.lastDependencies) Module.doneDependencies++;
+      Module.lastDependencies=e;
+      const total=Module.totalDependencies, doing=Math.min(Module.doneDependencies+1,total);
+      document.getElementById("title").textContent = `(${doing} / ${total}) Loading ...`;
+      document.getElementById("message").textContent = "Preparing game ...";
+    };
+
+    Module.onBootstrap=(bytes,total)=>{
+      document.getElementById("canvas").style.display="none";
+      showOverlay("Missing base graphics",`OpenTTD is downloading base graphics.<br><br>${bytes} / ${total} bytes downloaded.`);
+    };
+    Module.onBootstrapFailed=()=>{
+      document.getElementById("canvas").style.display="none";
+      showOverlay("Missing base graphics","Failed to download base graphics.<br>The game cannot start without them.<br><br>Check your connection and reload.");
+    };
+    Module.onBootstrapReload=()=>{
+      document.getElementById("canvas").style.display="none";
+      showOverlay("Missing base graphics","Download complete.<br>Your browser will reload shortly.");
+    };
+    Module.onExit=()=>{
+      document.getElementById("canvas").style.display="none";
+      showOverlay("Thank you for playing!","Reload your browser to restart.");
+    };
+    Module.onAbort=()=>{
+      document.getElementById("canvas").style.display="none";
+      document.getElementById("box").className="error";
+      showOverlay("Crash :(","The game crashed! Reload to restart.");
+    };
+
+    const _onWarningFsImpl=()=>{
+      const fsEl=document.getElementById('filesystem');
+      fsEl.style.display='inline-block';
+      const ov=document.getElementById('overlay');
+      ov.style.opacity=1;
+      setTimeout(()=>{ ov.style.opacity=0; setTimeout(()=>fsEl.style.display='none',300); }, 3000);
+    };
+    Module.onWarningFs=_onWarningFsImpl;
+    Module.onRuntimeInitialized=()=>showGameUI();
+    Module.postRun.push(showGameUI);
+    Module.locateFile=p=>p;
+    window.onerror=()=>Module.onAbort();
+
+    /* Download helper */
+    function downloadBinary(name, data, type='application/octet-stream'){
+      const a=document.createElement('a');
+      a.href=URL.createObjectURL(new Blob([data],{type}));
+      a.download=name; a.click();
+      setTimeout(()=>URL.revokeObjectURL(a.href),100);
+    }
+
+    /* Save import/export (live + persistent mirror) */
+    async function exportSave(){
+      try{
+        const name=newestByMtime(SAVE_DIR,['.sav']);
+        if(!name){alert('No .sav found in '+SAVE_DIR);return;}
+        const data=FS.readFile(SAVE_DIR+name);
+        downloadBinary(name,data);
+      }catch(e){alert('Export failed: '+e.message);}
+    }
+    async function importSave(){
+      const input=document.createElement('input'); input.type='file'; input.accept='.sav';
+      input.onchange=async e=>{
+        const f=e.target.files[0]; if(!f)return;
+        const buf=await f.arrayBuffer();
+        try{
+          await ensureIDBMounted();
+          mkdirp(SAVE_DIR); mkdirp(IDB_MIRROR + '/save/');
+          FS.writeFile(SAVE_DIR + f.name, new Uint8Array(buf));                 // live
+          FS.writeFile(IDB_MIRROR + '/save/' + f.name, new Uint8Array(buf));    // persistent
+          await new Promise((res,rej)=>FS.syncfs(false,(err)=>err?rej(err):res()));
+          alert('Imported & saved to browser storage:\n' + SAVE_DIR+f.name);
+        }catch(err){console.error(err); alert('Import failed: '+err.message);}
+      };
+      input.click();
+    }
+
+    /* Scenario import/export */
+    async function exportScenario(){
+      try{
+        const name=newestByMtime(SCEN_DIR,['.scn']);
+        if(!name){alert('No .scn found in '+SCEN_DIR);return;}
+        const data=FS.readFile(SCEN_DIR+name);
+        downloadBinary(name,data);
+      }catch(e){alert('Export failed: '+e.message);}
+    }
+    async function importScenario(){
+      const input=document.createElement('input'); input.type='file'; input.accept='.scn';
+      input.onchange=async e=>{
+        const f=e.target.files[0]; if(!f)return;
+        const buf=await f.arrayBuffer();
+        try{
+          await ensureIDBMounted();
+          mkdirp(SCEN_DIR); mkdirp(IDB_MIRROR + '/scenario/');
+          FS.writeFile(SCEN_DIR + f.name, new Uint8Array(buf));
+          FS.writeFile(IDB_MIRROR + '/scenario/' + f.name, new Uint8Array(buf));
+          await new Promise((res,rej)=>FS.syncfs(false,(err)=>err?rej(err):res()));
+          alert('Imported & saved to browser storage:\n' + SCEN_DIR+f.name);
+        }catch(err){console.error(err); alert('Import failed: '+err.message);}
+      };
+      input.click();
+    }
+
+    /* Heightmap import/export */
+    async function exportHeightmap(){
+      try{
+        const name=newestByMtime(HEIGHT_DIR,['.png','.bmp']);
+        if(!name){alert('No heightmap (.png or .bmp) found in '+HEIGHT_DIR);return;}
+        const data=FS.readFile(HEIGHT_DIR+name);
+        const type = name.toLowerCase().endsWith('.png') ? 'image/png'
+                   : name.toLowerCase().endsWith('.bmp') ? 'image/bmp'
+                   : 'application/octet-stream';
+        downloadBinary(name,data,type);
+      }catch(e){alert('Export failed: '+e.message);}
+    }
+    async function importHeightmap(){
+      const input=document.createElement('input'); input.type='file'; input.accept='.png,.bmp';
+      input.onchange=async e=>{
+        const f=e.target.files[0]; if(!f)return;
+        const buf=await f.arrayBuffer();
+        try{
+          await ensureIDBMounted();
+          mkdirp(HEIGHT_DIR); mkdirp(IDB_MIRROR + '/scenario/heightmap/');
+          FS.writeFile(HEIGHT_DIR + f.name, new Uint8Array(buf));
+          FS.writeFile(IDB_MIRROR + '/scenario/heightmap/' + f.name, new Uint8Array(buf));
+          await new Promise((res,rej)=>FS.syncfs(false,(err)=>err?rej(err):res()));
+          alert('Imported heightmap & saved to browser storage:\n' + HEIGHT_DIR+f.name + '\n\nLoad via Scenario Editor → Heightmap.');
+        }catch(err){console.error(err); alert('Import failed: '+err.message);}
+      };
+      input.click();
+    }
+  </script>
+
+  <!-- Load the Emscripten build last -->
+  <script src="openttd.js"></script>
+
+  <script>
+  (function(){
+  const SENSITIVITY = 0.2; // smaller = slower zoom (try 0.3–0.6)
+
+  function attach(){
+    const canvas = (window.Module && Module.canvas) || document.getElementById('canvas');
+    if (!canvas) return false;
+
+    canvas.style.touchAction = 'none';
+    canvas.style.cursor = 'none';
+
+    let pA = null, pB = null;
+    let lastDist = 0;
+
+    function pinchDist(t1, t2){
+      return Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
+    }
+
+    canvas.addEventListener('touchstart', e => {
+      if (e.touches.length === 2){
+        e.preventDefault();
+        pA = e.touches[0];
+        pB = e.touches[1];
+        lastDist = pinchDist(pA, pB);
+      }
+    }, {passive:false});
+
+    canvas.addEventListener('touchmove', e => {
+      if (e.touches.length !== 2) return;
+      e.preventDefault();
+
+      const t1 = e.touches[0], t2 = e.touches[1];
+      const dist = pinchDist(t1, t2);
+      const scale = dist / lastDist;
+
+      if (Math.abs(scale - 1) > 0.01) { // smaller deadzone = more responsive
+        const cx = (t1.clientX + t2.clientX) / 2;
+        const cy = (t1.clientY + t2.clientY) / 2;
+
+        // translate scale to wheel motion with sensitivity applied
+        const delta = (Math.log(scale) / Math.log(1.05)) * 120 * SENSITIVITY;
+        canvas.dispatchEvent(new WheelEvent('wheel', {
+          deltaY: -delta,  // negative = zoom in
+          clientX: cx,
+          clientY: cy,
+          bubbles: true
+        }));
+        lastDist = dist;
+      }
+    }, {passive:false});
+
+    canvas.addEventListener('touchend', e => {
+      if (e.touches.length < 2) pA = pB = null;
+    }, {passive:false});
+
+    canvas.addEventListener('touchcancel', () => { pA = pB = null; }, {passive:false});
+
+    return true;
+  }
+
+  if (!attach()){
+    const prev = (window.Module && Module.onRuntimeInitialized) || null;
+    window.Module = window.Module || {};
+    Module.onRuntimeInitialized = function(){
+      if (prev) prev();
+      attach();
+    };
+    window.addEventListener('load', () => setTimeout(attach, 0));
+    }
+  })();
+</script>
+
+<script>
+  // Disable right-click context menu globally
+  document.addEventListener('contextmenu', event => event.preventDefault());
+</script>
+
+<style>
+  #footer-links, #footer-links * {
+    cursor: pointer !important;
+  }
+</style>
+
+<div id="footer-links" style="
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  z-index: 3;
+  font-size: 13px;
+  color: #4fc3f7;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+">
+  <a href="https://overgrown-games.com" target="_blank" rel="noopener" style="color:#4fc3f7; text-decoration:none; margin-right:12px;">
+    Overgrown Games
+  </a>
+  <a href="https://github.com/swords02/openttd-ios-web/tree/online" target="_blank" rel="noopener" style="color:#4fc3f7; text-decoration:none;">
+    Source Files
+  </a>
+</div>
+
+</body>
+</html>
