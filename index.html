@@ -1,9 +1,238 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><title>OpenTTD Online</title></head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Play OpenTTD 14.1 Online – Free Browser Version (No Download)</title>
+  <meta name="title" content="Play OpenTTD 14.1 Online – Free Browser Version (No Download)" />
+  <meta name="description" content="Play the full version of OpenTTD 14.1 instantly in your browser. No installation needed. Import/export saves, access Online Content (BaNaNaS), and enjoy classic Transport Tycoon gameplay anywhere." />
+  <meta name="keywords" content="OpenTTD online, play OpenTTD in browser, OpenTTD web, Transport Tycoon online, OpenTTD no download, OpenTTD HTML5" />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://openttdonline.com/" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://openttdonline.com/" />
+  <meta property="og:title" content="Play OpenTTD 14.1 Online – Free Browser Version (No Download)" />
+  <meta property="og:description" content="Instantly play OpenTTD 14.1 in your browser. Import your saves and use Online Content. No download required." />
+  <meta property="og:image" content="https://openttdonline.com/thumbnail.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://openttdonline.com/thumbnail.jpg" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.png" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "OpenTTD Online",
+    "applicationCategory": "GameApplication",
+    "operatingSystem": "Web",
+    "url": "https://openttdonline.com/",
+    "image": "https://openttdonline.com/thumbnail.jpg",
+    "description": "Play OpenTTD 14.1 instantly in your browser with save import/export and Online Content support.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <!-- Styles (no frameworks; deploys cleanly to Pages) -->
+  <style>
+    :root {
+      --bg: #0e1117;
+      --card: #171a22;
+      --text: #e6edf3;
+      --muted: #97a3b6;
+      --accent: #f59e0b; /* amber */
+      --accent-2: #22c55e; /* green */
+      --maxw: 1100px;
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    * { box-sizing: border-box }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; }
+    a { color: inherit; text-decoration: none }
+    .container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 24px }
+    header { position: sticky; top: 0; backdrop-filter: saturate(140%) blur(6px); background: rgba(14,17,23,.75); border-bottom: 1px solid #232838; z-index: 10 }
+    .nav { display:flex; align-items:center; gap:18px; padding: 10px 0 }
+    .nav .brand { display:flex; align-items:center; gap:10px; font-weight:700 }
+    .pill { padding: 6px 10px; border: 1px solid #2a3145; border-radius: 999px; color: var(--muted); font-size: 12px }
+    .cta { display:inline-block; background: linear-gradient(180deg, var(--accent), #dd8a05); color:#111; padding:14px 22px; font-weight:700; border-radius:12px; box-shadow: var(--shadow); border: 0; cursor:pointer }
+    .cta:hover { transform: translateY(-1px); }
+    .cta.secondary { background: #22293a; color: var(--text); border: 1px solid #2a3145 }
+    .hero { display:grid; grid-template-columns: 1.2fr 1fr; gap:28px; align-items:center; padding: 42px 0 10px }
+    .hero h1 { font-size: clamp(28px, 5vw, 44px); line-height:1.1; margin: 0 0 14px }
+    .hero p { color: var(--muted); font-size: clamp(14px, 1.9vw, 18px); margin: 0 0 20px }
+    .shot { border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; background:#0b0e14; border:1px solid #232838 }
+    .shot img { display:block; width:100%; height:auto }
+    .badges { display:flex; gap:10px; flex-wrap:wrap; margin-top:10px }
+    section { padding: 40px 0 }
+    .cards { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:18px }
+    .card { background: var(--card); border:1px solid #232838; border-radius: var(--radius); padding:18px; box-shadow: var(--shadow) }
+    .card h3 { margin: 6px 0 8px; font-size: 18px }
+    .card p { margin: 0; color: var(--muted) }
+    .updates article { background: var(--card); border:1px solid #232838; border-radius: var(--radius); padding:18px; margin-bottom:14px }
+    .updates time { color: var(--muted); font-size: 13px }
+    footer { padding: 28px 0 60px; color: var(--muted); border-top:1px solid #232838 }
+    .grid-2 { display:grid; grid-template-columns: 1fr 1fr; gap:20px }
+    @media (max-width: 980px) { .hero { grid-template-columns: 1fr; } }
+  </style>
+
+  <!-- Optional privacy-friendly analytics (uncomment if used) -->
+  <!-- <script defer data-domain="openttdonline.com" src="https://plausible.io/js/script.js"></script> -->
+</head>
+
 <body>
-<h1>Landing Page Placeholder</h1>
-<p>Replace with full landing page content.</p>
-<a href="/play">Launch OpenTTD Online</a>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <img src="/favicon.png" alt="OpenTTD Online logo" width="24" height="24" />
+        OpenTTD Online
+      </div>
+      <span class="pill">OpenTTD 14.1 • Browser Play</span>
+      <div style="margin-left:auto; display:flex; gap:10px;">
+        <a class="cta secondary" href="#about">About</a>
+        <a class="cta" href="/play" rel="noopener">Launch Game</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <h1 id="hero-title">Play OpenTTD 14.1 instantly in your browser — no download required</h1>
+        <p>OpenTTD Online lets you jump right into classic Transport Tycoon gameplay.
+           Import/export your save files, use Online Content (BaNaNaS), and build your transport empire from any device.</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a class="cta" href="/play" rel="noopener">🚀 Launch OpenTTD Online</a>
+          <a class="cta secondary" href="#features">Learn More</a>
+        </div>
+        <div class="badges">
+          <span class="pill">Save Import/Export</span>
+          <span class="pill">Online Content Compatible</span>
+          <span class="pill">No Install</span>
+          <span class="pill">Free & Open Source</span>
+        </div>
+      </div>
+      <figure class="shot" aria-label="OpenTTD gameplay screenshot">
+        <!-- Replace with your own images -->
+        <img src="/images/screenshot-hero.jpg" alt="OpenTTD gameplay running in the browser" />
+      </figure>
+    </section>
+
+    <!-- FEATURES / DESCRIPTION -->
+    <section id="features" aria-labelledby="features-title">
+      <h2 id="features-title">Why OpenTTD Online?</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Instant Play</h3>
+          <p>Start a new game or load a scenario in seconds. No downloads, no installers — perfect for quick sessions and sharing.</p>
+        </div>
+        <div class="card">
+          <h3>Import & Export Saves</h3>
+          <p>Bring your local saves to the browser, and export back anytime. Pick up where you left off across machines.</p>
+        </div>
+        <div class="card">
+          <h3>Online Content Support</h3>
+          <p>Compatible with OpenTTD’s Online Content (BaNaNaS) for graphics, AIs, and scenarios. (Multiplayer not supported yet.)</p>
+        </div>
+        <div class="card">
+          <h3>Lightweight & Free</h3>
+          <p>Runs on modern browsers and stays fast. The project is community-friendly and open to feedback.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section aria-labelledby="gallery-title">
+      <h2 id="gallery-title">Screenshots</h2>
+      <div class="grid-2">
+        <figure class="shot">
+          <img src="/images/screenshot-1.jpg" alt="City and rail hub in OpenTTD" />
+        </figure>
+        <figure class="shot">
+          <img src="/images/screenshot-2.jpg" alt="Coastal network with ships and airports" />
+        </figure>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">About This Project</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>What is OpenTTD Online?</h3>
+          <p>It’s a browser-playable build of OpenTTD 14.1 designed for accessibility and convenience. You can play single-player, download content, and manage your saves right from the web.</p>
+        </div>
+        <div class="card">
+          <h3>Open Source & Credits</h3>
+          <p>OpenTTD is an open-source re-implementation of Transport Tycoon Deluxe. All trademarks are property of their respective owners. This site is a community fan project.</p>
+        </div>
+        <div class="card">
+          <h3>Feedback & Support</h3>
+          <p>Ideas, bug reports, and performance notes are welcome. Reach out via the links in the footer or open an issue on the project repository (if public).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEVELOPMENT & UPDATES -->
+    <section id="updates" aria-labelledby="updates-title">
+      <h2 id="updates-title">Development & Updates</h2>
+      <div class="updates" role="feed" aria-busy="false">
+        <!-- Duplicate <article> blocks for new posts -->
+        <article role="article" aria-posinset="1" aria-setsize="3">
+          <h3>Online Content compatibility confirmed</h3>
+          <time datetime="2025-11-05">Nov 5, 2025</time>
+          <p>Browser build works with BaNaNaS for graphics and AIs. Multiplayer is not supported yet; evaluating feasibility.</p>
+        </article>
+        <article role="article" aria-posinset="2" aria-setsize="3">
+          <h3>Save Import/Export added</h3>
+          <time datetime="2025-10-28">Oct 28, 2025</time>
+          <p>Upload local .sav files to continue your single-player games and export back anytime. Drag-and-drop support included.</p>
+        </article>
+        <article role="article" aria-posinset="3" aria-setsize="3">
+          <h3>Initial public launch</h3>
+          <time datetime="2025-10-20">Oct 20, 2025</time>
+          <p>OpenTTD Online is live! Try “New Game” or “Play Scenario” right in your browser. Feedback welcome.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section aria-label="Play now" style="text-align:center;">
+      <a class="cta" href="/play" rel="noopener">🚀 Launch OpenTTD Online</a>
+      <p style="color:var(--muted); margin-top:10px;">Works in modern Chromium/Firefox browsers. Progress saved locally unless you export.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+        <img src="/favicon.png" alt="" width="18" height="18" />
+        <span>© <span id="y"></span> OpenTTD Online — community fan project.</span>
+        <span>•</span>
+        <a href="/privacy">Privacy</a>
+        <span>•</span>
+        <a href="/contact">Contact</a>
+        <span style="margin-left:auto;">
+          <a class="pill" href="https://openttd.org/" rel="noopener">OpenTTD.org</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <noscript>
+    OpenTTD Online requires JavaScript to load the game client. Please enable JavaScript or use the native OpenTTD client.
+  </noscript>
+
+  <script>
+    // Tiny enhancement: current year in footer.
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
