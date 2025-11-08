@@ -73,18 +73,24 @@
     .badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
     section{padding:36px 0}
 
+    /* CARDS — now centered and responsive */
     .cards{
       display:grid;
-      grid-template-columns:repeat(4,1fr);
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
       gap:18px;
-    }
-    @media (max-width:980px){
-      .cards{
-        grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      }
+      justify-content:center;     /* center the grid tracks if extra space */
+      justify-items:center;       /* center the items within their cells */
     }
 
-    .card{background:var(--card);border:1px solid #232838;border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .card{
+      background:var(--card);
+      border:1px solid #232838;
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:var(--shadow);
+      width:100%;
+      max-width:520px;            /* makes centering visible on wide rows */
+    }
     .card h3{margin:6px 0 8px;font-size:18px}
     .card p{margin:0;color:var(--muted)}
 
@@ -93,20 +99,28 @@
     footer{padding:28px 0 60px;color:var(--muted);border-top:1px solid #232838}
     .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 
+    /* Tutorial helpers */
     .tutorial .lead{color:var(--muted);max-width:78ch}
     .steps{margin:0;padding-left:22px}
     .steps li{margin:8px 0}
+
+    @media (max-width:980px){
+      .cards{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+    }
 
     @media (max-width:720px){
       :root{--space:18px}
       .pill{display:none}
       .cta{width:100%}
+
+      /* Smaller buttons on mobile only */
       .cta {
         padding:10px 16px;
         font-size:14px;
         border-radius:10px;
         min-height:38px;
       }
+
       .hero{grid-template-columns:1fr}
       .grid-2{grid-template-columns:1fr}
     }
@@ -176,7 +190,7 @@
       </div>
     </section>
 
-    <!-- ✅ ABOUT (NOW ABOVE TUTORIAL) -->
+    <!-- ABOUT -->
     <section id="about">
       <h2>About This Project</h2>
       <div class="cards">
@@ -187,81 +201,71 @@
       </div>
     </section>
 
-    <!-- ✅ TUTORIAL (MOVED BELOW ABOUT) -->
+    <!-- TUTORIAL -->
     <section id="tutorial" class="tutorial">
       <h2>Getting Started: OpenTTD Online Tutorial</h2>
       <p class="lead">
-        New to OpenTTD? This walkthrough gets you from a blank map to your first profitable
-        routes. It’s inspired by the official tutorial, rewritten for our browser version and
-        trimmed to the essentials. For deeper learning, visit the 
-        <a href="https://wiki.openttd.org/en/Manual/Tutorial/" target="_blank" rel="noopener">OpenTTD Wiki</a>.
+        New to OpenTTD? This walkthrough gets you from a blank map to your first profitable routes.
+        It’s inspired by the official tutorial and tailored for the browser version. For the full
+        set of guides, visit the <a href="https://wiki.openttd.org/en/Manual/Tutorial/" target="_blank" rel="noopener">OpenTTD Tutorial</a>.
       </p>
 
       <div class="cards" style="margin-top:16px;">
         <div class="card">
           <h3>1) Start a New Game & Explore</h3>
+          <figure class="shot" style="margin:10px 0;">
+            <img src="https://wiki.openttd.org/File/en/Manual/Tutorial/Main%20menu%20play%20scenario.png" alt="OpenTTD main menu showing Play Scenario" loading="lazy" decoding="async">
+          </figure>
           <ul class="steps">
-            <li>Begin with <strong>New Game</strong> and use the pause button while scanning the map.</li>
-            <li>Look for simple opportunities: nearby towns or industry pairs like coal → power plant.</li>
-            <li>Zoom in/out smoothly using your scroll wheel or trackpad gestures.</li>
+            <li>Click <strong>New Game</strong> (or try a scenario) and pause while you scan the map.</li>
+            <li>Look for easy wins: two nearby towns for buses, or a coal mine → power station pair.</li>
+            <li>Use zoom and pan to evaluate terrain and distances before you spend money.</li>
           </ul>
         </div>
 
         <div class="card">
-          <h3>2) First Route: Town Bus Line</h3>
+          <h3>2) Get the In-Game Tutorial</h3>
+          <figure class="shot" style="margin:10px 0;">
+            <img src="https://wiki.openttd.org/File/en/Manual/Tutorial/Load%20scenario%20check%20online.png" alt="Load Scenario window with Check Online Content" loading="lazy" decoding="async">
+          </figure>
           <ul class="steps">
-            <li>Place two <strong>bus stops</strong> in a town — central + suburban is ideal.</li>
-            <li>Add a <strong>road depot</strong> and buy your first bus from it.</li>
-            <li>Give the bus orders: Stop A → Stop B. Start it and unpause the game.</li>
-            <li>Passenger routes give steady income and boost your reputation.</li>
+            <li>Open <strong>Play Scenario</strong> → click <strong>Check Online Content</strong>.</li>
+            <li>Download <strong>Beginner Tutorial</strong>. If prompted, fetch any missing NewGRFs.</li>
           </ul>
+          <figure class="shot" style="margin:10px 0;">
+            <img src="https://wiki.openttd.org/File/en/Manual/Tutorial/Download%20tutorial.png" alt="Downloading the Beginner Tutorial" loading="lazy" decoding="async">
+          </figure>
         </div>
 
         <div class="card">
-          <h3>3) Build a Basic Coal Train</h3>
+          <h3>3) Load & Begin</h3>
+          <figure class="shot" style="margin:10px 0;">
+            <img src="https://wiki.openttd.org/File/en/Manual/Tutorial/Load%20scenario%20beginner%20tutorial.png" alt="Selecting Beginner Tutorial scenario" loading="lazy" decoding="async">
+          </figure>
           <ul class="steps">
-            <li>Place stations touching a coal mine and a power plant.</li>
-            <li>Lay track between them and position a depot along the line.</li>
-            <li>Buy a locomotive with several coal wagons sized to output.</li>
-            <li>Set orders: <strong>Full Load at Mine</strong> → <strong>Power Plant</strong>.</li>
-            <li>Add simple signals so future trains run without collisions.</li>
+            <li>Select the <strong>Beginner Tutorial</strong> scenario and click <strong>Load</strong>.</li>
+            <li>Follow the on-screen steps—navigation, buses, trains, and more.</li>
           </ul>
+          <figure class="shot" style="margin:10px 0;">
+            <img src="https://wiki.openttd.org/File/en/Manual/Tutorial/BeginnerTutorial.png" alt="In-game tutorial view" loading="lazy" decoding="async">
+          </figure>
         </div>
 
         <div class="card">
-          <h3>4) Finances & Growth</h3>
+          <h3>4) Next Steps</h3>
           <ul class="steps">
-            <li>Use a loan early to expand — routes repay it quickly.</li>
-            <li>Serve mail + passengers to grow towns faster.</li>
-            <li>Replace older vehicles to avoid breakdowns and delays.</li>
-            <li>Add passing loops or double-track busy areas for smoother traffic.</li>
+            <li>Try a simple bus route inside one town for steady cash.</li>
+            <li>Build a coal line: mine → power station, using path signals at exits.</li>
+            <li>Use loans early, then upgrade vehicles as reliability drops.</li>
           </ul>
-        </div>
-      </div>
-
-      <div class="cards" style="margin-top:16px;">
-        <div class="card">
-          <h3>5) Saves & Online Content</h3>
-          <ul class="steps">
-            <li>Save progress any time; browser version supports import/export.</li>
-            <li>Try <strong>Online Content</strong> for new AIs, vehicles, and graphics.</li>
-          </ul>
-          <p style="margin-top:10px;color:var(--muted);">
-            Tip: Keep a clean “starter” save so you always have a stable base.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>6) Learn More</h3>
-          <p>Once you’ve mastered basics, explore advanced signalling, timetables, and huge networks.</p>
-          <ul class="steps">
-            <li>Follow the complete <a href="https://wiki.openttd.org/en/Manual/Tutorial/" target="_blank" rel="noopener">official tutorial</a>.</li>
-            <li>Browse community guides for pro-level techniques.</li>
-          </ul>
-          <div class="btn-row" style="margin-top:10px;">
-            <a class="cta" href="/play" target="_blank" rel="noopener">Start the Tutorial In-Game</a>
+          <div class="btn-row" style="margin-top:10px; justify-content:center;">
+            <!-- Changed to link to the online tutorial -->
+            <a class="cta" href="https://wiki.openttd.org/en/Manual/Tutorial/" target="_blank" rel="noopener">Open the Official Tutorial</a>
             <a class="cta secondary" href="#about">Project Details</a>
           </div>
+          <p style="margin-top:10px;color:var(--muted); text-align:center;">
+            Images courtesy of the OpenTTD Wiki.
+          </p>
         </div>
       </div>
     </section>
@@ -284,25 +288,25 @@
     </section>
   </main>
 
-  <footer>
-    <div class="container">
-      <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-        <img src="/favicon.png" alt="" width="18" height="18" />
-        <span>© <span id="y"></span> Overgrown Games</span>
-        <span>•</span>
-        <a href="/privacy" target="_blank" rel="noopener">Privacy</a>
-        <span>•</span>
-        <a href="/contact" target="_blank" rel="noopener">Contact</a>
-        <span>•</span>
-        <a href="https://embed.openttdonline.com/" target="_blank" rel="noopener">Embed OpenTTD Online</a>
-        <span>•</span>
-        <a href="https://github.com/swords02/openttd-online" target="_blank" rel="noopener">View Source</a>
-        <span style="margin-left:auto;">
-          <a class="pill" href="https://overgrown-games.com/" target="_blank" rel="noopener">Overgrown-Games.com</a>
-        </span>
-      </div>
+<footer>
+  <div class="container">
+    <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+      <img src="/favicon.png" alt="" width="18" height="18" />
+      <span>© <span id="y"></span> Overgrown Games</span>
+      <span>•</span>
+      <a href="/privacy" target="_blank" rel="noopener">Privacy</a>
+      <span>•</span>
+      <a href="/contact" target="_blank" rel="noopener">Contact</a>
+      <span>•</span>
+      <a href="https://embed.openttdonline.com/" target="_blank" rel="noopener">Embed OpenTTD Online</a>
+      <span>•</span>
+      <a href="https://github.com/swords02/openttd-online" target="_blank" rel="noopener">View Source</a>
+      <span style="margin-left:auto;">
+        <a class="pill" href="https://overgrown-games.com/" target="_blank" rel="noopener">Overgrown-Games.com</a>
+      </span>
     </div>
-  </footer>
+  </div>
+</footer>
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
