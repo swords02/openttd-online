@@ -73,14 +73,11 @@
     .badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
     section{padding:36px 0}
 
-    /* ✅ FEATURE CARDS — FORCE ONE ROW ON DESKTOP */
     .cards{
       display:grid;
       grid-template-columns:repeat(4,1fr);
       gap:18px;
     }
-
-    /* ✅ MOBILE + TABLET: allow wrapping */
     @media (max-width:980px){
       .cards{
         grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
@@ -96,19 +93,20 @@
     footer{padding:28px 0 60px;color:var(--muted);border-top:1px solid #232838}
     .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 
+    .tutorial .lead{color:var(--muted);max-width:78ch}
+    .steps{margin:0;padding-left:22px}
+    .steps li{margin:8px 0}
+
     @media (max-width:720px){
       :root{--space:18px}
       .pill{display:none}
       .cta{width:100%}
-
-      /* ✅ Smaller buttons on mobile only */
       .cta {
         padding:10px 16px;
         font-size:14px;
         border-radius:10px;
         min-height:38px;
       }
-
       .hero{grid-template-columns:1fr}
       .grid-2{grid-template-columns:1fr}
     }
@@ -121,10 +119,10 @@
 <body>
   <header>
     <div class="container nav">
-      <a class="brand" href="/" style="text-decoration:none;">
+      <div class="brand">
         <img src="favicon.png" alt="OpenTTD Online logo" width="24" height="24" />
         OpenTTD Online
-      </a>
+      </div>
       <span class="pill">OpenTTD 14.1 • Browser Play</span>
       <div class="btn-row">
         <a class="cta secondary" href="#about">About</a>
@@ -134,7 +132,6 @@
   </header>
 
   <main class="container">
-
     <!-- HERO -->
     <section class="hero">
       <div>
@@ -179,7 +176,7 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
+    <!-- ✅ ABOUT (NOW ABOVE TUTORIAL) -->
     <section id="about">
       <h2>About This Project</h2>
       <div class="cards">
@@ -187,6 +184,85 @@
         <div class="card"><h3>Open Source Credits</h3><p>OpenTTD is an open-source re-implementation of Transport Tycoon Deluxe. All trademarks are property of their respective owners.</p></div>
         <div class="card"><h3>Feedback & Support</h3><p>Ideas, bug reports, and performance notes are welcome. Reach out via the links in the footer or email overgrown3d@gmail.com</p></div>
         <div class="card"><h3>Future Plans</h3><p>Coming Soon: Sound + music, multiplayer, language support, and more!</p></div>
+      </div>
+    </section>
+
+    <!-- ✅ TUTORIAL (MOVED BELOW ABOUT) -->
+    <section id="tutorial" class="tutorial">
+      <h2>Getting Started: OpenTTD Online Tutorial</h2>
+      <p class="lead">
+        New to OpenTTD? This walkthrough gets you from a blank map to your first profitable
+        routes. It’s inspired by the official tutorial, rewritten for our browser version and
+        trimmed to the essentials. For deeper learning, visit the 
+        <a href="https://wiki.openttd.org/en/Manual/Tutorial/" target="_blank" rel="noopener">OpenTTD Wiki</a>.
+      </p>
+
+      <div class="cards" style="margin-top:16px;">
+        <div class="card">
+          <h3>1) Start a New Game & Explore</h3>
+          <ul class="steps">
+            <li>Begin with <strong>New Game</strong> and use the pause button while scanning the map.</li>
+            <li>Look for simple opportunities: nearby towns or industry pairs like coal → power plant.</li>
+            <li>Zoom in/out smoothly using your scroll wheel or trackpad gestures.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>2) First Route: Town Bus Line</h3>
+          <ul class="steps">
+            <li>Place two <strong>bus stops</strong> in a town — central + suburban is ideal.</li>
+            <li>Add a <strong>road depot</strong> and buy your first bus from it.</li>
+            <li>Give the bus orders: Stop A → Stop B. Start it and unpause the game.</li>
+            <li>Passenger routes give steady income and boost your reputation.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>3) Build a Basic Coal Train</h3>
+          <ul class="steps">
+            <li>Place stations touching a coal mine and a power plant.</li>
+            <li>Lay track between them and position a depot along the line.</li>
+            <li>Buy a locomotive with several coal wagons sized to output.</li>
+            <li>Set orders: <strong>Full Load at Mine</strong> → <strong>Power Plant</strong>.</li>
+            <li>Add simple signals so future trains run without collisions.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>4) Finances & Growth</h3>
+          <ul class="steps">
+            <li>Use a loan early to expand — routes repay it quickly.</li>
+            <li>Serve mail + passengers to grow towns faster.</li>
+            <li>Replace older vehicles to avoid breakdowns and delays.</li>
+            <li>Add passing loops or double-track busy areas for smoother traffic.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cards" style="margin-top:16px;">
+        <div class="card">
+          <h3>5) Saves & Online Content</h3>
+          <ul class="steps">
+            <li>Save progress any time; browser version supports import/export.</li>
+            <li>Try <strong>Online Content</strong> for new AIs, vehicles, and graphics.</li>
+          </ul>
+          <p style="margin-top:10px;color:var(--muted);">
+            Tip: Keep a clean “starter” save so you always have a stable base.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>6) Learn More</h3>
+          <p>Once you’ve mastered basics, explore advanced signalling, timetables, and huge networks.</p>
+          <ul class="steps">
+            <li>Follow the complete <a href="https://wiki.openttd.org/en/Manual/Tutorial/" target="_blank" rel="noopener">official tutorial</a>.</li>
+            <li>Browse community guides for pro-level techniques.</li>
+          </ul>
+          <div class="btn-row" style="margin-top:10px;">
+            <a class="cta" href="/play" target="_blank" rel="noopener">Start the Tutorial In-Game</a>
+            <a class="cta secondary" href="#about">Project Details</a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -208,25 +284,25 @@
     </section>
   </main>
 
-<footer>
-  <div class="container">
-    <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-      <img src="/favicon.png" alt="" width="18" height="18" />
-      <span>© <span id="y"></span> Overgrown Games</span>
-      <span>•</span>
-      <a href="/privacy" target="_blank" rel="noopener">Privacy</a>
-      <span>•</span>
-      <a href="/contact" target="_blank" rel="noopener">Contact</a>
-      <span>•</span>
-      <a href="https://embed.openttdonline.com/" target="_blank" rel="noopener">Embed OpenTTD Online</a>
-      <span>•</span>
-      <a href="https://github.com/swords02/openttd-online" target="_blank" rel="noopener">View Source</a>
-      <span style="margin-left:auto;">
-        <a class="pill" href="https://overgrown-games.com/" target="_blank" rel="noopener">Overgrown-Games.com</a>
-      </span>
+  <footer>
+    <div class="container">
+      <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+        <img src="/favicon.png" alt="" width="18" height="18" />
+        <span>© <span id="y"></span> Overgrown Games</span>
+        <span>•</span>
+        <a href="/privacy" target="_blank" rel="noopener">Privacy</a>
+        <span>•</span>
+        <a href="/contact" target="_blank" rel="noopener">Contact</a>
+        <span>•</span>
+        <a href="https://embed.openttdonline.com/" target="_blank" rel="noopener">Embed OpenTTD Online</a>
+        <span>•</span>
+        <a href="https://github.com/swords02/openttd-online" target="_blank" rel="noopener">View Source</a>
+        <span style="margin-left:auto;">
+          <a class="pill" href="https://overgrown-games.com/" target="_blank" rel="noopener">Overgrown-Games.com</a>
+        </span>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
