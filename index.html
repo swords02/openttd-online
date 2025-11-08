@@ -76,7 +76,7 @@
     /* ✅ FEATURE CARDS — FORCE ONE ROW ON DESKTOP */
     .cards{
       display:grid;
-      grid-template-columns:repeat(4,1fr);  /* ✅ Always 4 per row */
+      grid-template-columns:repeat(4,1fr);
       gap:18px;
     }
 
@@ -100,6 +100,15 @@
       :root{--space:18px}
       .pill{display:none}
       .cta{width:100%}
+
+      /* ✅ Smaller buttons on mobile only */
+      .cta {
+        padding:10px 16px;
+        font-size:14px;
+        border-radius:10px;
+        min-height:38px;
+      }
+
       .hero{grid-template-columns:1fr}
       .grid-2{grid-template-columns:1fr}
     }
@@ -125,6 +134,7 @@
   </header>
 
   <main class="container">
+
     <!-- HERO -->
     <section class="hero">
       <div>
