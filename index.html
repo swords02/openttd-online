@@ -32,7 +32,7 @@
     "name": "OpenTTD Online",
     "applicationCategory": "GameApplication",
     "operatingSystem": "Web",
-    "url": "https://opentttdonline.com/",
+    "url": "https://openttdonline.com/",
     "image": "https://openttdonline.com/thumbnail.jpg",
     "description": "Play OpenTTD 14.1 instantly in your browser with save import/export and Online Content support.",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
@@ -92,6 +92,8 @@
     .card{
       transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background-color .18s ease;
       will-change: transform;
+      display:flex;
+      flex-direction:column; /* helps equalize visual height with lists */
     }
     .card:hover{
       transform: translateY(-4px);
@@ -127,20 +129,21 @@
       .grid-2{grid-template-columns:1fr}
     }
 
-    /* ✅ Center the entire tutorial container */
+    /* ✅ Center the entire tutorial container and make it a bit wider */
     #tutorial {
       margin-left: auto;
       margin-right: auto;
-      max-width: 900px;
+      max-width: 980px; /* slightly wider for comfy 3 columns */
     }
 
-    /* ✅ Tutorial cards 3×2 layout, wider cards (desktop), responsive fallbacks */
+    /* ✅ Tutorial cards: single 3×2 grid */
     #tutorial .cards {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;            /* a bit more breathing room */
+      align-items: stretch; /* make cards align cleanly */
     }
     @media (max-width:980px){
-      #tutorial .cards { grid-template-columns: repeat(2, 1fr); }
+      #tutorial .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width:620px){
       #tutorial .cards { grid-template-columns: 1fr; }
@@ -222,7 +225,7 @@
       </div>
     </section>
 
-    <!-- ✅ TUTORIAL (MOVED BELOW ABOUT) -->
+    <!-- ✅ TUTORIAL (single 3×2 grid) -->
     <section id="tutorial" class="tutorial">
       <h2>Getting Started: OpenTTD Online Tutorial</h2>
       <p class="lead">
@@ -271,9 +274,7 @@
             <li>Add passing loops or double-track busy areas for smoother traffic.</li>
           </ul>
         </div>
-      </div>
 
-      <div class="cards" style="margin-top:16px;">
         <div class="card">
           <h3>5) Saves & Online Content</h3>
           <ul class="steps">
