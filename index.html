@@ -32,7 +32,7 @@
     "name": "OpenTTD Online",
     "applicationCategory": "GameApplication",
     "operatingSystem": "Web",
-    "url": "https://openttdonline.com/",
+    "url": "https://opentttdonline.com/",
     "image": "https://openttdonline.com/thumbnail.jpg",
     "description": "Play OpenTTD 14.1 instantly in your browser with save import/export and Online Content support.",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
@@ -110,6 +110,13 @@
       .hero{grid-template-columns:1fr}
       .grid-2{grid-template-columns:1fr}
     }
+
+    /* ✅ Added: Center the entire tutorial container */
+    #tutorial {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 900px;
+    }
   </style>
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9145511719373088"
@@ -119,10 +126,10 @@
 <body>
   <header>
     <div class="container nav">
-      <div class="brand">
+      <a class="brand" href="/" style="text-decoration:none;">
         <img src="favicon.png" alt="OpenTTD Online logo" width="24" height="24" />
         OpenTTD Online
-      </div>
+      </a>
       <span class="pill">OpenTTD 14.1 • Browser Play</span>
       <div class="btn-row">
         <a class="cta secondary" href="#about">About</a>
