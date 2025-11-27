@@ -377,7 +377,15 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentIndex = 0;
   let isShuffle = false;
   let isRepeat = false;
-  let userInteracted = false;
+
+  /* === First-click autoplay helper (browser gesture requirement) === */
+  let firstPlayArmed = true;
+  document.addEventListener("click", function onFirstClick() {
+    if (!firstPlayArmed) return;
+    firstPlayArmed = false;
+    audio.play().catch(()=>{});
+    document.removeEventListener("click", onFirstClick, true);
+  }, { capture: true });
 
   /* === LOAD TRACK === */
   function loadTrack(index, autoplay = false) {
@@ -438,20 +446,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  /* === PLAY ANY CLICK INSIDE WINDOW === */
-  function enableWindowAutoPlay() {
-    if (!userInteracted) {
-      userInteracted = true;
-      audio.play().catch(()=>{});
-    }
+  /* === PLAY/PAUSE BUTTON (with dynamic icon) === */
+  function updatePlayPauseIcon() {
+    if (!audio) return;
+    // ▶ (9658) when paused, ❚❚ (10074 x2) when playing
+    btnPlayPause.innerHTML = audio.paused ? "&#9658;" : "&#10074;&#10074;";
   }
-  ttdWindow.addEventListener("click", enableWindowAutoPlay);
 
-  /* === BUTTON HANDLERS === */
-  btnPlayPause.onclick = () => audio.paused ? audio.play() : audio.pause();
-  btnPrev.onclick = prevTrack;
-  btnNext.onclick = () => nextTrack(false);
+  btnPlayPause.onclick = () => {
+    if (audio.paused) {
+      audio.play().catch(()=>{});
+    } else {
+      audio.pause();
+    }
+  };
 
+  audio.addEventListener("play", updatePlayPauseIcon);
+  audio.addEventListener("pause", updatePlayPauseIcon);
+
+  /* === SHUFFLE / REPEAT === */
   btnShuffle.onclick = () => {
     isShuffle = !isShuffle;
     btnShuffle.classList.toggle("toggle-on", isShuffle);
@@ -462,21 +475,28 @@ document.addEventListener("DOMContentLoaded", () => {
     btnRepeat.classList.toggle("toggle-on", isRepeat);
   };
 
+  /* === VOLUME === */
   volumeSlider.oninput = () => audio.volume = volumeSlider.value;
 
   /* === SEEK === */
   progressBarWrap.onclick = (e) => {
     const rect = progressBarWrap.getBoundingClientRect();
     const ratio = (e.clientX - rect.left) / rect.width;
-    audio.currentTime = ratio * audio.duration;
+    if (!isNaN(audio.duration)) {
+      audio.currentTime = ratio * audio.duration;
+    }
   };
 
   /* === TIME UPDATE === */
   audio.ontimeupdate = () => {
     currentTimeLabel.textContent = formatTime(audio.currentTime);
     durationLabel.textContent = formatTime(audio.duration);
-    progressBarFill.style.width =
-      (audio.currentTime / audio.duration) * 100 + "%";
+    if (!isNaN(audio.duration) && audio.duration > 0) {
+      progressBarFill.style.width =
+        (audio.currentTime / audio.duration) * 100 + "%";
+    } else {
+      progressBarFill.style.width = "0%";
+    }
   };
 
   audio.onended = () => nextTrack(true);
@@ -507,6 +527,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* === OPEN / CLOSE === */
   openMusicBtn.onclick = () => {
     ttdWindow.style.display = "flex";
+    // Try playing when opening too (in case first-click handler didn't fire yet)
     audio.play().catch(()=>{});
   };
 
@@ -517,6 +538,7 @@ document.addEventListener("DOMContentLoaded", () => {
   buildPlaylist();
   loadTrack(0, false);
   audio.volume = 0.6;
+  updatePlayPauseIcon();
 });
 </script>
       
