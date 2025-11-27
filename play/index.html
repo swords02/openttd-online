@@ -111,6 +111,200 @@
   /* Hide system cursor globally; show pointer over toolbar & toggle */
   html, body, canvas, #canvas, * { cursor: none !important; }
   #toolbar, #toolbar *, #toolbar-toggle, #toolbar-toggle * { cursor: pointer !important; }
+
+
+/* === Open Button === */
+.open-music-btn {
+  position: fixed;
+  left: 8px;
+  bottom: 24px;
+  padding: 3px 10px;
+  font-size: 11px;
+  border: 1px solid #808080;
+  background: #c0c0c0;
+  box-shadow: inset 1px 1px #fff, inset -1px -1px #404040;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+/* === Window === */
+.ttd-window {
+  width: 520px;
+  background: #c0c0c0;
+  border: 1px solid #000;
+  box-shadow: 0 0 0 1px #404040;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 80px;
+  left: 80px;
+  z-index: 9998;
+}
+
+.ttd-window-header {
+  background: #a0a0a0;
+  border-bottom: 1px solid #404040;
+  padding: 2px 6px;
+  display: flex;
+  justify-content: space-between;
+  user-select: none;
+  cursor: move;
+}
+
+.ttd-window-header .title {
+  margin: 0 auto;
+  color: #f0f0f0;
+  font-weight: bold;
+  font-size: 12px;
+  text-shadow: 1px 1px #404040;
+}
+
+.btn-close {
+  width: 14px;
+  height: 14px;
+  border: 1px solid #404040;
+  background: #c0c0c0;
+  box-shadow: inset 1px 1px #fff, inset -1px -1px #808080;
+  text-align: center;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.ttd-window-body {
+  padding: 4px;
+  background: #b0b0b0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+
+
+
+/* === LEFT SIDE === */
+.current-track-box {
+  border: 1px solid #404040;
+  background: #c0c0c0;
+  padding: 4px;
+  box-shadow: inset 1px 1px #f8f8f8, inset -1px -1px #808080;
+}
+
+.button-row-top {
+  display: flex;
+  gap: 4px;
+}
+
+.transport-btn {
+  width: 20px;
+  height: 20px;
+  background: #c0c0c0;
+  border: 1px solid #404040;
+  box-shadow: inset 1px 1px #fff, inset -1px -1px #808080;
+  cursor: pointer;
+}
+
+.volume-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #e4e4e4;
+  border: 1px solid #808080;
+  padding: 2px 4px;
+}
+
+.volume-row input[type="range"] {
+  flex: 1;
+  accent-color: #008000;
+}
+
+.track-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+}
+
+.track-bar {
+  height: 14px;
+  background: #000;
+  border: 1px solid #404040;
+  position: relative;
+  cursor: pointer;
+}
+
+.track-bar-fill {
+  height: 10px;
+  background: #00ff00;
+  margin: 2px;
+}
+
+.track-bar-title {
+  position: absolute;
+  top: 0;
+  color: #b8ffb8;
+  font-size: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+.time-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+}
+
+.shuffle-row {
+  display: flex;
+  gap: 4px;
+}
+
+.ttd-btn {
+  padding: 1px 6px;
+  border: 1px solid #404040;
+  background: #c0c0c0;
+  box-shadow: inset 1px 1px #fff, inset -1px -1px #808080;
+  cursor: pointer;
+  font-size: 10px;
+}
+
+.ttd-btn.toggle-on {
+  background: #808080;
+  color: #fff;
+}
+
+
+
+/* === RIGHT SIDE === */
+.playlist-box {
+  border: 1px solid #404040;
+  background: #c0c0c0;
+  padding: 4px;
+}
+
+.playlist-list {
+  height: 130px;
+  border: 1px solid #404040;
+  overflow-y: auto;
+  background: #b0b0b0;
+}
+
+.playlist-item {
+  padding: 1px 4px;
+  font-size: 10px;
+  line-height: 16px;
+  cursor: pointer;
+}
+
+.playlist-item.active {
+  background: #000;
+  color: #00ff00;
+}
+
+.playlist-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+}
+
+
 </style>
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9145511719373088"
@@ -118,6 +312,208 @@
       
 </head>
 
+<script>
+const playlist = [
+  { title: "tttheme2", src: "music/tttheme2.mp3" },
+  { title: "5432gone_redfarn", src: "music/5432gone_redfarn.mp3" },
+  { title: "be_sharp_bw_redfarn", src: "music/be_sharp_bw_redfarn.mp3" },
+  { title: "big_man_boogie_redfarn", src: "music/big_man_boogie_redfarn.mp3" },
+  { title: "boogi_marabi_redfarn", src: "music/boogi_marabi_redfarn.mp3" },
+  { title: "busy_schedule", src: "music/busy_schedule.mp3" },
+  { title: "careless_perc_redfarn", src: "music/careless_perc_redfarn.mp3" },
+  { title: "chemistry_lab", src: "music/chemistry_lab.mp3" },
+  { title: "chuggachugga", src: "music/chuggachugga.mp3" },
+  { title: "city_blues_redfarn", src: "music/city_blues_redfarn.mp3" },
+  { title: "coconut_run2", src: "music/coconut_run2.mp3" },
+  { title: "flying_scotsman", src: "music/flying_scotsman.mp3" },
+  { title: "harp_harmony", src: "music/harp_harmony.mp3" },
+  { title: "linns_basket", src: "music/linns_basket.mp3" },
+  { title: "midnight_snow_run", src: "music/midnight_snow_run.mp3" },
+  { title: "mighty_giant_run", src: "music/mighty_giant_run.mp3" },
+  { title: "modern_motion", src: "music/modern_motion.mp3" },
+  { title: "moo_redfarn", src: "music/moo_redfarn.mp3" },
+  { title: "mosey_along_redfarn", src: "music/mosey_along_redfarn.mp3" },
+  { title: "no_work_song_redfarn", src: "music/no_work_song_redfarn.mp3" },
+  { title: "relax_song", src: "music/relax_song.mp3" },
+  { title: "run_for_your_life", src: "music/run_for_your_life.mp3" },
+  { title: "say_what_redfarn", src: "music/say_what_redfarn.mp3" },
+  { title: "slow_neasy_redfarn", src: "music/slow_neasy_redfarn.mp3" },
+  { title: "the_fast_route", src: "music/the_fast_route.mp3" },
+  { title: "the_hobo_redfarn", src: "music/the_hobo_redfarn.mp3" },
+  { title: "train_filled_with_cash", src: "music/train_filled_with_cash.mp3" },
+  { title: "ttsong_iii_imuh3", src: "music/ttsong_iii_imuh3.mp3" },
+  { title: "ttsong_iv_imuh3", src: "music/ttsong_iv_imuh3.mp3" },
+  { title: "ultimate_run", src: "music/ultimate_run.mp3" },
+  { title: "wood_whistles", src: "music/wood_whistles.mp3" }
+];
+
+const audio = document.getElementById("audioElement");
+const ttdWindow = document.getElementById("ttdWindow");
+const openMusicBtn = document.getElementById("openMusicBtn");
+
+const playlistList = document.getElementById("playlistList");
+const playlistCountLabel = document.getElementById("playlistCountLabel");
+const playlistModeLabel = document.getElementById("playlistModeLabel");
+
+const btnPlayPause = document.getElementById("btnPlayPause");
+const btnPrev = document.getElementById("btnPrev");
+const btnNext = document.getElementById("btnNext");
+const btnShuffle = document.getElementById("btnShuffle");
+const btnRepeat = document.getElementById("btnRepeat");
+
+const currentTrackTitle = document.getElementById("currentTrackTitle");
+const progressBarWrap = document.getElementById("progressBarWrap");
+const progressBarFill = document.getElementById("progressBarFill");
+const currentTimeLabel = document.getElementById("currentTimeLabel");
+const durationLabel = document.getElementById("durationLabel");
+const volumeSlider = document.getElementById("volumeSlider");
+
+let currentIndex = 0;
+let isShuffle = false;
+let isRepeat = false;
+let userInteracted = false;
+
+/* === LOAD TRACK === */
+function loadTrack(index, autoplay = false) {
+  currentIndex = index;
+  const track = playlist[index];
+  audio.src = track.src;
+  currentTrackTitle.textContent = track.title;
+  highlightActive();
+  if (autoplay) audio.play().catch(()=>{});
+}
+
+function highlightActive() {
+  document.querySelectorAll(".playlist-item").forEach(el => {
+    el.classList.toggle("active", parseInt(el.dataset.index) === currentIndex);
+  });
+}
+
+/* === BUILD PLAYLIST === */
+function buildPlaylist() {
+  playlistList.innerHTML = "";
+  playlist.forEach((track, i) => {
+    const item = document.createElement("div");
+    item.className = "playlist-item";
+    item.textContent = track.title;
+    item.dataset.index = i;
+    item.onclick = () => loadTrack(i, true);
+    playlistList.appendChild(item);
+  });
+  playlistCountLabel.textContent = playlist.length + " tracks";
+}
+
+/* === NEXT / PREV === */
+function nextTrack(auto=false) {
+  if (isRepeat && auto) {
+    loadTrack(currentIndex, true);
+    return;
+  }
+  if (isShuffle) {
+    let r;
+    do r = Math.floor(Math.random()*playlist.length);
+    while (r===currentIndex);
+    loadTrack(r, true);
+  } else {
+    currentIndex = (currentIndex+1)%playlist.length;
+    loadTrack(currentIndex, true);
+  }
+}
+function prevTrack() {
+  if (isShuffle) {
+    let r;
+    do r = Math.floor(Math.random()*playlist.length);
+    while (r===currentIndex);
+    loadTrack(r,true);
+  } else {
+    currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
+    loadTrack(currentIndex, true);
+  }
+}
+
+/* === PLAY ANY CLICK INSIDE WINDOW === */
+function enableWindowAutoPlay() {
+  if (!userInteracted) {
+    userInteracted = true;
+    audio.play().catch(()=>{});
+  }
+}
+ttdWindow.addEventListener("click", enableWindowAutoPlay);
+
+/* === BUTTON HANDLERS === */
+btnPlayPause.onclick = () => audio.paused ? audio.play() : audio.pause();
+btnPrev.onclick = prevTrack;
+btnNext.onclick = () => nextTrack(false);
+
+btnShuffle.onclick = () => {
+  isShuffle = !isShuffle;
+  btnShuffle.classList.toggle("toggle-on", isShuffle);
+};
+
+btnRepeat.onclick = () => {
+  isRepeat = !isRepeat;
+  btnRepeat.classList.toggle("toggle-on", isRepeat);
+};
+
+volumeSlider.oninput = () => audio.volume = volumeSlider.value;
+
+/* === SEEK === */
+progressBarWrap.onclick = (e) => {
+  const rect = progressBarWrap.getBoundingClientRect();
+  const ratio = (e.clientX - rect.left) / rect.width;
+  audio.currentTime = ratio * audio.duration;
+};
+
+/* === TIME UPDATE === */
+audio.ontimeupdate = () => {
+  currentTimeLabel.textContent = formatTime(audio.currentTime);
+  durationLabel.textContent = formatTime(audio.duration);
+  progressBarFill.style.width =
+    (audio.currentTime / audio.duration) * 100 + "%";
+};
+
+audio.onended = () => nextTrack(true);
+
+function formatTime(s) {
+  if (isNaN(s)) return "0:00";
+  let m = Math.floor(s/60);
+  let sec = Math.floor(s%60).toString().padStart(2,"0");
+  return m+":"+sec;
+}
+
+/* === WINDOW DRAG === */
+const header = document.getElementById("ttdWindowHeader");
+let drag = false, dx = 0, dy = 0;
+
+header.onmousedown = (e) => {
+  drag = true;
+  dx = e.clientX - ttdWindow.offsetLeft;
+  dy = e.clientY - ttdWindow.offsetTop;
+};
+document.onmouseup = () => drag = false;
+document.onmousemove = (e) => {
+  if (!drag) return;
+  ttdWindow.style.left = (e.clientX - dx) + "px";
+  ttdWindow.style.top = (e.clientY - dy) + "px";
+};
+
+/* === OPEN / CLOSE === */
+openMusicBtn.onclick = () => {
+  ttdWindow.style.display = "flex";
+  audio.play().catch(()=>{});
+};
+
+document.getElementById("btnClose").onclick = () =>
+  ttdWindow.style.display="none";
+
+/* === INIT === */
+document.addEventListener("DOMContentLoaded", () => {
+  buildPlaylist();
+  loadTrack(0, false);
+  audio.volume = 0.6;
+});
+</script>
+      
 <body>
   <!-- Toggle -->
   <button id="toolbar-toggle" type="button" aria-label="Toggle tools" aria-pressed="false" title="Tools">
@@ -546,6 +942,69 @@
     cursor: pointer !important;
   }
 </style>
+
+<!-- === Jazz Jukebox Music Player === -->
+<button class="open-music-btn" id="openMusicBtn">Jazz Jukebox</button>
+
+<div class="ttd-window" id="ttdWindow" style="display:none;">
+  <div class="ttd-window-header" id="ttdWindowHeader">
+    <span></span>
+    <div class="title">Jazz Jukebox</div>
+    <div class="btn-close" id="btnClose">X</div>
+  </div>
+
+  <div class="ttd-window-body">
+    <!-- LEFT SIDE -->
+    <div class="current-track-box">
+
+      <div class="button-row-top">
+        <button class="transport-btn" id="btnPrev">&#9664;</button>
+        <button class="transport-btn" id="btnNext">&#9654;</button>
+        <button class="transport-btn" id="btnPlayPause">&#9658;</button>
+      </div>
+
+      <div class="volume-row">
+        <span class="vol-label">Music Volume</span>
+        <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.6">
+      </div>
+
+      <div class="track-bar-labels">
+        <span>Track</span>
+        <span>Programme</span>
+      </div>
+
+      <div class="track-bar" id="progressBarWrap">
+        <div class="track-bar-fill" id="progressBarFill"></div>
+        <div class="track-bar-title" id="currentTrackTitle">---</div>
+      </div>
+
+      <div class="time-row">
+        <span id="currentTimeLabel">0:00</span>
+        <span id="durationLabel">0:00</span>
+      </div>
+
+      <div class="shuffle-row">
+        <button class="ttd-btn" id="btnShuffle">Shuffle</button>
+        <button class="ttd-btn" id="btnRepeat">Rep</button>
+      </div>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="playlist-box">
+      <div class="playlist-header">Track List</div>
+      <div class="playlist-list" id="playlistList"></div>
+
+      <div class="playlist-footer">
+        <span id="playlistCountLabel">0 tracks</span>
+        <span id="playlistModeLabel"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<audio id="audioElement"></audio>
+
 
 <div id="footer-links" style="
   position: fixed;
