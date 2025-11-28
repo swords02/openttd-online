@@ -446,6 +446,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  /* === WIRE UP NEXT / PREVIOUS BUTTONS (mouse + touch) === */
+  function bindTransportButton(btn, handler) {
+    if (!btn) return;
+
+    // Mouse / desktop
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      handler();
+    });
+
+    // Mobile touch (prevents ghost clicks, works on iOS Safari, etc.)
+    btn.addEventListener("touchend", (e) => {
+      e.preventDefault();
+      handler();
+    }, { passive: false });
+  }
+
+  bindTransportButton(btnNext, () => nextTrack(false));
+  bindTransportButton(btnPrev, prevTrack);
+
   /* === PLAY/PAUSE BUTTON (with dynamic icon) === */
   function updatePlayPauseIcon() {
     if (!audio) return;
@@ -958,91 +978,91 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener('load', () => setTimeout(attach, 0));
     }
   })();
-</script>
+  </script>
 
-<script>
-  // Disable right-click context menu globally
-  document.addEventListener('contextmenu', event => event.preventDefault());
-</script>
+  <script>
+    // Disable right-click context menu globally
+    document.addEventListener('contextmenu', event => event.preventDefault());
+  </script>
 
-<!-- === Jazz Jukebox Music Player === -->
-<button class="open-music-btn" id="openMusicBtn">Jazz Jukebox</button>
+  <!-- === Jazz Jukebox Music Player === -->
+  <button class="open-music-btn" id="openMusicBtn">Jazz Jukebox</button>
 
-<div class="ttd-window" id="ttdWindow" style="display:none;">
-  <div class="ttd-window-header" id="ttdWindowHeader">
-    <span></span>
-    <div class="title">Jazz Jukebox</div>
-    <div class="btn-close" id="btnClose">X</div>
-  </div>
-
-  <div class="ttd-window-body">
-    <!-- LEFT SIDE -->
-    <div class="current-track-box">
-
-      <div class="button-row-top">
-        <button class="transport-btn" id="btnPrev">&#9664;</button>
-        <button class="transport-btn" id="btnNext">&#9654;</button>
-        <button class="transport-btn" id="btnPlayPause">&#9658;</button>
-      </div>
-
-      <div class="volume-row">
-        <span class="vol-label">Music Volume</span>
-        <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.6">
-      </div>
-
-      <div class="track-bar-labels">
-        <span>Track</span>
-      </div>
-
-      <div class="track-bar" id="progressBarWrap">
-        <div class="track-bar-fill" id="progressBarFill"></div>
-        <div class="track-bar-title" id="currentTrackTitle">---</div>
-      </div>
-
-      <div class="time-row">
-        <span id="currentTimeLabel">0:00</span>
-        <span id="durationLabel">0:00</span>
-      </div>
-
-      <div class="shuffle-row">
-        <button class="ttd-btn" id="btnShuffle">Shuffle</button>
-        <button class="ttd-btn" id="btnRepeat">Rep</button>
-      </div>
-
+  <div class="ttd-window" id="ttdWindow" style="display:none;">
+    <div class="ttd-window-header" id="ttdWindowHeader">
+      <span></span>
+      <div class="title">Jazz Jukebox</div>
+      <div class="btn-close" id="btnClose">X</div>
     </div>
 
-    <!-- RIGHT SIDE -->
-    <div class="playlist-box">
-      <div class="playlist-header">Track List</div>
-      <div class="playlist-list" id="playlistList"></div>
+    <div class="ttd-window-body">
+      <!-- LEFT SIDE -->
+      <div class="current-track-box">
 
-      <div class="playlist-footer">
-        <span id="playlistCountLabel">0 tracks</span>
-        <span id="playlistModeLabel"></span>
+        <div class="button-row-top">
+          <button class="transport-btn" id="btnPrev">&#9664;</button>
+          <button class="transport-btn" id="btnNext">&#9654;</button>
+          <button class="transport-btn" id="btnPlayPause">&#9658;</button>
+        </div>
+
+        <div class="volume-row">
+          <span class="vol-label">Music Volume</span>
+          <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.6">
+        </div>
+
+        <div class="track-bar-labels">
+          <span>Track</span>
+        </div>
+
+        <div class="track-bar" id="progressBarWrap">
+          <div class="track-bar-fill" id="progressBarFill"></div>
+          <div class="track-bar-title" id="currentTrackTitle">---</div>
+        </div>
+
+        <div class="time-row">
+          <span id="currentTimeLabel">0:00</span>
+          <span id="durationLabel">0:00</span>
+        </div>
+
+        <div class="shuffle-row">
+          <button class="ttd-btn" id="btnShuffle">Shuffle</button>
+          <button class="ttd-btn" id="btnRepeat">Rep</button>
+        </div>
+
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="playlist-box">
+        <div class="playlist-header">Track List</div>
+        <div class="playlist-list" id="playlistList"></div>
+
+        <div class="playlist-footer">
+          <span id="playlistCountLabel">0 tracks</span>
+          <span id="playlistModeLabel"></span>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<audio id="audioElement"></audio>
+  <audio id="audioElement"></audio>
 
-<div id="footer-links" style="
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-  z-index: 3;
-  font-size: 13px;
-  color: #4fc3f7;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-">
-  <a href="https://openttdonline.com/" target="_blank" rel="noopener" style="color:#4fc3f7; text-decoration:none;">
-    OpenTTD Online
-  </a>
-  <span>•</span>
-  <a href="https://overgrown-games.com" target="_blank" rel="noopener" style="color:#4fc3f7; text-decoration:none; margin-right:12px;">
-    Overgrown Games
-  </a>
-</div>
+  <div id="footer-links" style="
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 3;
+    font-size: 13px;
+    color: #4fc3f7;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  ">
+    <a href="https://openttdonline.com/" target="_blank" rel="noopener" style="color:#4fc3f7; text-decoration:none;">
+      OpenTTD Online
+    </a>
+    <span>•</span>
+    <a href="https://overgrown-games.com" target="_blank" rel="noopener" style="color:#4fc3f7; text-decoration:none; margin-right:12px;">
+      Overgrown Games
+    </a>
+  </div>
 
 </body>
 </html>
