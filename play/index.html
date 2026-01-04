@@ -309,6 +309,59 @@
     justify-content: space-between;
     font-size: 9px;
   }
+
+  /* ============================================================
+     ✅ ADDED: Export file picker modal (choose which file to export)
+     ============================================================ */
+  #filePickerModal{
+    position:fixed;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:10001;
+    background:rgba(0,0,0,.55);
+    backdrop-filter:blur(2px);
+    -webkit-tap-highlight-color: transparent;
+  }
+  #filePickerModal.show{ display:flex; }
+  .filePickerCard{
+    width:min(92vw, 420px);
+    background:rgba(0,0,0,.78);
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:12px;
+    padding:12px;
+    color:#fff;
+    font:14px/1.25 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  }
+  .filePickerTitle{ font-weight:700; font-size:14.5px; margin:2px 0 8px; }
+  .filePickerSub{ opacity:.85; margin:0 0 10px; font-size:12.5px; }
+  .filePickerSelect{
+    width:100%;
+    background:#111;
+    color:#fff;
+    border:1px solid rgba(255,255,255,.20);
+    border-radius:10px;
+    padding:10px 10px;
+    font-size:14px;
+    outline:none;
+  }
+  .filePickerButtons{
+    display:flex;
+    gap:8px;
+    justify-content:flex-end;
+    margin-top:12px;
+  }
+  .filePickerBtn{
+    background:#222;
+    color:#eee;
+    border:1px solid rgba(255,255,255,.22);
+    border-radius:10px;
+    padding:10px 12px;
+    font-size:14px;
+    cursor:pointer;
+  }
+  .filePickerBtn:active{ transform:scale(0.98); }
 </style>
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9145511719373088"
@@ -456,7 +509,7 @@ document.addEventListener("DOMContentLoaded", () => {
       handler();
     });
 
-    // Mobile touch (prevents ghost clicks, works on iOS Safari, etc.)
+    // Mobile touch
     btn.addEventListener("touchend", (e) => {
       e.preventDefault();
       handler();
@@ -469,16 +522,12 @@ document.addEventListener("DOMContentLoaded", () => {
   /* === PLAY/PAUSE BUTTON (with dynamic icon) === */
   function updatePlayPauseIcon() {
     if (!audio) return;
-    // ▶ (9658) when paused, ❚❚ (10074 x2) when playing
     btnPlayPause.innerHTML = audio.paused ? "&#9658;" : "&#10074;&#10074;";
   }
 
   btnPlayPause.onclick = () => {
-    if (audio.paused) {
-      audio.play().catch(()=>{});
-    } else {
-      audio.pause();
-    }
+    if (audio.paused) audio.play().catch(()=>{});
+    else audio.pause();
   };
 
   audio.addEventListener("play", updatePlayPauseIcon);
@@ -502,9 +551,7 @@ document.addEventListener("DOMContentLoaded", () => {
   progressBarWrap.onclick = (e) => {
     const rect = progressBarWrap.getBoundingClientRect();
     const ratio = (e.clientX - rect.left) / rect.width;
-    if (!isNaN(audio.duration)) {
-      audio.currentTime = ratio * audio.duration;
-    }
+    if (!isNaN(audio.duration)) audio.currentTime = ratio * audio.duration;
   };
 
   /* === TIME UPDATE === */
@@ -512,8 +559,7 @@ document.addEventListener("DOMContentLoaded", () => {
     currentTimeLabel.textContent = formatTime(audio.currentTime);
     durationLabel.textContent = formatTime(audio.duration);
     if (!isNaN(audio.duration) && audio.duration > 0) {
-      progressBarFill.style.width =
-        (audio.currentTime / audio.duration) * 100 + "%";
+      progressBarFill.style.width = (audio.currentTime / audio.duration) * 100 + "%";
     } else {
       progressBarFill.style.width = "0%";
     }
@@ -547,7 +593,6 @@ document.addEventListener("DOMContentLoaded", () => {
   /* === OPEN / CLOSE === */
   openMusicBtn.onclick = () => {
     ttdWindow.style.display = "flex";
-    // Try playing when opening too (in case first-click handler didn't fire yet)
     audio.play().catch(()=>{});
   };
 
@@ -570,6 +615,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   <!-- Toolbar -->
   <div id="toolbar">
+    <!-- ✅ UPDATED: export buttons now open a picker to choose which file -->
     <button type="button" onclick="exportSave()">Export Save</button>
     <button type="button" onclick="importSave()">Import Save</button>
     <button type="button" onclick="exportScenario()">Export Scenario</button>
@@ -590,6 +636,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   <img id="logo" src="overgrown.png" alt="Overgrown logo">
   <div id="filesystem">Saving files…</div>
+
+  <!-- ✅ ADDED: File picker modal -->
+  <div id="filePickerModal" aria-hidden="true">
+    <div class="filePickerCard" role="dialog" aria-modal="true" aria-label="Choose file to export">
+      <div class="filePickerTitle" id="filePickerTitle">Choose a file to export</div>
+      <div class="filePickerSub" id="filePickerSub">Loading…</div>
+      <select class="filePickerSelect" id="filePickerSelect"></select>
+      <div class="filePickerButtons">
+        <button class="filePickerBtn" id="filePickerCancel" type="button">Cancel</button>
+        <button class="filePickerBtn primary" id="filePickerExport" type="button">Export</button>
+      </div>
+    </div>
+  </div>
 
   <script>
     /* --- Paths --- */
@@ -683,16 +742,13 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
           if (__idbReady) return resolve();
           mkdirp(IDB_ROOT);
-          // If not mounted yet, mount IDBFS at /idb
           let mounted = false;
           try { mounted = !!FS.lookupPath(IDB_ROOT).node.mounted; } catch(_) {}
-          if (!mounted) {
-            FS.mount(IDBFS, {}, IDB_ROOT);
-          }
+          if (!mounted) FS.mount(IDBFS, {}, IDB_ROOT);
+
           FS.syncfs(true, (err) => {
             if (err) { console.error('IDBFS initial sync failed', err); reject(err); return; }
             __idbReady = true;
-            // After pulling from IndexedDB, restore into the live tree
             if (exists(IDB_MIRROR)) {
               mkdirp(LIVE_ROOT);
               copyTree(IDB_MIRROR, LIVE_ROOT);
@@ -709,7 +765,6 @@ document.addEventListener("DOMContentLoaded", () => {
     function persistToIDB() {
       return new Promise((resolve, reject) => {
         try {
-          // Mirror live tree -> /idb mirror
           mkdirp(IDB_MIRROR);
           copyTree(LIVE_ROOT, IDB_MIRROR);
           FS.syncfs(false, (err) => err ? reject(err) : resolve());
@@ -717,12 +772,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // Emergency flush on unload
     window.addEventListener('beforeunload', () => {
       try { FS && FS.syncfs && FS.syncfs(false, ()=>{}); } catch(_) {}
     });
 
-    // Small autosync so in-game saves persist without pressing anything (every 10s)
     setInterval(() => {
       if (__idbReady) {
         try { persistToIDB().catch(()=>{}); } catch(_) {}
@@ -745,14 +798,105 @@ document.addEventListener("DOMContentLoaded", () => {
       }catch(_){ return null; }
     }
 
+    /* ============================================================
+       ✅ ADDED: Export picker (choose which file in a folder)
+       ============================================================ */
+    const filePicker = {
+      el: null, title: null, sub: null, select: null, btnCancel: null, btnExport: null,
+      resolve: null, current: null
+    };
+
+    function initFilePicker(){
+      filePicker.el       = document.getElementById('filePickerModal');
+      filePicker.title    = document.getElementById('filePickerTitle');
+      filePicker.sub      = document.getElementById('filePickerSub');
+      filePicker.select   = document.getElementById('filePickerSelect');
+      filePicker.btnCancel= document.getElementById('filePickerCancel');
+      filePicker.btnExport= document.getElementById('filePickerExport');
+
+      const close = () => {
+        filePicker.el.classList.remove('show');
+        filePicker.el.setAttribute('aria-hidden','true');
+        filePicker.current = null;
+        if (filePicker.resolve) { filePicker.resolve(null); filePicker.resolve = null; }
+      };
+
+      filePicker.btnCancel.addEventListener('click', close);
+      filePicker.el.addEventListener('click', (e)=>{ if (e.target === filePicker.el) close(); });
+      document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape' && filePicker.el.classList.contains('show')) close(); });
+
+      filePicker.btnExport.addEventListener('click', ()=>{
+        const val = filePicker.select.value || '';
+        filePicker.el.classList.remove('show');
+        filePicker.el.setAttribute('aria-hidden','true');
+        const r = filePicker.resolve;
+        filePicker.resolve = null;
+        filePicker.current = null;
+        if (r) r(val || null);
+      });
+    }
+
+    function listFilesForExport(dir, exts){
+      const out = [];
+      const items = readdirSafe(dir);
+      for (const name of items){
+        const full = dir + name;
+        try{
+          const st = FS.stat(full);
+          if (st.mode && (st.mode & 0x4000)) continue; // skip dirs
+          const low = name.toLowerCase();
+          const ok = (Array.isArray(exts) ? exts : [exts]).some(ext => low.endsWith(ext));
+          if (!ok) continue;
+          out.push({ name, full, mtime: st && st.mtime ? st.mtime : 0 });
+        }catch(_){}
+      }
+      out.sort((a,b)=> (b.mtime||0) - (a.mtime||0));
+      return out;
+    }
+
+    async function chooseFileToExport({ label, dir, exts }){
+      if (!filePicker.el) initFilePicker();
+      if (typeof FS === 'undefined') return null;
+
+      const files = listFilesForExport(dir, exts);
+
+      filePicker.title.textContent = `Export ${label}`;
+      filePicker.sub.textContent   = files.length ? `Choose a file from: ${dir}` : `No matching files found in: ${dir}`;
+      filePicker.select.innerHTML  = '';
+
+      if (!files.length){
+        const opt = document.createElement('option');
+        opt.value = '';
+        opt.textContent = '(none found)';
+        filePicker.select.appendChild(opt);
+        filePicker.select.disabled = true;
+        filePicker.btnExport.disabled = true;
+      } else {
+        filePicker.select.disabled = false;
+        filePicker.btnExport.disabled = false;
+        for (const f of files){
+          const opt = document.createElement('option');
+          opt.value = f.name;
+          opt.textContent = f.name;
+          filePicker.select.appendChild(opt);
+        }
+        // default to newest
+        filePicker.select.value = files[0].name;
+      }
+
+      filePicker.el.classList.add('show');
+      filePicker.el.setAttribute('aria-hidden','false');
+
+      return new Promise((resolve)=>{ filePicker.resolve = resolve; });
+    }
+
     /* Emscripten Module */
     var Module = window.Module || {};
     Module.preRun=[]; Module.postRun=[]; Module.arguments=[];
     Module.totalDependencies=42; Module.doneDependencies=0; Module.lastDependencies=1;
 
-    // Mount /idb and restore before the game starts
     Module.preRun.push(function(){
-      return ensureIDBMounted().catch(()=>{ /* let game start anyway */ });
+      return ensureIDBMounted().catch(()=>{});
     });
 
     Module.print  = (...a)=>console.log(a.join(' '));
@@ -826,10 +970,10 @@ document.addEventListener("DOMContentLoaded", () => {
     /* Save import/export (live + persistent mirror) */
     async function exportSave(){
       try{
-        const name=newestByMtime(SAVE_DIR,['.sav']);
-        if(!name){alert('No .sav found in '+SAVE_DIR);return;}
-        const data=FS.readFile(SAVE_DIR+name);
-        downloadBinary(name,data);
+        const chosen = await chooseFileToExport({ label:'Save', dir:SAVE_DIR, exts:['.sav'] });
+        if(!chosen) return; // canceled
+        const data=FS.readFile(SAVE_DIR + chosen);
+        downloadBinary(chosen, data, 'application/octet-stream');
       }catch(e){alert('Export failed: '+e.message);}
     }
     async function importSave(){
@@ -852,10 +996,10 @@ document.addEventListener("DOMContentLoaded", () => {
     /* Scenario import/export */
     async function exportScenario(){
       try{
-        const name=newestByMtime(SCEN_DIR,['.scn']);
-        if(!name){alert('No .scn found in '+SCEN_DIR);return;}
-        const data=FS.readFile(SCEN_DIR+name);
-        downloadBinary(name,data);
+        const chosen = await chooseFileToExport({ label:'Scenario', dir:SCEN_DIR, exts:['.scn'] });
+        if(!chosen) return;
+        const data=FS.readFile(SCEN_DIR + chosen);
+        downloadBinary(chosen, data, 'application/octet-stream');
       }catch(e){alert('Export failed: '+e.message);}
     }
     async function importScenario(){
@@ -878,13 +1022,13 @@ document.addEventListener("DOMContentLoaded", () => {
     /* Heightmap import/export */
     async function exportHeightmap(){
       try{
-        const name=newestByMtime(HEIGHT_DIR,['.png','.bmp']);
-        if(!name){alert('No heightmap (.png or .bmp) found in '+HEIGHT_DIR);return;}
-        const data=FS.readFile(HEIGHT_DIR+name);
-        const type = name.toLowerCase().endsWith('.png') ? 'image/png'
-                   : name.toLowerCase().endsWith('.bmp') ? 'image/bmp'
+        const chosen = await chooseFileToExport({ label:'Heightmap', dir:HEIGHT_DIR, exts:['.png','.bmp'] });
+        if(!chosen) return;
+        const data=FS.readFile(HEIGHT_DIR + chosen);
+        const type = chosen.toLowerCase().endsWith('.png') ? 'image/png'
+                   : chosen.toLowerCase().endsWith('.bmp') ? 'image/bmp'
                    : 'application/octet-stream';
-        downloadBinary(name,data,type);
+        downloadBinary(chosen, data, type);
       }catch(e){alert('Export failed: '+e.message);}
     }
     async function importHeightmap(){
@@ -943,14 +1087,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const dist = pinchDist(t1, t2);
       const scale = dist / lastDist;
 
-      if (Math.abs(scale - 1) > 0.01) { // smaller deadzone = more responsive
+      if (Math.abs(scale - 1) > 0.01) {
         const cx = (t1.clientX + t2.clientX) / 2;
         const cy = (t1.clientY + t2.clientY) / 2;
 
-        // translate scale to wheel motion with sensitivity applied
         const delta = (Math.log(scale) / Math.log(1.05)) * 120 * SENSITIVITY;
         canvas.dispatchEvent(new WheelEvent('wheel', {
-          deltaY: -delta,  // negative = zoom in
+          deltaY: -delta,
           clientX: cx,
           clientY: cy,
           bubbles: true
