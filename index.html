@@ -88,12 +88,12 @@
     .card h3{margin:6px 0 8px;font-size:18px}
     .card p{margin:0;color:var(--muted)}
 
-    /* ✅ Subtle hover animation for ALL cards */
+    /* Subtle hover animation for ALL cards */
     .card{
       transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background-color .18s ease;
       will-change: transform;
       display:flex;
-      flex-direction:column; /* helps equalize visual height with lists */
+      flex-direction:column;
     }
     .card:hover{
       transform: translateY(-4px);
@@ -129,24 +129,32 @@
       .grid-2{grid-template-columns:1fr}
     }
 
-    /* ✅ Center the entire tutorial container and make it a bit wider */
+    /* Center the entire tutorial container and make it a bit wider */
     #tutorial {
       margin-left: auto;
       margin-right: auto;
-      max-width: 980px; /* slightly wider for comfy 3 columns */
+      max-width: 980px;
     }
 
-    /* ✅ Tutorial cards: single 3×2 grid */
+    /* Tutorial cards: single 3×2 grid */
     #tutorial .cards {
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 24px;            /* a bit more breathing room */
-      align-items: stretch; /* make cards align cleanly */
+      gap: 24px;
+      align-items: stretch;
     }
     @media (max-width:980px){
       #tutorial .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width:620px){
       #tutorial .cards { grid-template-columns: 1fr; }
+    }
+
+    /* Optional: focus glow for review inputs */
+    #reviews input:focus,
+    #reviews select:focus,
+    #reviews textarea:focus{
+      border-color:#2f3650;
+      box-shadow:0 0 0 3px rgba(245,158,11,.15);
     }
   </style>
 
@@ -177,7 +185,7 @@
         <p>OpenTTD Online lets you jump right into classic Transport Tycoon gameplay. Import/export your save files, use Online Content, and build your transport empire from any device.</p>
 
         <div class="btn-row" style="margin:10px 0 4px;">
-          <a class="cta" href="/play" target="_blank" rel="noopener">🚀 Launch OpenTTD Online</a>
+          <a class="cta" href="/play" target="_blank" rel="noopener">Launch OpenTTD Online</a>
           <a class="cta secondary" href="#features">Learn More</a>
         </div>
 
@@ -214,18 +222,24 @@
       </div>
     </section>
 
-    <!-- ✅ ABOUT (NOW ABOVE TUTORIAL) -->
+    <!-- ABOUT -->
     <section id="about">
       <h2>About This Project</h2>
       <div class="cards">
         <div class="card"><h3>What is OpenTTD Online?</h3><p>A browser-playable build of OpenTTD 14.1 designed for accessibility and convenience!</p></div>
         <div class="card"><h3>Open Source Credits</h3><p>OpenTTD is an open-source re-implementation of Transport Tycoon Deluxe. All trademarks are property of their respective owners.</p></div>
         <div class="card"><h3>Feedback & Support</h3><p>Ideas, bug reports, and performance notes are welcome. Reach out via the links in the footer or email overgrown3d@gmail.com</p></div>
-        <div class="card"><h3>Future Plans</h3><p>Coming Soon: Sound + music, multiplayer, language support, and more!</p></div>
+        <div class="card">
+          <h3>iOS OpenTTD Online Port</h3>
+          <p>Try the iOS build of OpenTTD Online via our public test page.</p>
+          <div class="btn-row" style="margin-top:12px; margin-left:0;">
+            <a class="cta" href="https://ios.openttdonline.com/" target="_blank" rel="noopener">Open iOS Test</a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ✅ TUTORIAL (single 3×2 grid) -->
+    <!-- TUTORIAL (single 3×2 grid) -->
     <section id="tutorial" class="tutorial">
       <h2>Getting Started: OpenTTD Online Tutorial</h2>
       <p class="lead">
@@ -300,21 +314,193 @@
       </div>
     </section>
 
-    <!-- UPDATES -->
-    <section id="updates">
-      <h2>Development & Updates</h2>
-      <div class="updates">
-        <article><h3>Added Jazz Jukebox</h3><time>Nov 27, 2025</time><p>Added a music player for a better in-game experience. Full sound support still under development.</p></article>
-        <article><h3>Created Landing Page</h3><time>Nov 7, 2025</time><p>New landing site and improved structure.</p></article>
-        <article><h3>Updated Build Version</h3><time>Nov 4, 2025</time><p>Browser build updated to OpenTTD 14.1.</p></article>
-        <article><h3>Save Import/Export Added</h3><time>Nov 3, 2025</time><p>Full save compatibility added for browser users.</p></article>
-        <article><h3>Initial Public Launch</h3><time>Oct 31, 2025</time><p>OpenTTD Online is now live!</p></article>
+    <!-- REVIEWS -->
+    <section id="reviews">
+      <h2>Player Reviews</h2>
+      <p class="lead" style="color:var(--muted); max-width:78ch;">
+        Leave a quick rating and note — new reviews show up after approval.
+      </p>
+
+      <div id="reviewSummary" class="badges" style="margin-top:12px;"></div>
+
+      <div class="grid-2" style="margin-top:16px; align-items:start;">
+        <div class="card">
+          <h3 style="margin-top:0;">Write a review</h3>
+
+          <form id="reviewForm" style="display:grid; gap:12px;">
+            <input
+              name="name"
+              placeholder="Name"
+              maxlength="40"
+              required
+              style="padding:10px 12px; border-radius:12px; border:1px solid #2a3145; background:#0b0e14; color:var(--text); outline:none;"
+            />
+
+            <select
+              name="rating"
+              required
+              style="padding:10px 12px; border-radius:12px; border:1px solid #2a3145; background:#0b0e14; color:var(--text); outline:none;"
+            >
+              <option value="">Rating</option>
+              <option value="5">5 - Amazing</option>
+              <option value="4">4 - Great</option>
+              <option value="3">3 - Good</option>
+              <option value="2">2 - Meh</option>
+              <option value="1">1 - Bad</option>
+            </select>
+
+            <textarea
+              name="text"
+              placeholder="What did you like (or not like)?"
+              maxlength="800"
+              required
+              style="padding:10px 12px; border-radius:12px; border:1px solid #2a3145; background:#0b0e14; color:var(--text); outline:none; min-height:120px; resize:vertical;"
+            ></textarea>
+
+            <div class="btn-row" style="margin-left:0;">
+              <button class="cta" type="submit">Submit review</button>
+              <button class="cta secondary" type="button" id="refreshReviews">Refresh</button>
+            </div>
+
+            <p id="reviewStatus" style="margin:6px 0 0; color:var(--muted);"></p>
+          </form>
+        </div>
+
+        <div>
+          <div class="cards" id="reviewCards" style="grid-template-columns:1fr; gap:14px;">
+          </div>
+        </div>
       </div>
     </section>
 
+    <script>
+      const API_BASE = "https://reviews-api.owengerke.workers.dev";
+      const GAME_SLUG = "openttd-online";
+
+      const statusEl = document.getElementById("reviewStatus");
+      const cardsEl = document.getElementById("reviewCards");
+      const summaryEl = document.getElementById("reviewSummary");
+      const formEl = document.getElementById("reviewForm");
+      const refreshBtn = document.getElementById("refreshReviews");
+
+      function escapeHtml(s) {
+        return String(s).replace(/[&<>"']/g, c => ({
+          "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+        }[c]));
+      }
+
+      function starEmoji(n) {
+        n = Math.max(0, Math.min(5, Number(n) || 0));
+        return "⭐".repeat(n) + "☆".repeat(5 - n);
+      }
+
+      function renderSummary(reviews) {
+        const count = reviews.length;
+        if (!count) {
+          summaryEl.innerHTML = `<span class="pill">No reviews yet</span>`;
+          return;
+        }
+        const avg = reviews.reduce((a, r) => a + (Number(r.rating) || 0), 0) / count;
+        const avgRounded = Math.round(avg * 10) / 10;
+
+        summaryEl.innerHTML = `
+          <span class="pill">${starEmoji(Math.round(avg))}</span>
+          <span class="pill">${avgRounded} / 5 average</span>
+          <span class="pill">${count} review${count === 1 ? "" : "s"}</span>
+        `;
+      }
+
+      async function loadReviews() {
+        cardsEl.innerHTML = `
+          <div class="card">
+            <p style="margin:0; color:var(--muted);">Loading reviews…</p>
+          </div>
+        `;
+        summaryEl.innerHTML = `<span class="pill">Loading…</span>`;
+
+        const res = await fetch(`${API_BASE}/api/reviews?game=${encodeURIComponent(GAME_SLUG)}`);
+        const data = await res.json().catch(() => ({}));
+
+        if (!res.ok) {
+          summaryEl.innerHTML = `<span class="pill">Couldn’t load summary</span>`;
+          cardsEl.innerHTML = `
+            <div class="card">
+              <h3 style="margin-top:0;">Couldn’t load reviews</h3>
+              <p style="margin:0; color:var(--muted);">Try again in a moment.</p>
+            </div>
+          `;
+          return;
+        }
+
+        const reviews = data.reviews || [];
+        renderSummary(reviews);
+
+        if (!reviews.length) {
+          cardsEl.innerHTML = `
+            <div class="card">
+              <h3 style="margin-top:0;">No reviews yet</h3>
+              <p style="margin:0; color:var(--muted);">Be the first to leave one!</p>
+            </div>
+          `;
+          return;
+        }
+
+        cardsEl.innerHTML = reviews.map(r => `
+          <div class="card">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+              <h3 style="margin:0;">${escapeHtml(r.name)}</h3>
+              <span style="color:var(--accent); font-size:14px;">
+                ${starEmoji(r.rating)}
+              </span>
+            </div>
+
+            <p style="margin:10px 0 0; color:var(--text); white-space:pre-wrap;">
+              ${escapeHtml(r.text)}
+            </p>
+
+            <p style="margin:10px 0 0; color:var(--muted); font-size:13px;">
+              ${new Date(r.created_at).toLocaleDateString()}
+            </p>
+          </div>
+        `).join("");
+      }
+
+      formEl.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        statusEl.textContent = "Submitting…";
+
+        const fd = new FormData(formEl);
+        const payload = {
+          game: GAME_SLUG,
+          name: fd.get("name"),
+          rating: Number(fd.get("rating")),
+          text: fd.get("text"),
+        };
+
+        const res = await fetch(`${API_BASE}/api/reviews`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+
+        const data = await res.json().catch(() => ({}));
+
+        if (res.ok) {
+          formEl.reset();
+          statusEl.textContent = data.message || "Thanks! Your review is pending approval.";
+          await loadReviews();
+        } else {
+          statusEl.textContent = data.error || "Error submitting review.";
+        }
+      });
+
+      refreshBtn.addEventListener("click", loadReviews);
+      loadReviews();
+    </script>
+
     <!-- CTA -->
     <section style="text-align:center;">
-      <a class="cta" href="/play" target="_blank" rel="noopener">🚀 Launch OpenTTD Online</a>
+      <a class="cta" href="/play" target="_blank" rel="noopener">Launch OpenTTD Online</a>
       <p style="color:var(--muted); margin-top:10px;">Works in modern browsers. Saves kept locally.</p>
     </section>
   </main>
