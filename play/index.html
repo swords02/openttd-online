@@ -690,6 +690,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const IDB_ROOT   = '/idb';                               // our IndexedDB mount
     const IDB_MIRROR = IDB_ROOT + LIVE_ROOT;                 // mirror path inside IDBFS
 
+    /* --- Build stamp (prevents stale IDB/caches from crashing new builds) --- */
+    const BUILD_ID  = "15.1-20260213"; // change on each deploy
+    const BUILD_KEY = "openttd_build_id";
+
     /* UI refs */
     const toolbar   = document.getElementById('toolbar');
     const toggleBtn = document.getElementById('toolbar-toggle');
@@ -770,6 +774,19 @@ document.addEventListener("DOMContentLoaded", () => {
     function ensureIDBMounted() {
       return new Promise((resolve, reject) => {
         try {
+
+          /* --- Clear stale storage on build change (prevents returning-user crashes) --- */
+          const prev = (() => { try { return localStorage.getItem(BUILD_KEY); } catch(_) { return null; } })();
+          const changed = prev && prev !== BUILD_ID;
+
+          if (changed) {
+            try {
+              indexedDB.databases?.().then(dbs => dbs.forEach(db => indexedDB.deleteDatabase(db.name)));
+            } catch(_) {}
+            try { localStorage.setItem(BUILD_KEY, BUILD_ID); } catch(_) {}
+          }
+          if (!prev) { try { localStorage.setItem(BUILD_KEY, BUILD_ID); } catch(_) {} }
+
           if (__idbReady) return resolve();
           mkdirp(IDB_ROOT);
           // If not mounted yet, mount IDBFS at /idb
@@ -1105,7 +1122,7 @@ document.addEventListener("DOMContentLoaded", () => {
   </script>
 
   <!-- Load the Emscripten build last -->
-  <script src="openttd.js"></script>
+  <script src="openttd.js?v=15.1-20260213"></script>
 
   <script>
   (function(){
