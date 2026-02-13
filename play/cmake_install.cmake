@@ -34,7 +34,7 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/emsdk/upstream/bin/llvm-objdump")
+  set(CMAKE_OBJDUMP "/usr/bin/objdump")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
@@ -62,7 +62,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xRuntimex" OR NOT CMAKE_INSTALL_COMP
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/games/openttd.html" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/games/openttd.html")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/emsdk/upstream/bin/llvm-strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/games/openttd.html")
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/games/openttd.html")
     endif()
   endif()
 endif()
@@ -81,8 +81,8 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xdocsx" OR NOT CMAKE_INSTALL_COMPONE
     "/src/README.md"
     "/src/CREDITS.md"
     "/src/CONTRIBUTING.md"
-    "/src/changelog.txt"
-    "/src/known-bugs.txt"
+    "/src/changelog.md"
+    "/src/known-bugs.md"
     )
 endif()
 
@@ -93,6 +93,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xdocsx" OR NOT CMAKE_INSTALL_COMPONE
     "/src/docs/desync.md"
     "/src/docs/directory_structure.md"
     "/src/docs/eints.md"
+    "/src/docs/fonts.md"
     "/src/docs/game_coordinator.md"
     "/src/docs/linkgraph.md"
     "/src/docs/logging_and_performance_metrics.md"

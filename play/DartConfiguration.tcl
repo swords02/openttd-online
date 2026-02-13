@@ -11,7 +11,7 @@ BuildDirectory: /src/build
 CostDataFile: 
 
 # Site is something like machine.domain, i.e. pragmatic.crd
-Site: 7ac104f5e471
+Site: 87a6a208dd22
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
 BuildName: Emscripten-em++
@@ -63,7 +63,7 @@ UpdateType: git
 
 # Compiler info
 Compiler: /emsdk/upstream/emscripten/em++
-CompilerVersion: 17.0.0
+CompilerVersion: 19.0.0
 
 # Dynamic analysis (MemCheck)
 PurifyCommand: 

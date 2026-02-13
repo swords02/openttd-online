@@ -919,6 +919,54 @@ generated/rev.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/generated/rev.cpp.s
 .PHONY : generated/rev.cpp.s
 
+src/3rdparty/fmt/format.o: src/3rdparty/fmt/format.cc.o
+.PHONY : src/3rdparty/fmt/format.o
+
+# target to build an object file
+src/3rdparty/fmt/format.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/3rdparty/fmt/format.cc.o
+.PHONY : src/3rdparty/fmt/format.cc.o
+
+src/3rdparty/fmt/format.i: src/3rdparty/fmt/format.cc.i
+.PHONY : src/3rdparty/fmt/format.i
+
+# target to preprocess a source file
+src/3rdparty/fmt/format.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/3rdparty/fmt/format.cc.i
+.PHONY : src/3rdparty/fmt/format.cc.i
+
+src/3rdparty/fmt/format.s: src/3rdparty/fmt/format.cc.s
+.PHONY : src/3rdparty/fmt/format.s
+
+# target to generate assembly for a file
+src/3rdparty/fmt/format.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/3rdparty/fmt/format.cc.s
+.PHONY : src/3rdparty/fmt/format.cc.s
+
+src/3rdparty/fmt/os.o: src/3rdparty/fmt/os.cc.o
+.PHONY : src/3rdparty/fmt/os.o
+
+# target to build an object file
+src/3rdparty/fmt/os.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/3rdparty/fmt/os.cc.o
+.PHONY : src/3rdparty/fmt/os.cc.o
+
+src/3rdparty/fmt/os.i: src/3rdparty/fmt/os.cc.i
+.PHONY : src/3rdparty/fmt/os.i
+
+# target to preprocess a source file
+src/3rdparty/fmt/os.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/3rdparty/fmt/os.cc.i
+.PHONY : src/3rdparty/fmt/os.cc.i
+
+src/3rdparty/fmt/os.s: src/3rdparty/fmt/os.cc.s
+.PHONY : src/3rdparty/fmt/os.s
+
+# target to generate assembly for a file
+src/3rdparty/fmt/os.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/3rdparty/fmt/os.cc.s
+.PHONY : src/3rdparty/fmt/os.cc.s
+
 src/3rdparty/md5/md5.o: src/3rdparty/md5/md5.cpp.o
 .PHONY : src/3rdparty/md5/md5.o
 
@@ -1206,30 +1254,6 @@ src/3rdparty/squirrel/squirrel/sqlexer.s: src/3rdparty/squirrel/squirrel/sqlexer
 src/3rdparty/squirrel/squirrel/sqlexer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/3rdparty/squirrel/squirrel/sqlexer.cpp.s
 .PHONY : src/3rdparty/squirrel/squirrel/sqlexer.cpp.s
-
-src/3rdparty/squirrel/squirrel/sqmem.o: src/3rdparty/squirrel/squirrel/sqmem.cpp.o
-.PHONY : src/3rdparty/squirrel/squirrel/sqmem.o
-
-# target to build an object file
-src/3rdparty/squirrel/squirrel/sqmem.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/3rdparty/squirrel/squirrel/sqmem.cpp.o
-.PHONY : src/3rdparty/squirrel/squirrel/sqmem.cpp.o
-
-src/3rdparty/squirrel/squirrel/sqmem.i: src/3rdparty/squirrel/squirrel/sqmem.cpp.i
-.PHONY : src/3rdparty/squirrel/squirrel/sqmem.i
-
-# target to preprocess a source file
-src/3rdparty/squirrel/squirrel/sqmem.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/3rdparty/squirrel/squirrel/sqmem.cpp.i
-.PHONY : src/3rdparty/squirrel/squirrel/sqmem.cpp.i
-
-src/3rdparty/squirrel/squirrel/sqmem.s: src/3rdparty/squirrel/squirrel/sqmem.cpp.s
-.PHONY : src/3rdparty/squirrel/squirrel/sqmem.s
-
-# target to generate assembly for a file
-src/3rdparty/squirrel/squirrel/sqmem.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/3rdparty/squirrel/squirrel/sqmem.cpp.s
-.PHONY : src/3rdparty/squirrel/squirrel/sqmem.cpp.s
 
 src/3rdparty/squirrel/squirrel/sqobject.o: src/3rdparty/squirrel/squirrel/sqobject.cpp.o
 .PHONY : src/3rdparty/squirrel/squirrel/sqobject.o
@@ -1614,6 +1638,30 @@ src/articulated_vehicles.s: src/articulated_vehicles.cpp.s
 src/articulated_vehicles.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/articulated_vehicles.cpp.s
 .PHONY : src/articulated_vehicles.cpp.s
+
+src/autocompletion.o: src/autocompletion.cpp.o
+.PHONY : src/autocompletion.o
+
+# target to build an object file
+src/autocompletion.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/autocompletion.cpp.o
+.PHONY : src/autocompletion.cpp.o
+
+src/autocompletion.i: src/autocompletion.cpp.i
+.PHONY : src/autocompletion.i
+
+# target to preprocess a source file
+src/autocompletion.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/autocompletion.cpp.i
+.PHONY : src/autocompletion.cpp.i
+
+src/autocompletion.s: src/autocompletion.cpp.s
+.PHONY : src/autocompletion.s
+
+# target to generate assembly for a file
+src/autocompletion.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/autocompletion.cpp.s
+.PHONY : src/autocompletion.cpp.s
 
 src/autoreplace.o: src/autoreplace.cpp.o
 .PHONY : src/autoreplace.o
@@ -2023,6 +2071,30 @@ src/build_vehicle_gui.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/build_vehicle_gui.cpp.s
 .PHONY : src/build_vehicle_gui.cpp.s
 
+src/cachecheck.o: src/cachecheck.cpp.o
+.PHONY : src/cachecheck.o
+
+# target to build an object file
+src/cachecheck.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/cachecheck.cpp.o
+.PHONY : src/cachecheck.cpp.o
+
+src/cachecheck.i: src/cachecheck.cpp.i
+.PHONY : src/cachecheck.i
+
+# target to preprocess a source file
+src/cachecheck.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/cachecheck.cpp.i
+.PHONY : src/cachecheck.cpp.i
+
+src/cachecheck.s: src/cachecheck.cpp.s
+.PHONY : src/cachecheck.s
+
+# target to generate assembly for a file
+src/cachecheck.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/cachecheck.cpp.s
+.PHONY : src/cachecheck.cpp.s
+
 src/cargoaction.o: src/cargoaction.cpp.o
 .PHONY : src/cargoaction.o
 
@@ -2335,30 +2407,6 @@ src/console_gui.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/console_gui.cpp.s
 .PHONY : src/console_gui.cpp.s
 
-src/core/alloc_func.o: src/core/alloc_func.cpp.o
-.PHONY : src/core/alloc_func.o
-
-# target to build an object file
-src/core/alloc_func.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/core/alloc_func.cpp.o
-.PHONY : src/core/alloc_func.cpp.o
-
-src/core/alloc_func.i: src/core/alloc_func.cpp.i
-.PHONY : src/core/alloc_func.i
-
-# target to preprocess a source file
-src/core/alloc_func.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/core/alloc_func.cpp.i
-.PHONY : src/core/alloc_func.cpp.i
-
-src/core/alloc_func.s: src/core/alloc_func.cpp.s
-.PHONY : src/core/alloc_func.s
-
-# target to generate assembly for a file
-src/core/alloc_func.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/core/alloc_func.cpp.s
-.PHONY : src/core/alloc_func.cpp.s
-
 src/core/geometry_func.o: src/core/geometry_func.cpp.o
 .PHONY : src/core/geometry_func.o
 
@@ -2454,6 +2502,102 @@ src/core/random_func.s: src/core/random_func.cpp.s
 src/core/random_func.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/core/random_func.cpp.s
 .PHONY : src/core/random_func.cpp.s
+
+src/core/string_builder.o: src/core/string_builder.cpp.o
+.PHONY : src/core/string_builder.o
+
+# target to build an object file
+src/core/string_builder.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/core/string_builder.cpp.o
+.PHONY : src/core/string_builder.cpp.o
+
+src/core/string_builder.i: src/core/string_builder.cpp.i
+.PHONY : src/core/string_builder.i
+
+# target to preprocess a source file
+src/core/string_builder.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/core/string_builder.cpp.i
+.PHONY : src/core/string_builder.cpp.i
+
+src/core/string_builder.s: src/core/string_builder.cpp.s
+.PHONY : src/core/string_builder.s
+
+# target to generate assembly for a file
+src/core/string_builder.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/core/string_builder.cpp.s
+.PHONY : src/core/string_builder.cpp.s
+
+src/core/string_consumer.o: src/core/string_consumer.cpp.o
+.PHONY : src/core/string_consumer.o
+
+# target to build an object file
+src/core/string_consumer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/core/string_consumer.cpp.o
+.PHONY : src/core/string_consumer.cpp.o
+
+src/core/string_consumer.i: src/core/string_consumer.cpp.i
+.PHONY : src/core/string_consumer.i
+
+# target to preprocess a source file
+src/core/string_consumer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/core/string_consumer.cpp.i
+.PHONY : src/core/string_consumer.cpp.i
+
+src/core/string_consumer.s: src/core/string_consumer.cpp.s
+.PHONY : src/core/string_consumer.s
+
+# target to generate assembly for a file
+src/core/string_consumer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/core/string_consumer.cpp.s
+.PHONY : src/core/string_consumer.cpp.s
+
+src/core/string_inplace.o: src/core/string_inplace.cpp.o
+.PHONY : src/core/string_inplace.o
+
+# target to build an object file
+src/core/string_inplace.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/core/string_inplace.cpp.o
+.PHONY : src/core/string_inplace.cpp.o
+
+src/core/string_inplace.i: src/core/string_inplace.cpp.i
+.PHONY : src/core/string_inplace.i
+
+# target to preprocess a source file
+src/core/string_inplace.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/core/string_inplace.cpp.i
+.PHONY : src/core/string_inplace.cpp.i
+
+src/core/string_inplace.s: src/core/string_inplace.cpp.s
+.PHONY : src/core/string_inplace.s
+
+# target to generate assembly for a file
+src/core/string_inplace.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/core/string_inplace.cpp.s
+.PHONY : src/core/string_inplace.cpp.s
+
+src/core/utf8.o: src/core/utf8.cpp.o
+.PHONY : src/core/utf8.o
+
+# target to build an object file
+src/core/utf8.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/core/utf8.cpp.o
+.PHONY : src/core/utf8.cpp.o
+
+src/core/utf8.i: src/core/utf8.cpp.i
+.PHONY : src/core/utf8.i
+
+# target to preprocess a source file
+src/core/utf8.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/core/utf8.cpp.i
+.PHONY : src/core/utf8.cpp.i
+
+src/core/utf8.s: src/core/utf8.cpp.s
+.PHONY : src/core/utf8.s
+
+# target to generate assembly for a file
+src/core/utf8.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/core/utf8.cpp.s
+.PHONY : src/core/utf8.cpp.s
 
 src/cpu.o: src/cpu.cpp.o
 .PHONY : src/cpu.o
@@ -2742,6 +2886,30 @@ src/driver.s: src/driver.cpp.s
 src/driver.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/driver.cpp.s
 .PHONY : src/driver.cpp.s
+
+src/dropdown.o: src/dropdown.cpp.o
+.PHONY : src/dropdown.o
+
+# target to build an object file
+src/dropdown.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/dropdown.cpp.o
+.PHONY : src/dropdown.cpp.o
+
+src/dropdown.i: src/dropdown.cpp.i
+.PHONY : src/dropdown.i
+
+# target to preprocess a source file
+src/dropdown.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/dropdown.cpp.i
+.PHONY : src/dropdown.cpp.i
+
+src/dropdown.s: src/dropdown.cpp.s
+.PHONY : src/dropdown.s
+
+# target to generate assembly for a file
+src/dropdown.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/dropdown.cpp.s
+.PHONY : src/dropdown.cpp.s
 
 src/economy.o: src/economy.cpp.o
 .PHONY : src/economy.o
@@ -4135,30 +4303,6 @@ src/misc.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/misc.cpp.s
 .PHONY : src/misc.cpp.s
 
-src/misc/countedobj.o: src/misc/countedobj.cpp.o
-.PHONY : src/misc/countedobj.o
-
-# target to build an object file
-src/misc/countedobj.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/misc/countedobj.cpp.o
-.PHONY : src/misc/countedobj.cpp.o
-
-src/misc/countedobj.i: src/misc/countedobj.cpp.i
-.PHONY : src/misc/countedobj.i
-
-# target to preprocess a source file
-src/misc/countedobj.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/misc/countedobj.cpp.i
-.PHONY : src/misc/countedobj.cpp.i
-
-src/misc/countedobj.s: src/misc/countedobj.cpp.s
-.PHONY : src/misc/countedobj.s
-
-# target to generate assembly for a file
-src/misc/countedobj.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/misc/countedobj.cpp.s
-.PHONY : src/misc/countedobj.cpp.s
-
 src/misc/dbg_helpers.o: src/misc/dbg_helpers.cpp.o
 .PHONY : src/misc/dbg_helpers.o
 
@@ -4206,6 +4350,30 @@ src/misc/getoptdata.s: src/misc/getoptdata.cpp.s
 src/misc/getoptdata.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/misc/getoptdata.cpp.s
 .PHONY : src/misc/getoptdata.cpp.s
+
+src/misc/history.o: src/misc/history.cpp.o
+.PHONY : src/misc/history.o
+
+# target to build an object file
+src/misc/history.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/misc/history.cpp.o
+.PHONY : src/misc/history.cpp.o
+
+src/misc/history.i: src/misc/history.cpp.i
+.PHONY : src/misc/history.i
+
+# target to preprocess a source file
+src/misc/history.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/misc/history.cpp.i
+.PHONY : src/misc/history.cpp.i
+
+src/misc/history.s: src/misc/history.cpp.s
+.PHONY : src/misc/history.s
+
+# target to generate assembly for a file
+src/misc/history.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/misc/history.cpp.s
+.PHONY : src/misc/history.cpp.s
 
 src/misc_cmd.o: src/misc_cmd.cpp.o
 .PHONY : src/misc_cmd.o
@@ -4999,6 +5167,30 @@ src/network/network_coordinator.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/network/network_coordinator.cpp.s
 .PHONY : src/network/network_coordinator.cpp.s
 
+src/network/network_crypto.o: src/network/network_crypto.cpp.o
+.PHONY : src/network/network_crypto.o
+
+# target to build an object file
+src/network/network_crypto.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/network/network_crypto.cpp.o
+.PHONY : src/network/network_crypto.cpp.o
+
+src/network/network_crypto.i: src/network/network_crypto.cpp.i
+.PHONY : src/network/network_crypto.i
+
+# target to preprocess a source file
+src/network/network_crypto.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/network/network_crypto.cpp.i
+.PHONY : src/network/network_crypto.cpp.i
+
+src/network/network_crypto.s: src/network/network_crypto.cpp.s
+.PHONY : src/network/network_crypto.s
+
+# target to generate assembly for a file
+src/network/network_crypto.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/network/network_crypto.cpp.s
+.PHONY : src/network/network_crypto.cpp.s
+
 src/network/network_gamelist.o: src/network/network_gamelist.cpp.o
 .PHONY : src/network/network_gamelist.o
 
@@ -5215,6 +5407,966 @@ src/newgrf.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf.cpp.s
 .PHONY : src/newgrf.cpp.s
 
+src/newgrf/newgrf_act0.o: src/newgrf/newgrf_act0.cpp.o
+.PHONY : src/newgrf/newgrf_act0.o
+
+# target to build an object file
+src/newgrf/newgrf_act0.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0.cpp.o
+.PHONY : src/newgrf/newgrf_act0.cpp.o
+
+src/newgrf/newgrf_act0.i: src/newgrf/newgrf_act0.cpp.i
+.PHONY : src/newgrf/newgrf_act0.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act0.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0.cpp.i
+.PHONY : src/newgrf/newgrf_act0.cpp.i
+
+src/newgrf/newgrf_act0.s: src/newgrf/newgrf_act0.cpp.s
+.PHONY : src/newgrf/newgrf_act0.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act0.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0.cpp.s
+.PHONY : src/newgrf/newgrf_act0.cpp.s
+
+src/newgrf/newgrf_act0_aircraft.o: src/newgrf/newgrf_act0_aircraft.cpp.o
+.PHONY : src/newgrf/newgrf_act0_aircraft.o
+
+# target to build an object file
+src/newgrf/newgrf_act0_aircraft.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_aircraft.cpp.o
+.PHONY : src/newgrf/newgrf_act0_aircraft.cpp.o
+
+src/newgrf/newgrf_act0_aircraft.i: src/newgrf/newgrf_act0_aircraft.cpp.i
+.PHONY : src/newgrf/newgrf_act0_aircraft.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act0_aircraft.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_aircraft.cpp.i
+.PHONY : src/newgrf/newgrf_act0_aircraft.cpp.i
+
+src/newgrf/newgrf_act0_aircraft.s: src/newgrf/newgrf_act0_aircraft.cpp.s
+.PHONY : src/newgrf/newgrf_act0_aircraft.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act0_aircraft.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_aircraft.cpp.s
+.PHONY : src/newgrf/newgrf_act0_aircraft.cpp.s
+
+src/newgrf/newgrf_act0_airports.o: src/newgrf/newgrf_act0_airports.cpp.o
+.PHONY : src/newgrf/newgrf_act0_airports.o
+
+# target to build an object file
+src/newgrf/newgrf_act0_airports.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_airports.cpp.o
+.PHONY : src/newgrf/newgrf_act0_airports.cpp.o
+
+src/newgrf/newgrf_act0_airports.i: src/newgrf/newgrf_act0_airports.cpp.i
+.PHONY : src/newgrf/newgrf_act0_airports.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act0_airports.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_airports.cpp.i
+.PHONY : src/newgrf/newgrf_act0_airports.cpp.i
+
+src/newgrf/newgrf_act0_airports.s: src/newgrf/newgrf_act0_airports.cpp.s
+.PHONY : src/newgrf/newgrf_act0_airports.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act0_airports.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_airports.cpp.s
+.PHONY : src/newgrf/newgrf_act0_airports.cpp.s
+
+src/newgrf/newgrf_act0_badges.o: src/newgrf/newgrf_act0_badges.cpp.o
+.PHONY : src/newgrf/newgrf_act0_badges.o
+
+# target to build an object file
+src/newgrf/newgrf_act0_badges.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_badges.cpp.o
+.PHONY : src/newgrf/newgrf_act0_badges.cpp.o
+
+src/newgrf/newgrf_act0_badges.i: src/newgrf/newgrf_act0_badges.cpp.i
+.PHONY : src/newgrf/newgrf_act0_badges.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act0_badges.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_badges.cpp.i
+.PHONY : src/newgrf/newgrf_act0_badges.cpp.i
+
+src/newgrf/newgrf_act0_badges.s: src/newgrf/newgrf_act0_badges.cpp.s
+.PHONY : src/newgrf/newgrf_act0_badges.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act0_badges.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_badges.cpp.s
+.PHONY : src/newgrf/newgrf_act0_badges.cpp.s
+
+src/newgrf/newgrf_act0_bridges.o: src/newgrf/newgrf_act0_bridges.cpp.o
+.PHONY : src/newgrf/newgrf_act0_bridges.o
+
+# target to build an object file
+src/newgrf/newgrf_act0_bridges.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_bridges.cpp.o
+.PHONY : src/newgrf/newgrf_act0_bridges.cpp.o
+
+src/newgrf/newgrf_act0_bridges.i: src/newgrf/newgrf_act0_bridges.cpp.i
+.PHONY : src/newgrf/newgrf_act0_bridges.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act0_bridges.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_bridges.cpp.i
+.PHONY : src/newgrf/newgrf_act0_bridges.cpp.i
+
+src/newgrf/newgrf_act0_bridges.s: src/newgrf/newgrf_act0_bridges.cpp.s
+.PHONY : src/newgrf/newgrf_act0_bridges.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act0_bridges.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_bridges.cpp.s
+.PHONY : src/newgrf/newgrf_act0_bridges.cpp.s
+
+src/newgrf/newgrf_act0_canals.o: src/newgrf/newgrf_act0_canals.cpp.o
+.PHONY : src/newgrf/newgrf_act0_canals.o
+
+# target to build an object file
+src/newgrf/newgrf_act0_canals.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_canals.cpp.o
+.PHONY : src/newgrf/newgrf_act0_canals.cpp.o
+
+src/newgrf/newgrf_act0_canals.i: src/newgrf/newgrf_act0_canals.cpp.i
+.PHONY : src/newgrf/newgrf_act0_canals.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act0_canals.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_canals.cpp.i
+.PHONY : src/newgrf/newgrf_act0_canals.cpp.i
+
+src/newgrf/newgrf_act0_canals.s: src/newgrf/newgrf_act0_canals.cpp.s
+.PHONY : src/newgrf/newgrf_act0_canals.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act0_canals.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_canals.cpp.s
+.PHONY : src/newgrf/newgrf_act0_canals.cpp.s
+
+src/newgrf/newgrf_act0_cargo.o: src/newgrf/newgrf_act0_cargo.cpp.o
+.PHONY : src/newgrf/newgrf_act0_cargo.o
+
+# target to build an object file
+src/newgrf/newgrf_act0_cargo.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_cargo.cpp.o
+.PHONY : src/newgrf/newgrf_act0_cargo.cpp.o
+
+src/newgrf/newgrf_act0_cargo.i: src/newgrf/newgrf_act0_cargo.cpp.i
+.PHONY : src/newgrf/newgrf_act0_cargo.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act0_cargo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_cargo.cpp.i
+.PHONY : src/newgrf/newgrf_act0_cargo.cpp.i
+
+src/newgrf/newgrf_act0_cargo.s: src/newgrf/newgrf_act0_cargo.cpp.s
+.PHONY : src/newgrf/newgrf_act0_cargo.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act0_cargo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_cargo.cpp.s
+.PHONY : src/newgrf/newgrf_act0_cargo.cpp.s
+
+src/newgrf/newgrf_act0_globalvar.o: src/newgrf/newgrf_act0_globalvar.cpp.o
+.PHONY : src/newgrf/newgrf_act0_globalvar.o
+
+# target to build an object file
+src/newgrf/newgrf_act0_globalvar.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_globalvar.cpp.o
+.PHONY : src/newgrf/newgrf_act0_globalvar.cpp.o
+
+src/newgrf/newgrf_act0_globalvar.i: src/newgrf/newgrf_act0_globalvar.cpp.i
+.PHONY : src/newgrf/newgrf_act0_globalvar.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act0_globalvar.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_globalvar.cpp.i
+.PHONY : src/newgrf/newgrf_act0_globalvar.cpp.i
+
+src/newgrf/newgrf_act0_globalvar.s: src/newgrf/newgrf_act0_globalvar.cpp.s
+.PHONY : src/newgrf/newgrf_act0_globalvar.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act0_globalvar.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_globalvar.cpp.s
+.PHONY : src/newgrf/newgrf_act0_globalvar.cpp.s
+
+src/newgrf/newgrf_act0_houses.o: src/newgrf/newgrf_act0_houses.cpp.o
+.PHONY : src/newgrf/newgrf_act0_houses.o
+
+# target to build an object file
+src/newgrf/newgrf_act0_houses.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_houses.cpp.o
+.PHONY : src/newgrf/newgrf_act0_houses.cpp.o
+
+src/newgrf/newgrf_act0_houses.i: src/newgrf/newgrf_act0_houses.cpp.i
+.PHONY : src/newgrf/newgrf_act0_houses.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act0_houses.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_houses.cpp.i
+.PHONY : src/newgrf/newgrf_act0_houses.cpp.i
+
+src/newgrf/newgrf_act0_houses.s: src/newgrf/newgrf_act0_houses.cpp.s
+.PHONY : src/newgrf/newgrf_act0_houses.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act0_houses.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_houses.cpp.s
+.PHONY : src/newgrf/newgrf_act0_houses.cpp.s
+
+src/newgrf/newgrf_act0_industries.o: src/newgrf/newgrf_act0_industries.cpp.o
+.PHONY : src/newgrf/newgrf_act0_industries.o
+
+# target to build an object file
+src/newgrf/newgrf_act0_industries.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_industries.cpp.o
+.PHONY : src/newgrf/newgrf_act0_industries.cpp.o
+
+src/newgrf/newgrf_act0_industries.i: src/newgrf/newgrf_act0_industries.cpp.i
+.PHONY : src/newgrf/newgrf_act0_industries.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act0_industries.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_industries.cpp.i
+.PHONY : src/newgrf/newgrf_act0_industries.cpp.i
+
+src/newgrf/newgrf_act0_industries.s: src/newgrf/newgrf_act0_industries.cpp.s
+.PHONY : src/newgrf/newgrf_act0_industries.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act0_industries.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_industries.cpp.s
+.PHONY : src/newgrf/newgrf_act0_industries.cpp.s
+
+src/newgrf/newgrf_act0_objects.o: src/newgrf/newgrf_act0_objects.cpp.o
+.PHONY : src/newgrf/newgrf_act0_objects.o
+
+# target to build an object file
+src/newgrf/newgrf_act0_objects.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_objects.cpp.o
+.PHONY : src/newgrf/newgrf_act0_objects.cpp.o
+
+src/newgrf/newgrf_act0_objects.i: src/newgrf/newgrf_act0_objects.cpp.i
+.PHONY : src/newgrf/newgrf_act0_objects.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act0_objects.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_objects.cpp.i
+.PHONY : src/newgrf/newgrf_act0_objects.cpp.i
+
+src/newgrf/newgrf_act0_objects.s: src/newgrf/newgrf_act0_objects.cpp.s
+.PHONY : src/newgrf/newgrf_act0_objects.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act0_objects.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_objects.cpp.s
+.PHONY : src/newgrf/newgrf_act0_objects.cpp.s
+
+src/newgrf/newgrf_act0_railtypes.o: src/newgrf/newgrf_act0_railtypes.cpp.o
+.PHONY : src/newgrf/newgrf_act0_railtypes.o
+
+# target to build an object file
+src/newgrf/newgrf_act0_railtypes.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_railtypes.cpp.o
+.PHONY : src/newgrf/newgrf_act0_railtypes.cpp.o
+
+src/newgrf/newgrf_act0_railtypes.i: src/newgrf/newgrf_act0_railtypes.cpp.i
+.PHONY : src/newgrf/newgrf_act0_railtypes.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act0_railtypes.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_railtypes.cpp.i
+.PHONY : src/newgrf/newgrf_act0_railtypes.cpp.i
+
+src/newgrf/newgrf_act0_railtypes.s: src/newgrf/newgrf_act0_railtypes.cpp.s
+.PHONY : src/newgrf/newgrf_act0_railtypes.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act0_railtypes.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_railtypes.cpp.s
+.PHONY : src/newgrf/newgrf_act0_railtypes.cpp.s
+
+src/newgrf/newgrf_act0_roadstops.o: src/newgrf/newgrf_act0_roadstops.cpp.o
+.PHONY : src/newgrf/newgrf_act0_roadstops.o
+
+# target to build an object file
+src/newgrf/newgrf_act0_roadstops.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_roadstops.cpp.o
+.PHONY : src/newgrf/newgrf_act0_roadstops.cpp.o
+
+src/newgrf/newgrf_act0_roadstops.i: src/newgrf/newgrf_act0_roadstops.cpp.i
+.PHONY : src/newgrf/newgrf_act0_roadstops.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act0_roadstops.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_roadstops.cpp.i
+.PHONY : src/newgrf/newgrf_act0_roadstops.cpp.i
+
+src/newgrf/newgrf_act0_roadstops.s: src/newgrf/newgrf_act0_roadstops.cpp.s
+.PHONY : src/newgrf/newgrf_act0_roadstops.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act0_roadstops.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_roadstops.cpp.s
+.PHONY : src/newgrf/newgrf_act0_roadstops.cpp.s
+
+src/newgrf/newgrf_act0_roadtypes.o: src/newgrf/newgrf_act0_roadtypes.cpp.o
+.PHONY : src/newgrf/newgrf_act0_roadtypes.o
+
+# target to build an object file
+src/newgrf/newgrf_act0_roadtypes.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_roadtypes.cpp.o
+.PHONY : src/newgrf/newgrf_act0_roadtypes.cpp.o
+
+src/newgrf/newgrf_act0_roadtypes.i: src/newgrf/newgrf_act0_roadtypes.cpp.i
+.PHONY : src/newgrf/newgrf_act0_roadtypes.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act0_roadtypes.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_roadtypes.cpp.i
+.PHONY : src/newgrf/newgrf_act0_roadtypes.cpp.i
+
+src/newgrf/newgrf_act0_roadtypes.s: src/newgrf/newgrf_act0_roadtypes.cpp.s
+.PHONY : src/newgrf/newgrf_act0_roadtypes.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act0_roadtypes.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_roadtypes.cpp.s
+.PHONY : src/newgrf/newgrf_act0_roadtypes.cpp.s
+
+src/newgrf/newgrf_act0_roadvehs.o: src/newgrf/newgrf_act0_roadvehs.cpp.o
+.PHONY : src/newgrf/newgrf_act0_roadvehs.o
+
+# target to build an object file
+src/newgrf/newgrf_act0_roadvehs.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_roadvehs.cpp.o
+.PHONY : src/newgrf/newgrf_act0_roadvehs.cpp.o
+
+src/newgrf/newgrf_act0_roadvehs.i: src/newgrf/newgrf_act0_roadvehs.cpp.i
+.PHONY : src/newgrf/newgrf_act0_roadvehs.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act0_roadvehs.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_roadvehs.cpp.i
+.PHONY : src/newgrf/newgrf_act0_roadvehs.cpp.i
+
+src/newgrf/newgrf_act0_roadvehs.s: src/newgrf/newgrf_act0_roadvehs.cpp.s
+.PHONY : src/newgrf/newgrf_act0_roadvehs.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act0_roadvehs.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_roadvehs.cpp.s
+.PHONY : src/newgrf/newgrf_act0_roadvehs.cpp.s
+
+src/newgrf/newgrf_act0_ships.o: src/newgrf/newgrf_act0_ships.cpp.o
+.PHONY : src/newgrf/newgrf_act0_ships.o
+
+# target to build an object file
+src/newgrf/newgrf_act0_ships.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_ships.cpp.o
+.PHONY : src/newgrf/newgrf_act0_ships.cpp.o
+
+src/newgrf/newgrf_act0_ships.i: src/newgrf/newgrf_act0_ships.cpp.i
+.PHONY : src/newgrf/newgrf_act0_ships.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act0_ships.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_ships.cpp.i
+.PHONY : src/newgrf/newgrf_act0_ships.cpp.i
+
+src/newgrf/newgrf_act0_ships.s: src/newgrf/newgrf_act0_ships.cpp.s
+.PHONY : src/newgrf/newgrf_act0_ships.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act0_ships.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_ships.cpp.s
+.PHONY : src/newgrf/newgrf_act0_ships.cpp.s
+
+src/newgrf/newgrf_act0_sounds.o: src/newgrf/newgrf_act0_sounds.cpp.o
+.PHONY : src/newgrf/newgrf_act0_sounds.o
+
+# target to build an object file
+src/newgrf/newgrf_act0_sounds.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_sounds.cpp.o
+.PHONY : src/newgrf/newgrf_act0_sounds.cpp.o
+
+src/newgrf/newgrf_act0_sounds.i: src/newgrf/newgrf_act0_sounds.cpp.i
+.PHONY : src/newgrf/newgrf_act0_sounds.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act0_sounds.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_sounds.cpp.i
+.PHONY : src/newgrf/newgrf_act0_sounds.cpp.i
+
+src/newgrf/newgrf_act0_sounds.s: src/newgrf/newgrf_act0_sounds.cpp.s
+.PHONY : src/newgrf/newgrf_act0_sounds.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act0_sounds.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_sounds.cpp.s
+.PHONY : src/newgrf/newgrf_act0_sounds.cpp.s
+
+src/newgrf/newgrf_act0_stations.o: src/newgrf/newgrf_act0_stations.cpp.o
+.PHONY : src/newgrf/newgrf_act0_stations.o
+
+# target to build an object file
+src/newgrf/newgrf_act0_stations.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_stations.cpp.o
+.PHONY : src/newgrf/newgrf_act0_stations.cpp.o
+
+src/newgrf/newgrf_act0_stations.i: src/newgrf/newgrf_act0_stations.cpp.i
+.PHONY : src/newgrf/newgrf_act0_stations.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act0_stations.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_stations.cpp.i
+.PHONY : src/newgrf/newgrf_act0_stations.cpp.i
+
+src/newgrf/newgrf_act0_stations.s: src/newgrf/newgrf_act0_stations.cpp.s
+.PHONY : src/newgrf/newgrf_act0_stations.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act0_stations.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_stations.cpp.s
+.PHONY : src/newgrf/newgrf_act0_stations.cpp.s
+
+src/newgrf/newgrf_act0_trains.o: src/newgrf/newgrf_act0_trains.cpp.o
+.PHONY : src/newgrf/newgrf_act0_trains.o
+
+# target to build an object file
+src/newgrf/newgrf_act0_trains.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_trains.cpp.o
+.PHONY : src/newgrf/newgrf_act0_trains.cpp.o
+
+src/newgrf/newgrf_act0_trains.i: src/newgrf/newgrf_act0_trains.cpp.i
+.PHONY : src/newgrf/newgrf_act0_trains.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act0_trains.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_trains.cpp.i
+.PHONY : src/newgrf/newgrf_act0_trains.cpp.i
+
+src/newgrf/newgrf_act0_trains.s: src/newgrf/newgrf_act0_trains.cpp.s
+.PHONY : src/newgrf/newgrf_act0_trains.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act0_trains.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act0_trains.cpp.s
+.PHONY : src/newgrf/newgrf_act0_trains.cpp.s
+
+src/newgrf/newgrf_act1.o: src/newgrf/newgrf_act1.cpp.o
+.PHONY : src/newgrf/newgrf_act1.o
+
+# target to build an object file
+src/newgrf/newgrf_act1.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act1.cpp.o
+.PHONY : src/newgrf/newgrf_act1.cpp.o
+
+src/newgrf/newgrf_act1.i: src/newgrf/newgrf_act1.cpp.i
+.PHONY : src/newgrf/newgrf_act1.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act1.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act1.cpp.i
+.PHONY : src/newgrf/newgrf_act1.cpp.i
+
+src/newgrf/newgrf_act1.s: src/newgrf/newgrf_act1.cpp.s
+.PHONY : src/newgrf/newgrf_act1.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act1.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act1.cpp.s
+.PHONY : src/newgrf/newgrf_act1.cpp.s
+
+src/newgrf/newgrf_act10.o: src/newgrf/newgrf_act10.cpp.o
+.PHONY : src/newgrf/newgrf_act10.o
+
+# target to build an object file
+src/newgrf/newgrf_act10.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act10.cpp.o
+.PHONY : src/newgrf/newgrf_act10.cpp.o
+
+src/newgrf/newgrf_act10.i: src/newgrf/newgrf_act10.cpp.i
+.PHONY : src/newgrf/newgrf_act10.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act10.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act10.cpp.i
+.PHONY : src/newgrf/newgrf_act10.cpp.i
+
+src/newgrf/newgrf_act10.s: src/newgrf/newgrf_act10.cpp.s
+.PHONY : src/newgrf/newgrf_act10.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act10.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act10.cpp.s
+.PHONY : src/newgrf/newgrf_act10.cpp.s
+
+src/newgrf/newgrf_act11.o: src/newgrf/newgrf_act11.cpp.o
+.PHONY : src/newgrf/newgrf_act11.o
+
+# target to build an object file
+src/newgrf/newgrf_act11.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act11.cpp.o
+.PHONY : src/newgrf/newgrf_act11.cpp.o
+
+src/newgrf/newgrf_act11.i: src/newgrf/newgrf_act11.cpp.i
+.PHONY : src/newgrf/newgrf_act11.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act11.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act11.cpp.i
+.PHONY : src/newgrf/newgrf_act11.cpp.i
+
+src/newgrf/newgrf_act11.s: src/newgrf/newgrf_act11.cpp.s
+.PHONY : src/newgrf/newgrf_act11.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act11.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act11.cpp.s
+.PHONY : src/newgrf/newgrf_act11.cpp.s
+
+src/newgrf/newgrf_act12.o: src/newgrf/newgrf_act12.cpp.o
+.PHONY : src/newgrf/newgrf_act12.o
+
+# target to build an object file
+src/newgrf/newgrf_act12.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act12.cpp.o
+.PHONY : src/newgrf/newgrf_act12.cpp.o
+
+src/newgrf/newgrf_act12.i: src/newgrf/newgrf_act12.cpp.i
+.PHONY : src/newgrf/newgrf_act12.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act12.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act12.cpp.i
+.PHONY : src/newgrf/newgrf_act12.cpp.i
+
+src/newgrf/newgrf_act12.s: src/newgrf/newgrf_act12.cpp.s
+.PHONY : src/newgrf/newgrf_act12.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act12.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act12.cpp.s
+.PHONY : src/newgrf/newgrf_act12.cpp.s
+
+src/newgrf/newgrf_act13.o: src/newgrf/newgrf_act13.cpp.o
+.PHONY : src/newgrf/newgrf_act13.o
+
+# target to build an object file
+src/newgrf/newgrf_act13.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act13.cpp.o
+.PHONY : src/newgrf/newgrf_act13.cpp.o
+
+src/newgrf/newgrf_act13.i: src/newgrf/newgrf_act13.cpp.i
+.PHONY : src/newgrf/newgrf_act13.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act13.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act13.cpp.i
+.PHONY : src/newgrf/newgrf_act13.cpp.i
+
+src/newgrf/newgrf_act13.s: src/newgrf/newgrf_act13.cpp.s
+.PHONY : src/newgrf/newgrf_act13.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act13.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act13.cpp.s
+.PHONY : src/newgrf/newgrf_act13.cpp.s
+
+src/newgrf/newgrf_act14.o: src/newgrf/newgrf_act14.cpp.o
+.PHONY : src/newgrf/newgrf_act14.o
+
+# target to build an object file
+src/newgrf/newgrf_act14.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act14.cpp.o
+.PHONY : src/newgrf/newgrf_act14.cpp.o
+
+src/newgrf/newgrf_act14.i: src/newgrf/newgrf_act14.cpp.i
+.PHONY : src/newgrf/newgrf_act14.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act14.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act14.cpp.i
+.PHONY : src/newgrf/newgrf_act14.cpp.i
+
+src/newgrf/newgrf_act14.s: src/newgrf/newgrf_act14.cpp.s
+.PHONY : src/newgrf/newgrf_act14.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act14.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act14.cpp.s
+.PHONY : src/newgrf/newgrf_act14.cpp.s
+
+src/newgrf/newgrf_act2.o: src/newgrf/newgrf_act2.cpp.o
+.PHONY : src/newgrf/newgrf_act2.o
+
+# target to build an object file
+src/newgrf/newgrf_act2.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act2.cpp.o
+.PHONY : src/newgrf/newgrf_act2.cpp.o
+
+src/newgrf/newgrf_act2.i: src/newgrf/newgrf_act2.cpp.i
+.PHONY : src/newgrf/newgrf_act2.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act2.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act2.cpp.i
+.PHONY : src/newgrf/newgrf_act2.cpp.i
+
+src/newgrf/newgrf_act2.s: src/newgrf/newgrf_act2.cpp.s
+.PHONY : src/newgrf/newgrf_act2.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act2.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act2.cpp.s
+.PHONY : src/newgrf/newgrf_act2.cpp.s
+
+src/newgrf/newgrf_act3.o: src/newgrf/newgrf_act3.cpp.o
+.PHONY : src/newgrf/newgrf_act3.o
+
+# target to build an object file
+src/newgrf/newgrf_act3.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act3.cpp.o
+.PHONY : src/newgrf/newgrf_act3.cpp.o
+
+src/newgrf/newgrf_act3.i: src/newgrf/newgrf_act3.cpp.i
+.PHONY : src/newgrf/newgrf_act3.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act3.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act3.cpp.i
+.PHONY : src/newgrf/newgrf_act3.cpp.i
+
+src/newgrf/newgrf_act3.s: src/newgrf/newgrf_act3.cpp.s
+.PHONY : src/newgrf/newgrf_act3.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act3.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act3.cpp.s
+.PHONY : src/newgrf/newgrf_act3.cpp.s
+
+src/newgrf/newgrf_act4.o: src/newgrf/newgrf_act4.cpp.o
+.PHONY : src/newgrf/newgrf_act4.o
+
+# target to build an object file
+src/newgrf/newgrf_act4.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act4.cpp.o
+.PHONY : src/newgrf/newgrf_act4.cpp.o
+
+src/newgrf/newgrf_act4.i: src/newgrf/newgrf_act4.cpp.i
+.PHONY : src/newgrf/newgrf_act4.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act4.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act4.cpp.i
+.PHONY : src/newgrf/newgrf_act4.cpp.i
+
+src/newgrf/newgrf_act4.s: src/newgrf/newgrf_act4.cpp.s
+.PHONY : src/newgrf/newgrf_act4.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act4.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act4.cpp.s
+.PHONY : src/newgrf/newgrf_act4.cpp.s
+
+src/newgrf/newgrf_act5.o: src/newgrf/newgrf_act5.cpp.o
+.PHONY : src/newgrf/newgrf_act5.o
+
+# target to build an object file
+src/newgrf/newgrf_act5.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act5.cpp.o
+.PHONY : src/newgrf/newgrf_act5.cpp.o
+
+src/newgrf/newgrf_act5.i: src/newgrf/newgrf_act5.cpp.i
+.PHONY : src/newgrf/newgrf_act5.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act5.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act5.cpp.i
+.PHONY : src/newgrf/newgrf_act5.cpp.i
+
+src/newgrf/newgrf_act5.s: src/newgrf/newgrf_act5.cpp.s
+.PHONY : src/newgrf/newgrf_act5.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act5.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act5.cpp.s
+.PHONY : src/newgrf/newgrf_act5.cpp.s
+
+src/newgrf/newgrf_act6.o: src/newgrf/newgrf_act6.cpp.o
+.PHONY : src/newgrf/newgrf_act6.o
+
+# target to build an object file
+src/newgrf/newgrf_act6.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act6.cpp.o
+.PHONY : src/newgrf/newgrf_act6.cpp.o
+
+src/newgrf/newgrf_act6.i: src/newgrf/newgrf_act6.cpp.i
+.PHONY : src/newgrf/newgrf_act6.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act6.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act6.cpp.i
+.PHONY : src/newgrf/newgrf_act6.cpp.i
+
+src/newgrf/newgrf_act6.s: src/newgrf/newgrf_act6.cpp.s
+.PHONY : src/newgrf/newgrf_act6.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act6.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act6.cpp.s
+.PHONY : src/newgrf/newgrf_act6.cpp.s
+
+src/newgrf/newgrf_act7_9.o: src/newgrf/newgrf_act7_9.cpp.o
+.PHONY : src/newgrf/newgrf_act7_9.o
+
+# target to build an object file
+src/newgrf/newgrf_act7_9.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act7_9.cpp.o
+.PHONY : src/newgrf/newgrf_act7_9.cpp.o
+
+src/newgrf/newgrf_act7_9.i: src/newgrf/newgrf_act7_9.cpp.i
+.PHONY : src/newgrf/newgrf_act7_9.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act7_9.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act7_9.cpp.i
+.PHONY : src/newgrf/newgrf_act7_9.cpp.i
+
+src/newgrf/newgrf_act7_9.s: src/newgrf/newgrf_act7_9.cpp.s
+.PHONY : src/newgrf/newgrf_act7_9.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act7_9.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act7_9.cpp.s
+.PHONY : src/newgrf/newgrf_act7_9.cpp.s
+
+src/newgrf/newgrf_act8.o: src/newgrf/newgrf_act8.cpp.o
+.PHONY : src/newgrf/newgrf_act8.o
+
+# target to build an object file
+src/newgrf/newgrf_act8.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act8.cpp.o
+.PHONY : src/newgrf/newgrf_act8.cpp.o
+
+src/newgrf/newgrf_act8.i: src/newgrf/newgrf_act8.cpp.i
+.PHONY : src/newgrf/newgrf_act8.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_act8.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act8.cpp.i
+.PHONY : src/newgrf/newgrf_act8.cpp.i
+
+src/newgrf/newgrf_act8.s: src/newgrf/newgrf_act8.cpp.s
+.PHONY : src/newgrf/newgrf_act8.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_act8.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_act8.cpp.s
+.PHONY : src/newgrf/newgrf_act8.cpp.s
+
+src/newgrf/newgrf_acta.o: src/newgrf/newgrf_acta.cpp.o
+.PHONY : src/newgrf/newgrf_acta.o
+
+# target to build an object file
+src/newgrf/newgrf_acta.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_acta.cpp.o
+.PHONY : src/newgrf/newgrf_acta.cpp.o
+
+src/newgrf/newgrf_acta.i: src/newgrf/newgrf_acta.cpp.i
+.PHONY : src/newgrf/newgrf_acta.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_acta.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_acta.cpp.i
+.PHONY : src/newgrf/newgrf_acta.cpp.i
+
+src/newgrf/newgrf_acta.s: src/newgrf/newgrf_acta.cpp.s
+.PHONY : src/newgrf/newgrf_acta.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_acta.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_acta.cpp.s
+.PHONY : src/newgrf/newgrf_acta.cpp.s
+
+src/newgrf/newgrf_actb.o: src/newgrf/newgrf_actb.cpp.o
+.PHONY : src/newgrf/newgrf_actb.o
+
+# target to build an object file
+src/newgrf/newgrf_actb.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_actb.cpp.o
+.PHONY : src/newgrf/newgrf_actb.cpp.o
+
+src/newgrf/newgrf_actb.i: src/newgrf/newgrf_actb.cpp.i
+.PHONY : src/newgrf/newgrf_actb.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_actb.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_actb.cpp.i
+.PHONY : src/newgrf/newgrf_actb.cpp.i
+
+src/newgrf/newgrf_actb.s: src/newgrf/newgrf_actb.cpp.s
+.PHONY : src/newgrf/newgrf_actb.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_actb.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_actb.cpp.s
+.PHONY : src/newgrf/newgrf_actb.cpp.s
+
+src/newgrf/newgrf_actc.o: src/newgrf/newgrf_actc.cpp.o
+.PHONY : src/newgrf/newgrf_actc.o
+
+# target to build an object file
+src/newgrf/newgrf_actc.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_actc.cpp.o
+.PHONY : src/newgrf/newgrf_actc.cpp.o
+
+src/newgrf/newgrf_actc.i: src/newgrf/newgrf_actc.cpp.i
+.PHONY : src/newgrf/newgrf_actc.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_actc.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_actc.cpp.i
+.PHONY : src/newgrf/newgrf_actc.cpp.i
+
+src/newgrf/newgrf_actc.s: src/newgrf/newgrf_actc.cpp.s
+.PHONY : src/newgrf/newgrf_actc.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_actc.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_actc.cpp.s
+.PHONY : src/newgrf/newgrf_actc.cpp.s
+
+src/newgrf/newgrf_actd.o: src/newgrf/newgrf_actd.cpp.o
+.PHONY : src/newgrf/newgrf_actd.o
+
+# target to build an object file
+src/newgrf/newgrf_actd.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_actd.cpp.o
+.PHONY : src/newgrf/newgrf_actd.cpp.o
+
+src/newgrf/newgrf_actd.i: src/newgrf/newgrf_actd.cpp.i
+.PHONY : src/newgrf/newgrf_actd.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_actd.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_actd.cpp.i
+.PHONY : src/newgrf/newgrf_actd.cpp.i
+
+src/newgrf/newgrf_actd.s: src/newgrf/newgrf_actd.cpp.s
+.PHONY : src/newgrf/newgrf_actd.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_actd.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_actd.cpp.s
+.PHONY : src/newgrf/newgrf_actd.cpp.s
+
+src/newgrf/newgrf_acte.o: src/newgrf/newgrf_acte.cpp.o
+.PHONY : src/newgrf/newgrf_acte.o
+
+# target to build an object file
+src/newgrf/newgrf_acte.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_acte.cpp.o
+.PHONY : src/newgrf/newgrf_acte.cpp.o
+
+src/newgrf/newgrf_acte.i: src/newgrf/newgrf_acte.cpp.i
+.PHONY : src/newgrf/newgrf_acte.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_acte.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_acte.cpp.i
+.PHONY : src/newgrf/newgrf_acte.cpp.i
+
+src/newgrf/newgrf_acte.s: src/newgrf/newgrf_acte.cpp.s
+.PHONY : src/newgrf/newgrf_acte.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_acte.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_acte.cpp.s
+.PHONY : src/newgrf/newgrf_acte.cpp.s
+
+src/newgrf/newgrf_actf.o: src/newgrf/newgrf_actf.cpp.o
+.PHONY : src/newgrf/newgrf_actf.o
+
+# target to build an object file
+src/newgrf/newgrf_actf.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_actf.cpp.o
+.PHONY : src/newgrf/newgrf_actf.cpp.o
+
+src/newgrf/newgrf_actf.i: src/newgrf/newgrf_actf.cpp.i
+.PHONY : src/newgrf/newgrf_actf.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_actf.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_actf.cpp.i
+.PHONY : src/newgrf/newgrf_actf.cpp.i
+
+src/newgrf/newgrf_actf.s: src/newgrf/newgrf_actf.cpp.s
+.PHONY : src/newgrf/newgrf_actf.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_actf.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_actf.cpp.s
+.PHONY : src/newgrf/newgrf_actf.cpp.s
+
+src/newgrf/newgrf_bytereader.o: src/newgrf/newgrf_bytereader.cpp.o
+.PHONY : src/newgrf/newgrf_bytereader.o
+
+# target to build an object file
+src/newgrf/newgrf_bytereader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_bytereader.cpp.o
+.PHONY : src/newgrf/newgrf_bytereader.cpp.o
+
+src/newgrf/newgrf_bytereader.i: src/newgrf/newgrf_bytereader.cpp.i
+.PHONY : src/newgrf/newgrf_bytereader.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_bytereader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_bytereader.cpp.i
+.PHONY : src/newgrf/newgrf_bytereader.cpp.i
+
+src/newgrf/newgrf_bytereader.s: src/newgrf/newgrf_bytereader.cpp.s
+.PHONY : src/newgrf/newgrf_bytereader.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_bytereader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_bytereader.cpp.s
+.PHONY : src/newgrf/newgrf_bytereader.cpp.s
+
+src/newgrf/newgrf_stringmapping.o: src/newgrf/newgrf_stringmapping.cpp.o
+.PHONY : src/newgrf/newgrf_stringmapping.o
+
+# target to build an object file
+src/newgrf/newgrf_stringmapping.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_stringmapping.cpp.o
+.PHONY : src/newgrf/newgrf_stringmapping.cpp.o
+
+src/newgrf/newgrf_stringmapping.i: src/newgrf/newgrf_stringmapping.cpp.i
+.PHONY : src/newgrf/newgrf_stringmapping.i
+
+# target to preprocess a source file
+src/newgrf/newgrf_stringmapping.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_stringmapping.cpp.i
+.PHONY : src/newgrf/newgrf_stringmapping.cpp.i
+
+src/newgrf/newgrf_stringmapping.s: src/newgrf/newgrf_stringmapping.cpp.s
+.PHONY : src/newgrf/newgrf_stringmapping.s
+
+# target to generate assembly for a file
+src/newgrf/newgrf_stringmapping.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf/newgrf_stringmapping.cpp.s
+.PHONY : src/newgrf/newgrf_stringmapping.cpp.s
+
 src/newgrf_airport.o: src/newgrf_airport.cpp.o
 .PHONY : src/newgrf_airport.o
 
@@ -5262,6 +6414,78 @@ src/newgrf_airporttiles.s: src/newgrf_airporttiles.cpp.s
 src/newgrf_airporttiles.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf_airporttiles.cpp.s
 .PHONY : src/newgrf_airporttiles.cpp.s
+
+src/newgrf_badge.o: src/newgrf_badge.cpp.o
+.PHONY : src/newgrf_badge.o
+
+# target to build an object file
+src/newgrf_badge.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf_badge.cpp.o
+.PHONY : src/newgrf_badge.cpp.o
+
+src/newgrf_badge.i: src/newgrf_badge.cpp.i
+.PHONY : src/newgrf_badge.i
+
+# target to preprocess a source file
+src/newgrf_badge.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf_badge.cpp.i
+.PHONY : src/newgrf_badge.cpp.i
+
+src/newgrf_badge.s: src/newgrf_badge.cpp.s
+.PHONY : src/newgrf_badge.s
+
+# target to generate assembly for a file
+src/newgrf_badge.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf_badge.cpp.s
+.PHONY : src/newgrf_badge.cpp.s
+
+src/newgrf_badge_config.o: src/newgrf_badge_config.cpp.o
+.PHONY : src/newgrf_badge_config.o
+
+# target to build an object file
+src/newgrf_badge_config.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf_badge_config.cpp.o
+.PHONY : src/newgrf_badge_config.cpp.o
+
+src/newgrf_badge_config.i: src/newgrf_badge_config.cpp.i
+.PHONY : src/newgrf_badge_config.i
+
+# target to preprocess a source file
+src/newgrf_badge_config.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf_badge_config.cpp.i
+.PHONY : src/newgrf_badge_config.cpp.i
+
+src/newgrf_badge_config.s: src/newgrf_badge_config.cpp.s
+.PHONY : src/newgrf_badge_config.s
+
+# target to generate assembly for a file
+src/newgrf_badge_config.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf_badge_config.cpp.s
+.PHONY : src/newgrf_badge_config.cpp.s
+
+src/newgrf_badge_gui.o: src/newgrf_badge_gui.cpp.o
+.PHONY : src/newgrf_badge_gui.o
+
+# target to build an object file
+src/newgrf_badge_gui.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf_badge_gui.cpp.o
+.PHONY : src/newgrf_badge_gui.cpp.o
+
+src/newgrf_badge_gui.i: src/newgrf_badge_gui.cpp.i
+.PHONY : src/newgrf_badge_gui.i
+
+# target to preprocess a source file
+src/newgrf_badge_gui.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf_badge_gui.cpp.i
+.PHONY : src/newgrf_badge_gui.cpp.i
+
+src/newgrf_badge_gui.s: src/newgrf_badge_gui.cpp.s
+.PHONY : src/newgrf_badge_gui.s
+
+# target to generate assembly for a file
+src/newgrf_badge_gui.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/newgrf_badge_gui.cpp.s
+.PHONY : src/newgrf_badge_gui.cpp.s
 
 src/newgrf_canal.o: src/newgrf_canal.cpp.o
 .PHONY : src/newgrf_canal.o
@@ -6151,78 +7375,6 @@ src/palette.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/palette.cpp.s
 .PHONY : src/palette.cpp.s
 
-src/pathfinder/npf/aystar.o: src/pathfinder/npf/aystar.cpp.o
-.PHONY : src/pathfinder/npf/aystar.o
-
-# target to build an object file
-src/pathfinder/npf/aystar.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/pathfinder/npf/aystar.cpp.o
-.PHONY : src/pathfinder/npf/aystar.cpp.o
-
-src/pathfinder/npf/aystar.i: src/pathfinder/npf/aystar.cpp.i
-.PHONY : src/pathfinder/npf/aystar.i
-
-# target to preprocess a source file
-src/pathfinder/npf/aystar.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/pathfinder/npf/aystar.cpp.i
-.PHONY : src/pathfinder/npf/aystar.cpp.i
-
-src/pathfinder/npf/aystar.s: src/pathfinder/npf/aystar.cpp.s
-.PHONY : src/pathfinder/npf/aystar.s
-
-# target to generate assembly for a file
-src/pathfinder/npf/aystar.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/pathfinder/npf/aystar.cpp.s
-.PHONY : src/pathfinder/npf/aystar.cpp.s
-
-src/pathfinder/npf/npf.o: src/pathfinder/npf/npf.cpp.o
-.PHONY : src/pathfinder/npf/npf.o
-
-# target to build an object file
-src/pathfinder/npf/npf.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/pathfinder/npf/npf.cpp.o
-.PHONY : src/pathfinder/npf/npf.cpp.o
-
-src/pathfinder/npf/npf.i: src/pathfinder/npf/npf.cpp.i
-.PHONY : src/pathfinder/npf/npf.i
-
-# target to preprocess a source file
-src/pathfinder/npf/npf.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/pathfinder/npf/npf.cpp.i
-.PHONY : src/pathfinder/npf/npf.cpp.i
-
-src/pathfinder/npf/npf.s: src/pathfinder/npf/npf.cpp.s
-.PHONY : src/pathfinder/npf/npf.s
-
-# target to generate assembly for a file
-src/pathfinder/npf/npf.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/pathfinder/npf/npf.cpp.s
-.PHONY : src/pathfinder/npf/npf.cpp.s
-
-src/pathfinder/npf/queue.o: src/pathfinder/npf/queue.cpp.o
-.PHONY : src/pathfinder/npf/queue.o
-
-# target to build an object file
-src/pathfinder/npf/queue.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/pathfinder/npf/queue.cpp.o
-.PHONY : src/pathfinder/npf/queue.cpp.o
-
-src/pathfinder/npf/queue.i: src/pathfinder/npf/queue.cpp.i
-.PHONY : src/pathfinder/npf/queue.i
-
-# target to preprocess a source file
-src/pathfinder/npf/queue.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/pathfinder/npf/queue.cpp.i
-.PHONY : src/pathfinder/npf/queue.cpp.i
-
-src/pathfinder/npf/queue.s: src/pathfinder/npf/queue.cpp.s
-.PHONY : src/pathfinder/npf/queue.s
-
-# target to generate assembly for a file
-src/pathfinder/npf/queue.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/pathfinder/npf/queue.cpp.s
-.PHONY : src/pathfinder/npf/queue.cpp.s
-
 src/pathfinder/water_regions.o: src/pathfinder/water_regions.cpp.o
 .PHONY : src/pathfinder/water_regions.o
 
@@ -6270,6 +7422,30 @@ src/pathfinder/yapf/yapf_rail.s: src/pathfinder/yapf/yapf_rail.cpp.s
 src/pathfinder/yapf/yapf_rail.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/pathfinder/yapf/yapf_rail.cpp.s
 .PHONY : src/pathfinder/yapf/yapf_rail.cpp.s
+
+src/pathfinder/yapf/yapf_river_builder.o: src/pathfinder/yapf/yapf_river_builder.cpp.o
+.PHONY : src/pathfinder/yapf/yapf_river_builder.o
+
+# target to build an object file
+src/pathfinder/yapf/yapf_river_builder.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/pathfinder/yapf/yapf_river_builder.cpp.o
+.PHONY : src/pathfinder/yapf/yapf_river_builder.cpp.o
+
+src/pathfinder/yapf/yapf_river_builder.i: src/pathfinder/yapf/yapf_river_builder.cpp.i
+.PHONY : src/pathfinder/yapf/yapf_river_builder.i
+
+# target to preprocess a source file
+src/pathfinder/yapf/yapf_river_builder.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/pathfinder/yapf/yapf_river_builder.cpp.i
+.PHONY : src/pathfinder/yapf/yapf_river_builder.cpp.i
+
+src/pathfinder/yapf/yapf_river_builder.s: src/pathfinder/yapf/yapf_river_builder.cpp.s
+.PHONY : src/pathfinder/yapf/yapf_river_builder.s
+
+# target to generate assembly for a file
+src/pathfinder/yapf/yapf_river_builder.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/pathfinder/yapf/yapf_river_builder.cpp.s
+.PHONY : src/pathfinder/yapf/yapf_river_builder.cpp.s
 
 src/pathfinder/yapf/yapf_road.o: src/pathfinder/yapf/yapf_road.cpp.o
 .PHONY : src/pathfinder/yapf/yapf_road.o
@@ -6366,6 +7542,30 @@ src/pbs.s: src/pbs.cpp.s
 src/pbs.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/pbs.cpp.s
 .PHONY : src/pbs.cpp.s
+
+src/picker_gui.o: src/picker_gui.cpp.o
+.PHONY : src/picker_gui.o
+
+# target to build an object file
+src/picker_gui.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/picker_gui.cpp.o
+.PHONY : src/picker_gui.cpp.o
+
+src/picker_gui.i: src/picker_gui.cpp.i
+.PHONY : src/picker_gui.i
+
+# target to preprocess a source file
+src/picker_gui.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/picker_gui.cpp.i
+.PHONY : src/picker_gui.cpp.i
+
+src/picker_gui.s: src/picker_gui.cpp.s
+.PHONY : src/picker_gui.s
+
+# target to generate assembly for a file
+src/picker_gui.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/picker_gui.cpp.s
+.PHONY : src/picker_gui.cpp.s
 
 src/progress.o: src/progress.cpp.o
 .PHONY : src/progress.o
@@ -7639,6 +8839,30 @@ src/screenshot.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/screenshot.cpp.s
 .PHONY : src/screenshot.cpp.s
 
+src/screenshot_bmp.o: src/screenshot_bmp.cpp.o
+.PHONY : src/screenshot_bmp.o
+
+# target to build an object file
+src/screenshot_bmp.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/screenshot_bmp.cpp.o
+.PHONY : src/screenshot_bmp.cpp.o
+
+src/screenshot_bmp.i: src/screenshot_bmp.cpp.i
+.PHONY : src/screenshot_bmp.i
+
+# target to preprocess a source file
+src/screenshot_bmp.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/screenshot_bmp.cpp.i
+.PHONY : src/screenshot_bmp.cpp.i
+
+src/screenshot_bmp.s: src/screenshot_bmp.cpp.s
+.PHONY : src/screenshot_bmp.s
+
+# target to generate assembly for a file
+src/screenshot_bmp.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/screenshot_bmp.cpp.s
+.PHONY : src/screenshot_bmp.cpp.s
+
 src/screenshot_gui.o: src/screenshot_gui.cpp.o
 .PHONY : src/screenshot_gui.o
 
@@ -7662,6 +8886,54 @@ src/screenshot_gui.s: src/screenshot_gui.cpp.s
 src/screenshot_gui.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/screenshot_gui.cpp.s
 .PHONY : src/screenshot_gui.cpp.s
+
+src/screenshot_pcx.o: src/screenshot_pcx.cpp.o
+.PHONY : src/screenshot_pcx.o
+
+# target to build an object file
+src/screenshot_pcx.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/screenshot_pcx.cpp.o
+.PHONY : src/screenshot_pcx.cpp.o
+
+src/screenshot_pcx.i: src/screenshot_pcx.cpp.i
+.PHONY : src/screenshot_pcx.i
+
+# target to preprocess a source file
+src/screenshot_pcx.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/screenshot_pcx.cpp.i
+.PHONY : src/screenshot_pcx.cpp.i
+
+src/screenshot_pcx.s: src/screenshot_pcx.cpp.s
+.PHONY : src/screenshot_pcx.s
+
+# target to generate assembly for a file
+src/screenshot_pcx.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/screenshot_pcx.cpp.s
+.PHONY : src/screenshot_pcx.cpp.s
+
+src/screenshot_png.o: src/screenshot_png.cpp.o
+.PHONY : src/screenshot_png.o
+
+# target to build an object file
+src/screenshot_png.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/screenshot_png.cpp.o
+.PHONY : src/screenshot_png.cpp.o
+
+src/screenshot_png.i: src/screenshot_png.cpp.i
+.PHONY : src/screenshot_png.i
+
+# target to preprocess a source file
+src/screenshot_png.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/screenshot_png.cpp.i
+.PHONY : src/screenshot_png.cpp.i
+
+src/screenshot_png.s: src/screenshot_png.cpp.s
+.PHONY : src/screenshot_png.s
+
+# target to generate assembly for a file
+src/screenshot_png.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/screenshot_png.cpp.s
+.PHONY : src/screenshot_png.cpp.s
 
 src/script/api/script_accounting.o: src/script/api/script_accounting.cpp.o
 .PHONY : src/script/api/script_accounting.o
@@ -9583,6 +10855,30 @@ src/script/squirrel_std.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/script/squirrel_std.cpp.s
 .PHONY : src/script/squirrel_std.cpp.s
 
+src/settingentry_gui.o: src/settingentry_gui.cpp.o
+.PHONY : src/settingentry_gui.o
+
+# target to build an object file
+src/settingentry_gui.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/settingentry_gui.cpp.o
+.PHONY : src/settingentry_gui.cpp.o
+
+src/settingentry_gui.i: src/settingentry_gui.cpp.i
+.PHONY : src/settingentry_gui.i
+
+# target to preprocess a source file
+src/settingentry_gui.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/settingentry_gui.cpp.i
+.PHONY : src/settingentry_gui.cpp.i
+
+src/settingentry_gui.s: src/settingentry_gui.cpp.s
+.PHONY : src/settingentry_gui.s
+
+# target to generate assembly for a file
+src/settingentry_gui.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/settingentry_gui.cpp.s
+.PHONY : src/settingentry_gui.cpp.s
+
 src/settings.o: src/settings.cpp.o
 .PHONY : src/settings.o
 
@@ -9823,6 +11119,30 @@ src/signs_gui.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/signs_gui.cpp.s
 .PHONY : src/signs_gui.cpp.s
 
+src/slider.o: src/slider.cpp.o
+.PHONY : src/slider.o
+
+# target to build an object file
+src/slider.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/slider.cpp.o
+.PHONY : src/slider.cpp.o
+
+src/slider.i: src/slider.cpp.i
+.PHONY : src/slider.i
+
+# target to preprocess a source file
+src/slider.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/slider.cpp.i
+.PHONY : src/slider.cpp.i
+
+src/slider.s: src/slider.cpp.s
+.PHONY : src/slider.s
+
+# target to generate assembly for a file
+src/slider.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/slider.cpp.s
+.PHONY : src/slider.cpp.s
+
 src/smallmap_gui.o: src/smallmap_gui.cpp.o
 .PHONY : src/smallmap_gui.o
 
@@ -9943,6 +11263,78 @@ src/sound/sdl2_s.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/sound/sdl2_s.cpp.s
 .PHONY : src/sound/sdl2_s.cpp.s
 
+src/soundloader.o: src/soundloader.cpp.o
+.PHONY : src/soundloader.o
+
+# target to build an object file
+src/soundloader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/soundloader.cpp.o
+.PHONY : src/soundloader.cpp.o
+
+src/soundloader.i: src/soundloader.cpp.i
+.PHONY : src/soundloader.i
+
+# target to preprocess a source file
+src/soundloader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/soundloader.cpp.i
+.PHONY : src/soundloader.cpp.i
+
+src/soundloader.s: src/soundloader.cpp.s
+.PHONY : src/soundloader.s
+
+# target to generate assembly for a file
+src/soundloader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/soundloader.cpp.s
+.PHONY : src/soundloader.cpp.s
+
+src/soundloader_raw.o: src/soundloader_raw.cpp.o
+.PHONY : src/soundloader_raw.o
+
+# target to build an object file
+src/soundloader_raw.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/soundloader_raw.cpp.o
+.PHONY : src/soundloader_raw.cpp.o
+
+src/soundloader_raw.i: src/soundloader_raw.cpp.i
+.PHONY : src/soundloader_raw.i
+
+# target to preprocess a source file
+src/soundloader_raw.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/soundloader_raw.cpp.i
+.PHONY : src/soundloader_raw.cpp.i
+
+src/soundloader_raw.s: src/soundloader_raw.cpp.s
+.PHONY : src/soundloader_raw.s
+
+# target to generate assembly for a file
+src/soundloader_raw.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/soundloader_raw.cpp.s
+.PHONY : src/soundloader_raw.cpp.s
+
+src/soundloader_wav.o: src/soundloader_wav.cpp.o
+.PHONY : src/soundloader_wav.o
+
+# target to build an object file
+src/soundloader_wav.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/soundloader_wav.cpp.o
+.PHONY : src/soundloader_wav.cpp.o
+
+src/soundloader_wav.i: src/soundloader_wav.cpp.i
+.PHONY : src/soundloader_wav.i
+
+# target to preprocess a source file
+src/soundloader_wav.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/soundloader_wav.cpp.i
+.PHONY : src/soundloader_wav.cpp.i
+
+src/soundloader_wav.s: src/soundloader_wav.cpp.s
+.PHONY : src/soundloader_wav.s
+
+# target to generate assembly for a file
+src/soundloader_wav.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/soundloader_wav.cpp.s
+.PHONY : src/soundloader_wav.cpp.s
+
 src/sprite.o: src/sprite.cpp.o
 .PHONY : src/sprite.o
 
@@ -10014,6 +11406,30 @@ src/spriteloader/grf.s: src/spriteloader/grf.cpp.s
 src/spriteloader/grf.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/spriteloader/grf.cpp.s
 .PHONY : src/spriteloader/grf.cpp.s
+
+src/spriteloader/makeindexed.o: src/spriteloader/makeindexed.cpp.o
+.PHONY : src/spriteloader/makeindexed.o
+
+# target to build an object file
+src/spriteloader/makeindexed.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/spriteloader/makeindexed.cpp.o
+.PHONY : src/spriteloader/makeindexed.cpp.o
+
+src/spriteloader/makeindexed.i: src/spriteloader/makeindexed.cpp.i
+.PHONY : src/spriteloader/makeindexed.i
+
+# target to preprocess a source file
+src/spriteloader/makeindexed.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/spriteloader/makeindexed.cpp.i
+.PHONY : src/spriteloader/makeindexed.cpp.i
+
+src/spriteloader/makeindexed.s: src/spriteloader/makeindexed.cpp.s
+.PHONY : src/spriteloader/makeindexed.s
+
+# target to generate assembly for a file
+src/spriteloader/makeindexed.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/spriteloader/makeindexed.cpp.s
+.PHONY : src/spriteloader/makeindexed.cpp.s
 
 src/spriteloader/sprite_file.o: src/spriteloader/sprite_file.cpp.o
 .PHONY : src/spriteloader/sprite_file.o
@@ -10399,6 +11815,30 @@ src/terraform_gui.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/terraform_gui.cpp.s
 .PHONY : src/terraform_gui.cpp.s
 
+src/tests/alternating_iterator.o: src/tests/alternating_iterator.cpp.o
+.PHONY : src/tests/alternating_iterator.o
+
+# target to build an object file
+src/tests/alternating_iterator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/alternating_iterator.cpp.o
+.PHONY : src/tests/alternating_iterator.cpp.o
+
+src/tests/alternating_iterator.i: src/tests/alternating_iterator.cpp.i
+.PHONY : src/tests/alternating_iterator.i
+
+# target to preprocess a source file
+src/tests/alternating_iterator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/alternating_iterator.cpp.i
+.PHONY : src/tests/alternating_iterator.cpp.i
+
+src/tests/alternating_iterator.s: src/tests/alternating_iterator.cpp.s
+.PHONY : src/tests/alternating_iterator.s
+
+# target to generate assembly for a file
+src/tests/alternating_iterator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/alternating_iterator.cpp.s
+.PHONY : src/tests/alternating_iterator.cpp.s
+
 src/tests/bitmath_func.o: src/tests/bitmath_func.cpp.o
 .PHONY : src/tests/bitmath_func.o
 
@@ -10422,6 +11862,78 @@ src/tests/bitmath_func.s: src/tests/bitmath_func.cpp.s
 src/tests/bitmath_func.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/bitmath_func.cpp.s
 .PHONY : src/tests/bitmath_func.cpp.s
+
+src/tests/enum_over_optimisation.o: src/tests/enum_over_optimisation.cpp.o
+.PHONY : src/tests/enum_over_optimisation.o
+
+# target to build an object file
+src/tests/enum_over_optimisation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/enum_over_optimisation.cpp.o
+.PHONY : src/tests/enum_over_optimisation.cpp.o
+
+src/tests/enum_over_optimisation.i: src/tests/enum_over_optimisation.cpp.i
+.PHONY : src/tests/enum_over_optimisation.i
+
+# target to preprocess a source file
+src/tests/enum_over_optimisation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/enum_over_optimisation.cpp.i
+.PHONY : src/tests/enum_over_optimisation.cpp.i
+
+src/tests/enum_over_optimisation.s: src/tests/enum_over_optimisation.cpp.s
+.PHONY : src/tests/enum_over_optimisation.s
+
+# target to generate assembly for a file
+src/tests/enum_over_optimisation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/enum_over_optimisation.cpp.s
+.PHONY : src/tests/enum_over_optimisation.cpp.s
+
+src/tests/flatset_type.o: src/tests/flatset_type.cpp.o
+.PHONY : src/tests/flatset_type.o
+
+# target to build an object file
+src/tests/flatset_type.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/flatset_type.cpp.o
+.PHONY : src/tests/flatset_type.cpp.o
+
+src/tests/flatset_type.i: src/tests/flatset_type.cpp.i
+.PHONY : src/tests/flatset_type.i
+
+# target to preprocess a source file
+src/tests/flatset_type.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/flatset_type.cpp.i
+.PHONY : src/tests/flatset_type.cpp.i
+
+src/tests/flatset_type.s: src/tests/flatset_type.cpp.s
+.PHONY : src/tests/flatset_type.s
+
+# target to generate assembly for a file
+src/tests/flatset_type.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/flatset_type.cpp.s
+.PHONY : src/tests/flatset_type.cpp.s
+
+src/tests/history_func.o: src/tests/history_func.cpp.o
+.PHONY : src/tests/history_func.o
+
+# target to build an object file
+src/tests/history_func.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/history_func.cpp.o
+.PHONY : src/tests/history_func.cpp.o
+
+src/tests/history_func.i: src/tests/history_func.cpp.i
+.PHONY : src/tests/history_func.i
+
+# target to preprocess a source file
+src/tests/history_func.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/history_func.cpp.i
+.PHONY : src/tests/history_func.cpp.i
+
+src/tests/history_func.s: src/tests/history_func.cpp.s
+.PHONY : src/tests/history_func.s
+
+# target to generate assembly for a file
+src/tests/history_func.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/history_func.cpp.s
+.PHONY : src/tests/history_func.cpp.s
 
 src/tests/landscape_partial_pixel_z.o: src/tests/landscape_partial_pixel_z.cpp.o
 .PHONY : src/tests/landscape_partial_pixel_z.o
@@ -10495,6 +12007,54 @@ src/tests/mock_spritecache.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/mock_spritecache.cpp.s
 .PHONY : src/tests/mock_spritecache.cpp.s
 
+src/tests/string_builder.o: src/tests/string_builder.cpp.o
+.PHONY : src/tests/string_builder.o
+
+# target to build an object file
+src/tests/string_builder.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/string_builder.cpp.o
+.PHONY : src/tests/string_builder.cpp.o
+
+src/tests/string_builder.i: src/tests/string_builder.cpp.i
+.PHONY : src/tests/string_builder.i
+
+# target to preprocess a source file
+src/tests/string_builder.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/string_builder.cpp.i
+.PHONY : src/tests/string_builder.cpp.i
+
+src/tests/string_builder.s: src/tests/string_builder.cpp.s
+.PHONY : src/tests/string_builder.s
+
+# target to generate assembly for a file
+src/tests/string_builder.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/string_builder.cpp.s
+.PHONY : src/tests/string_builder.cpp.s
+
+src/tests/string_consumer.o: src/tests/string_consumer.cpp.o
+.PHONY : src/tests/string_consumer.o
+
+# target to build an object file
+src/tests/string_consumer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/string_consumer.cpp.o
+.PHONY : src/tests/string_consumer.cpp.o
+
+src/tests/string_consumer.i: src/tests/string_consumer.cpp.i
+.PHONY : src/tests/string_consumer.i
+
+# target to preprocess a source file
+src/tests/string_consumer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/string_consumer.cpp.i
+.PHONY : src/tests/string_consumer.cpp.i
+
+src/tests/string_consumer.s: src/tests/string_consumer.cpp.s
+.PHONY : src/tests/string_consumer.s
+
+# target to generate assembly for a file
+src/tests/string_consumer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/string_consumer.cpp.s
+.PHONY : src/tests/string_consumer.cpp.s
+
 src/tests/string_func.o: src/tests/string_func.cpp.o
 .PHONY : src/tests/string_func.o
 
@@ -10519,29 +12079,29 @@ src/tests/string_func.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/string_func.cpp.s
 .PHONY : src/tests/string_func.cpp.s
 
-src/tests/strings_func.o: src/tests/strings_func.cpp.o
-.PHONY : src/tests/strings_func.o
+src/tests/string_inplace.o: src/tests/string_inplace.cpp.o
+.PHONY : src/tests/string_inplace.o
 
 # target to build an object file
-src/tests/strings_func.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/strings_func.cpp.o
-.PHONY : src/tests/strings_func.cpp.o
+src/tests/string_inplace.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/string_inplace.cpp.o
+.PHONY : src/tests/string_inplace.cpp.o
 
-src/tests/strings_func.i: src/tests/strings_func.cpp.i
-.PHONY : src/tests/strings_func.i
+src/tests/string_inplace.i: src/tests/string_inplace.cpp.i
+.PHONY : src/tests/string_inplace.i
 
 # target to preprocess a source file
-src/tests/strings_func.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/strings_func.cpp.i
-.PHONY : src/tests/strings_func.cpp.i
+src/tests/string_inplace.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/string_inplace.cpp.i
+.PHONY : src/tests/string_inplace.cpp.i
 
-src/tests/strings_func.s: src/tests/strings_func.cpp.s
-.PHONY : src/tests/strings_func.s
+src/tests/string_inplace.s: src/tests/string_inplace.cpp.s
+.PHONY : src/tests/string_inplace.s
 
 # target to generate assembly for a file
-src/tests/strings_func.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/strings_func.cpp.s
-.PHONY : src/tests/strings_func.cpp.s
+src/tests/string_inplace.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/string_inplace.cpp.s
+.PHONY : src/tests/string_inplace.cpp.s
 
 src/tests/test_main.o: src/tests/test_main.cpp.o
 .PHONY : src/tests/test_main.o
@@ -10566,6 +12126,30 @@ src/tests/test_main.s: src/tests/test_main.cpp.s
 src/tests/test_main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/test_main.cpp.s
 .PHONY : src/tests/test_main.cpp.s
+
+src/tests/test_network_crypto.o: src/tests/test_network_crypto.cpp.o
+.PHONY : src/tests/test_network_crypto.o
+
+# target to build an object file
+src/tests/test_network_crypto.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/test_network_crypto.cpp.o
+.PHONY : src/tests/test_network_crypto.cpp.o
+
+src/tests/test_network_crypto.i: src/tests/test_network_crypto.cpp.i
+.PHONY : src/tests/test_network_crypto.i
+
+# target to preprocess a source file
+src/tests/test_network_crypto.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/test_network_crypto.cpp.i
+.PHONY : src/tests/test_network_crypto.cpp.i
+
+src/tests/test_network_crypto.s: src/tests/test_network_crypto.cpp.s
+.PHONY : src/tests/test_network_crypto.s
+
+# target to generate assembly for a file
+src/tests/test_network_crypto.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/test_network_crypto.cpp.s
+.PHONY : src/tests/test_network_crypto.cpp.s
 
 src/tests/test_script_admin.o: src/tests/test_script_admin.cpp.o
 .PHONY : src/tests/test_script_admin.o
@@ -10614,6 +12198,54 @@ src/tests/test_window_desc.s: src/tests/test_window_desc.cpp.s
 src/tests/test_window_desc.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/test_window_desc.cpp.s
 .PHONY : src/tests/test_window_desc.cpp.s
+
+src/tests/tilearea.o: src/tests/tilearea.cpp.o
+.PHONY : src/tests/tilearea.o
+
+# target to build an object file
+src/tests/tilearea.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/tilearea.cpp.o
+.PHONY : src/tests/tilearea.cpp.o
+
+src/tests/tilearea.i: src/tests/tilearea.cpp.i
+.PHONY : src/tests/tilearea.i
+
+# target to preprocess a source file
+src/tests/tilearea.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/tilearea.cpp.i
+.PHONY : src/tests/tilearea.cpp.i
+
+src/tests/tilearea.s: src/tests/tilearea.cpp.s
+.PHONY : src/tests/tilearea.s
+
+# target to generate assembly for a file
+src/tests/tilearea.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/tilearea.cpp.s
+.PHONY : src/tests/tilearea.cpp.s
+
+src/tests/utf8.o: src/tests/utf8.cpp.o
+.PHONY : src/tests/utf8.o
+
+# target to build an object file
+src/tests/utf8.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/utf8.cpp.o
+.PHONY : src/tests/utf8.cpp.o
+
+src/tests/utf8.i: src/tests/utf8.cpp.i
+.PHONY : src/tests/utf8.i
+
+# target to preprocess a source file
+src/tests/utf8.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/utf8.cpp.i
+.PHONY : src/tests/utf8.cpp.i
+
+src/tests/utf8.s: src/tests/utf8.cpp.s
+.PHONY : src/tests/utf8.s
+
+# target to generate assembly for a file
+src/tests/utf8.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_test.dir/build.make CMakeFiles/openttd_test.dir/src/tests/utf8.cpp.s
+.PHONY : src/tests/utf8.cpp.s
 
 src/textbuf.o: src/textbuf.cpp.o
 .PHONY : src/textbuf.o
@@ -11623,54 +13255,6 @@ src/widget.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/widget.cpp.s
 .PHONY : src/widget.cpp.s
 
-src/widgets/dropdown.o: src/widgets/dropdown.cpp.o
-.PHONY : src/widgets/dropdown.o
-
-# target to build an object file
-src/widgets/dropdown.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/widgets/dropdown.cpp.o
-.PHONY : src/widgets/dropdown.cpp.o
-
-src/widgets/dropdown.i: src/widgets/dropdown.cpp.i
-.PHONY : src/widgets/dropdown.i
-
-# target to preprocess a source file
-src/widgets/dropdown.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/widgets/dropdown.cpp.i
-.PHONY : src/widgets/dropdown.cpp.i
-
-src/widgets/dropdown.s: src/widgets/dropdown.cpp.s
-.PHONY : src/widgets/dropdown.s
-
-# target to generate assembly for a file
-src/widgets/dropdown.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/widgets/dropdown.cpp.s
-.PHONY : src/widgets/dropdown.cpp.s
-
-src/widgets/slider.o: src/widgets/slider.cpp.o
-.PHONY : src/widgets/slider.o
-
-# target to build an object file
-src/widgets/slider.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/widgets/slider.cpp.o
-.PHONY : src/widgets/slider.cpp.o
-
-src/widgets/slider.i: src/widgets/slider.cpp.i
-.PHONY : src/widgets/slider.i
-
-# target to preprocess a source file
-src/widgets/slider.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/widgets/slider.cpp.i
-.PHONY : src/widgets/slider.cpp.i
-
-src/widgets/slider.s: src/widgets/slider.cpp.s
-.PHONY : src/widgets/slider.s
-
-# target to generate assembly for a file
-src/widgets/slider.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/widgets/slider.cpp.s
-.PHONY : src/widgets/slider.cpp.s
-
 src/window.o: src/window.cpp.o
 .PHONY : src/window.o
 
@@ -11769,6 +13353,12 @@ help:
 	@echo "... generated/rev.o"
 	@echo "... generated/rev.i"
 	@echo "... generated/rev.s"
+	@echo "... src/3rdparty/fmt/format.o"
+	@echo "... src/3rdparty/fmt/format.i"
+	@echo "... src/3rdparty/fmt/format.s"
+	@echo "... src/3rdparty/fmt/os.o"
+	@echo "... src/3rdparty/fmt/os.i"
+	@echo "... src/3rdparty/fmt/os.s"
 	@echo "... src/3rdparty/md5/md5.o"
 	@echo "... src/3rdparty/md5/md5.i"
 	@echo "... src/3rdparty/md5/md5.s"
@@ -11805,9 +13395,6 @@ help:
 	@echo "... src/3rdparty/squirrel/squirrel/sqlexer.o"
 	@echo "... src/3rdparty/squirrel/squirrel/sqlexer.i"
 	@echo "... src/3rdparty/squirrel/squirrel/sqlexer.s"
-	@echo "... src/3rdparty/squirrel/squirrel/sqmem.o"
-	@echo "... src/3rdparty/squirrel/squirrel/sqmem.i"
-	@echo "... src/3rdparty/squirrel/squirrel/sqmem.s"
 	@echo "... src/3rdparty/squirrel/squirrel/sqobject.o"
 	@echo "... src/3rdparty/squirrel/squirrel/sqobject.i"
 	@echo "... src/3rdparty/squirrel/squirrel/sqobject.s"
@@ -11856,6 +13443,9 @@ help:
 	@echo "... src/articulated_vehicles.o"
 	@echo "... src/articulated_vehicles.i"
 	@echo "... src/articulated_vehicles.s"
+	@echo "... src/autocompletion.o"
+	@echo "... src/autocompletion.i"
+	@echo "... src/autocompletion.s"
 	@echo "... src/autoreplace.o"
 	@echo "... src/autoreplace.i"
 	@echo "... src/autoreplace.s"
@@ -11907,6 +13497,9 @@ help:
 	@echo "... src/build_vehicle_gui.o"
 	@echo "... src/build_vehicle_gui.i"
 	@echo "... src/build_vehicle_gui.s"
+	@echo "... src/cachecheck.o"
+	@echo "... src/cachecheck.i"
+	@echo "... src/cachecheck.s"
 	@echo "... src/cargoaction.o"
 	@echo "... src/cargoaction.i"
 	@echo "... src/cargoaction.s"
@@ -11946,9 +13539,6 @@ help:
 	@echo "... src/console_gui.o"
 	@echo "... src/console_gui.i"
 	@echo "... src/console_gui.s"
-	@echo "... src/core/alloc_func.o"
-	@echo "... src/core/alloc_func.i"
-	@echo "... src/core/alloc_func.s"
 	@echo "... src/core/geometry_func.o"
 	@echo "... src/core/geometry_func.i"
 	@echo "... src/core/geometry_func.s"
@@ -11961,6 +13551,18 @@ help:
 	@echo "... src/core/random_func.o"
 	@echo "... src/core/random_func.i"
 	@echo "... src/core/random_func.s"
+	@echo "... src/core/string_builder.o"
+	@echo "... src/core/string_builder.i"
+	@echo "... src/core/string_builder.s"
+	@echo "... src/core/string_consumer.o"
+	@echo "... src/core/string_consumer.i"
+	@echo "... src/core/string_consumer.s"
+	@echo "... src/core/string_inplace.o"
+	@echo "... src/core/string_inplace.i"
+	@echo "... src/core/string_inplace.s"
+	@echo "... src/core/utf8.o"
+	@echo "... src/core/utf8.i"
+	@echo "... src/core/utf8.s"
 	@echo "... src/cpu.o"
 	@echo "... src/cpu.i"
 	@echo "... src/cpu.s"
@@ -11997,6 +13599,9 @@ help:
 	@echo "... src/driver.o"
 	@echo "... src/driver.i"
 	@echo "... src/driver.s"
+	@echo "... src/dropdown.o"
+	@echo "... src/dropdown.i"
+	@echo "... src/dropdown.s"
 	@echo "... src/economy.o"
 	@echo "... src/economy.i"
 	@echo "... src/economy.s"
@@ -12171,15 +13776,15 @@ help:
 	@echo "... src/misc.o"
 	@echo "... src/misc.i"
 	@echo "... src/misc.s"
-	@echo "... src/misc/countedobj.o"
-	@echo "... src/misc/countedobj.i"
-	@echo "... src/misc/countedobj.s"
 	@echo "... src/misc/dbg_helpers.o"
 	@echo "... src/misc/dbg_helpers.i"
 	@echo "... src/misc/dbg_helpers.s"
 	@echo "... src/misc/getoptdata.o"
 	@echo "... src/misc/getoptdata.i"
 	@echo "... src/misc/getoptdata.s"
+	@echo "... src/misc/history.o"
+	@echo "... src/misc/history.i"
+	@echo "... src/misc/history.s"
 	@echo "... src/misc_cmd.o"
 	@echo "... src/misc_cmd.i"
 	@echo "... src/misc_cmd.s"
@@ -12279,6 +13884,9 @@ help:
 	@echo "... src/network/network_coordinator.o"
 	@echo "... src/network/network_coordinator.i"
 	@echo "... src/network/network_coordinator.s"
+	@echo "... src/network/network_crypto.o"
+	@echo "... src/network/network_crypto.i"
+	@echo "... src/network/network_crypto.s"
 	@echo "... src/network/network_gamelist.o"
 	@echo "... src/network/network_gamelist.i"
 	@echo "... src/network/network_gamelist.s"
@@ -12306,12 +13914,141 @@ help:
 	@echo "... src/newgrf.o"
 	@echo "... src/newgrf.i"
 	@echo "... src/newgrf.s"
+	@echo "... src/newgrf/newgrf_act0.o"
+	@echo "... src/newgrf/newgrf_act0.i"
+	@echo "... src/newgrf/newgrf_act0.s"
+	@echo "... src/newgrf/newgrf_act0_aircraft.o"
+	@echo "... src/newgrf/newgrf_act0_aircraft.i"
+	@echo "... src/newgrf/newgrf_act0_aircraft.s"
+	@echo "... src/newgrf/newgrf_act0_airports.o"
+	@echo "... src/newgrf/newgrf_act0_airports.i"
+	@echo "... src/newgrf/newgrf_act0_airports.s"
+	@echo "... src/newgrf/newgrf_act0_badges.o"
+	@echo "... src/newgrf/newgrf_act0_badges.i"
+	@echo "... src/newgrf/newgrf_act0_badges.s"
+	@echo "... src/newgrf/newgrf_act0_bridges.o"
+	@echo "... src/newgrf/newgrf_act0_bridges.i"
+	@echo "... src/newgrf/newgrf_act0_bridges.s"
+	@echo "... src/newgrf/newgrf_act0_canals.o"
+	@echo "... src/newgrf/newgrf_act0_canals.i"
+	@echo "... src/newgrf/newgrf_act0_canals.s"
+	@echo "... src/newgrf/newgrf_act0_cargo.o"
+	@echo "... src/newgrf/newgrf_act0_cargo.i"
+	@echo "... src/newgrf/newgrf_act0_cargo.s"
+	@echo "... src/newgrf/newgrf_act0_globalvar.o"
+	@echo "... src/newgrf/newgrf_act0_globalvar.i"
+	@echo "... src/newgrf/newgrf_act0_globalvar.s"
+	@echo "... src/newgrf/newgrf_act0_houses.o"
+	@echo "... src/newgrf/newgrf_act0_houses.i"
+	@echo "... src/newgrf/newgrf_act0_houses.s"
+	@echo "... src/newgrf/newgrf_act0_industries.o"
+	@echo "... src/newgrf/newgrf_act0_industries.i"
+	@echo "... src/newgrf/newgrf_act0_industries.s"
+	@echo "... src/newgrf/newgrf_act0_objects.o"
+	@echo "... src/newgrf/newgrf_act0_objects.i"
+	@echo "... src/newgrf/newgrf_act0_objects.s"
+	@echo "... src/newgrf/newgrf_act0_railtypes.o"
+	@echo "... src/newgrf/newgrf_act0_railtypes.i"
+	@echo "... src/newgrf/newgrf_act0_railtypes.s"
+	@echo "... src/newgrf/newgrf_act0_roadstops.o"
+	@echo "... src/newgrf/newgrf_act0_roadstops.i"
+	@echo "... src/newgrf/newgrf_act0_roadstops.s"
+	@echo "... src/newgrf/newgrf_act0_roadtypes.o"
+	@echo "... src/newgrf/newgrf_act0_roadtypes.i"
+	@echo "... src/newgrf/newgrf_act0_roadtypes.s"
+	@echo "... src/newgrf/newgrf_act0_roadvehs.o"
+	@echo "... src/newgrf/newgrf_act0_roadvehs.i"
+	@echo "... src/newgrf/newgrf_act0_roadvehs.s"
+	@echo "... src/newgrf/newgrf_act0_ships.o"
+	@echo "... src/newgrf/newgrf_act0_ships.i"
+	@echo "... src/newgrf/newgrf_act0_ships.s"
+	@echo "... src/newgrf/newgrf_act0_sounds.o"
+	@echo "... src/newgrf/newgrf_act0_sounds.i"
+	@echo "... src/newgrf/newgrf_act0_sounds.s"
+	@echo "... src/newgrf/newgrf_act0_stations.o"
+	@echo "... src/newgrf/newgrf_act0_stations.i"
+	@echo "... src/newgrf/newgrf_act0_stations.s"
+	@echo "... src/newgrf/newgrf_act0_trains.o"
+	@echo "... src/newgrf/newgrf_act0_trains.i"
+	@echo "... src/newgrf/newgrf_act0_trains.s"
+	@echo "... src/newgrf/newgrf_act1.o"
+	@echo "... src/newgrf/newgrf_act1.i"
+	@echo "... src/newgrf/newgrf_act1.s"
+	@echo "... src/newgrf/newgrf_act10.o"
+	@echo "... src/newgrf/newgrf_act10.i"
+	@echo "... src/newgrf/newgrf_act10.s"
+	@echo "... src/newgrf/newgrf_act11.o"
+	@echo "... src/newgrf/newgrf_act11.i"
+	@echo "... src/newgrf/newgrf_act11.s"
+	@echo "... src/newgrf/newgrf_act12.o"
+	@echo "... src/newgrf/newgrf_act12.i"
+	@echo "... src/newgrf/newgrf_act12.s"
+	@echo "... src/newgrf/newgrf_act13.o"
+	@echo "... src/newgrf/newgrf_act13.i"
+	@echo "... src/newgrf/newgrf_act13.s"
+	@echo "... src/newgrf/newgrf_act14.o"
+	@echo "... src/newgrf/newgrf_act14.i"
+	@echo "... src/newgrf/newgrf_act14.s"
+	@echo "... src/newgrf/newgrf_act2.o"
+	@echo "... src/newgrf/newgrf_act2.i"
+	@echo "... src/newgrf/newgrf_act2.s"
+	@echo "... src/newgrf/newgrf_act3.o"
+	@echo "... src/newgrf/newgrf_act3.i"
+	@echo "... src/newgrf/newgrf_act3.s"
+	@echo "... src/newgrf/newgrf_act4.o"
+	@echo "... src/newgrf/newgrf_act4.i"
+	@echo "... src/newgrf/newgrf_act4.s"
+	@echo "... src/newgrf/newgrf_act5.o"
+	@echo "... src/newgrf/newgrf_act5.i"
+	@echo "... src/newgrf/newgrf_act5.s"
+	@echo "... src/newgrf/newgrf_act6.o"
+	@echo "... src/newgrf/newgrf_act6.i"
+	@echo "... src/newgrf/newgrf_act6.s"
+	@echo "... src/newgrf/newgrf_act7_9.o"
+	@echo "... src/newgrf/newgrf_act7_9.i"
+	@echo "... src/newgrf/newgrf_act7_9.s"
+	@echo "... src/newgrf/newgrf_act8.o"
+	@echo "... src/newgrf/newgrf_act8.i"
+	@echo "... src/newgrf/newgrf_act8.s"
+	@echo "... src/newgrf/newgrf_acta.o"
+	@echo "... src/newgrf/newgrf_acta.i"
+	@echo "... src/newgrf/newgrf_acta.s"
+	@echo "... src/newgrf/newgrf_actb.o"
+	@echo "... src/newgrf/newgrf_actb.i"
+	@echo "... src/newgrf/newgrf_actb.s"
+	@echo "... src/newgrf/newgrf_actc.o"
+	@echo "... src/newgrf/newgrf_actc.i"
+	@echo "... src/newgrf/newgrf_actc.s"
+	@echo "... src/newgrf/newgrf_actd.o"
+	@echo "... src/newgrf/newgrf_actd.i"
+	@echo "... src/newgrf/newgrf_actd.s"
+	@echo "... src/newgrf/newgrf_acte.o"
+	@echo "... src/newgrf/newgrf_acte.i"
+	@echo "... src/newgrf/newgrf_acte.s"
+	@echo "... src/newgrf/newgrf_actf.o"
+	@echo "... src/newgrf/newgrf_actf.i"
+	@echo "... src/newgrf/newgrf_actf.s"
+	@echo "... src/newgrf/newgrf_bytereader.o"
+	@echo "... src/newgrf/newgrf_bytereader.i"
+	@echo "... src/newgrf/newgrf_bytereader.s"
+	@echo "... src/newgrf/newgrf_stringmapping.o"
+	@echo "... src/newgrf/newgrf_stringmapping.i"
+	@echo "... src/newgrf/newgrf_stringmapping.s"
 	@echo "... src/newgrf_airport.o"
 	@echo "... src/newgrf_airport.i"
 	@echo "... src/newgrf_airport.s"
 	@echo "... src/newgrf_airporttiles.o"
 	@echo "... src/newgrf_airporttiles.i"
 	@echo "... src/newgrf_airporttiles.s"
+	@echo "... src/newgrf_badge.o"
+	@echo "... src/newgrf_badge.i"
+	@echo "... src/newgrf_badge.s"
+	@echo "... src/newgrf_badge_config.o"
+	@echo "... src/newgrf_badge_config.i"
+	@echo "... src/newgrf_badge_config.s"
+	@echo "... src/newgrf_badge_gui.o"
+	@echo "... src/newgrf_badge_gui.i"
+	@echo "... src/newgrf_badge_gui.s"
 	@echo "... src/newgrf_canal.o"
 	@echo "... src/newgrf_canal.i"
 	@echo "... src/newgrf_canal.s"
@@ -12423,21 +14160,15 @@ help:
 	@echo "... src/palette.o"
 	@echo "... src/palette.i"
 	@echo "... src/palette.s"
-	@echo "... src/pathfinder/npf/aystar.o"
-	@echo "... src/pathfinder/npf/aystar.i"
-	@echo "... src/pathfinder/npf/aystar.s"
-	@echo "... src/pathfinder/npf/npf.o"
-	@echo "... src/pathfinder/npf/npf.i"
-	@echo "... src/pathfinder/npf/npf.s"
-	@echo "... src/pathfinder/npf/queue.o"
-	@echo "... src/pathfinder/npf/queue.i"
-	@echo "... src/pathfinder/npf/queue.s"
 	@echo "... src/pathfinder/water_regions.o"
 	@echo "... src/pathfinder/water_regions.i"
 	@echo "... src/pathfinder/water_regions.s"
 	@echo "... src/pathfinder/yapf/yapf_rail.o"
 	@echo "... src/pathfinder/yapf/yapf_rail.i"
 	@echo "... src/pathfinder/yapf/yapf_rail.s"
+	@echo "... src/pathfinder/yapf/yapf_river_builder.o"
+	@echo "... src/pathfinder/yapf/yapf_river_builder.i"
+	@echo "... src/pathfinder/yapf/yapf_river_builder.s"
 	@echo "... src/pathfinder/yapf/yapf_road.o"
 	@echo "... src/pathfinder/yapf/yapf_road.i"
 	@echo "... src/pathfinder/yapf/yapf_road.s"
@@ -12450,6 +14181,9 @@ help:
 	@echo "... src/pbs.o"
 	@echo "... src/pbs.i"
 	@echo "... src/pbs.s"
+	@echo "... src/picker_gui.o"
+	@echo "... src/picker_gui.i"
+	@echo "... src/picker_gui.s"
 	@echo "... src/progress.o"
 	@echo "... src/progress.i"
 	@echo "... src/progress.s"
@@ -12609,9 +14343,18 @@ help:
 	@echo "... src/screenshot.o"
 	@echo "... src/screenshot.i"
 	@echo "... src/screenshot.s"
+	@echo "... src/screenshot_bmp.o"
+	@echo "... src/screenshot_bmp.i"
+	@echo "... src/screenshot_bmp.s"
 	@echo "... src/screenshot_gui.o"
 	@echo "... src/screenshot_gui.i"
 	@echo "... src/screenshot_gui.s"
+	@echo "... src/screenshot_pcx.o"
+	@echo "... src/screenshot_pcx.i"
+	@echo "... src/screenshot_pcx.s"
+	@echo "... src/screenshot_png.o"
+	@echo "... src/screenshot_png.i"
+	@echo "... src/screenshot_png.s"
 	@echo "... src/script/api/script_accounting.o"
 	@echo "... src/script/api/script_accounting.i"
 	@echo "... src/script/api/script_accounting.s"
@@ -12852,6 +14595,9 @@ help:
 	@echo "... src/script/squirrel_std.o"
 	@echo "... src/script/squirrel_std.i"
 	@echo "... src/script/squirrel_std.s"
+	@echo "... src/settingentry_gui.o"
+	@echo "... src/settingentry_gui.i"
+	@echo "... src/settingentry_gui.s"
 	@echo "... src/settings.o"
 	@echo "... src/settings.i"
 	@echo "... src/settings.s"
@@ -12882,6 +14628,9 @@ help:
 	@echo "... src/signs_gui.o"
 	@echo "... src/signs_gui.i"
 	@echo "... src/signs_gui.s"
+	@echo "... src/slider.o"
+	@echo "... src/slider.i"
+	@echo "... src/slider.s"
 	@echo "... src/smallmap_gui.o"
 	@echo "... src/smallmap_gui.i"
 	@echo "... src/smallmap_gui.s"
@@ -12897,6 +14646,15 @@ help:
 	@echo "... src/sound/sdl2_s.o"
 	@echo "... src/sound/sdl2_s.i"
 	@echo "... src/sound/sdl2_s.s"
+	@echo "... src/soundloader.o"
+	@echo "... src/soundloader.i"
+	@echo "... src/soundloader.s"
+	@echo "... src/soundloader_raw.o"
+	@echo "... src/soundloader_raw.i"
+	@echo "... src/soundloader_raw.s"
+	@echo "... src/soundloader_wav.o"
+	@echo "... src/soundloader_wav.i"
+	@echo "... src/soundloader_wav.s"
 	@echo "... src/sprite.o"
 	@echo "... src/sprite.i"
 	@echo "... src/sprite.s"
@@ -12906,6 +14664,9 @@ help:
 	@echo "... src/spriteloader/grf.o"
 	@echo "... src/spriteloader/grf.i"
 	@echo "... src/spriteloader/grf.s"
+	@echo "... src/spriteloader/makeindexed.o"
+	@echo "... src/spriteloader/makeindexed.i"
+	@echo "... src/spriteloader/makeindexed.s"
 	@echo "... src/spriteloader/sprite_file.o"
 	@echo "... src/spriteloader/sprite_file.i"
 	@echo "... src/spriteloader/sprite_file.s"
@@ -12954,9 +14715,21 @@ help:
 	@echo "... src/terraform_gui.o"
 	@echo "... src/terraform_gui.i"
 	@echo "... src/terraform_gui.s"
+	@echo "... src/tests/alternating_iterator.o"
+	@echo "... src/tests/alternating_iterator.i"
+	@echo "... src/tests/alternating_iterator.s"
 	@echo "... src/tests/bitmath_func.o"
 	@echo "... src/tests/bitmath_func.i"
 	@echo "... src/tests/bitmath_func.s"
+	@echo "... src/tests/enum_over_optimisation.o"
+	@echo "... src/tests/enum_over_optimisation.i"
+	@echo "... src/tests/enum_over_optimisation.s"
+	@echo "... src/tests/flatset_type.o"
+	@echo "... src/tests/flatset_type.i"
+	@echo "... src/tests/flatset_type.s"
+	@echo "... src/tests/history_func.o"
+	@echo "... src/tests/history_func.i"
+	@echo "... src/tests/history_func.s"
 	@echo "... src/tests/landscape_partial_pixel_z.o"
 	@echo "... src/tests/landscape_partial_pixel_z.i"
 	@echo "... src/tests/landscape_partial_pixel_z.s"
@@ -12966,21 +14739,36 @@ help:
 	@echo "... src/tests/mock_spritecache.o"
 	@echo "... src/tests/mock_spritecache.i"
 	@echo "... src/tests/mock_spritecache.s"
+	@echo "... src/tests/string_builder.o"
+	@echo "... src/tests/string_builder.i"
+	@echo "... src/tests/string_builder.s"
+	@echo "... src/tests/string_consumer.o"
+	@echo "... src/tests/string_consumer.i"
+	@echo "... src/tests/string_consumer.s"
 	@echo "... src/tests/string_func.o"
 	@echo "... src/tests/string_func.i"
 	@echo "... src/tests/string_func.s"
-	@echo "... src/tests/strings_func.o"
-	@echo "... src/tests/strings_func.i"
-	@echo "... src/tests/strings_func.s"
+	@echo "... src/tests/string_inplace.o"
+	@echo "... src/tests/string_inplace.i"
+	@echo "... src/tests/string_inplace.s"
 	@echo "... src/tests/test_main.o"
 	@echo "... src/tests/test_main.i"
 	@echo "... src/tests/test_main.s"
+	@echo "... src/tests/test_network_crypto.o"
+	@echo "... src/tests/test_network_crypto.i"
+	@echo "... src/tests/test_network_crypto.s"
 	@echo "... src/tests/test_script_admin.o"
 	@echo "... src/tests/test_script_admin.i"
 	@echo "... src/tests/test_script_admin.s"
 	@echo "... src/tests/test_window_desc.o"
 	@echo "... src/tests/test_window_desc.i"
 	@echo "... src/tests/test_window_desc.s"
+	@echo "... src/tests/tilearea.o"
+	@echo "... src/tests/tilearea.i"
+	@echo "... src/tests/tilearea.s"
+	@echo "... src/tests/utf8.o"
+	@echo "... src/tests/utf8.i"
+	@echo "... src/tests/utf8.s"
 	@echo "... src/textbuf.o"
 	@echo "... src/textbuf.i"
 	@echo "... src/textbuf.s"
@@ -13107,12 +14895,6 @@ help:
 	@echo "... src/widget.o"
 	@echo "... src/widget.i"
 	@echo "... src/widget.s"
-	@echo "... src/widgets/dropdown.o"
-	@echo "... src/widgets/dropdown.i"
-	@echo "... src/widgets/dropdown.s"
-	@echo "... src/widgets/slider.o"
-	@echo "... src/widgets/slider.i"
-	@echo "... src/widgets/slider.s"
 	@echo "... src/window.o"
 	@echo "... src/window.i"
 	@echo "... src/window.s"
