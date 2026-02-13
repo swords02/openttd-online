@@ -57,7 +57,7 @@
   #box h2{margin:.2rem 0 .4rem;font-weight:600;font-size:18px;color:#fff}
   #logo{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);max-width:250px;opacity:0;z-index:2;transition:opacity .6s ease}
 
-  /* --- Toolbar (compact vertical) --- */
+  /* Toolbar (compact vertical) */
   #toolbar{
     position:fixed;
     top:54px;left:10px;z-index:3;
@@ -65,10 +65,10 @@
     border:1px solid #333;border-radius:8px;
     padding:6px 8px;
     backdrop-filter:blur(2px);
-    display:none;                /* hidden by default */
+    display:none;
     flex-direction:column !important;
     gap:4px !important;
-    width:160px !important;      /* compact width */
+    width:160px !important;
     min-width:160px !important;
     box-sizing:border-box;
   }
@@ -123,7 +123,7 @@
     cursor: pointer !important;
   }
 
-  /* === Open Button === */
+  /* Open Button */
   .open-music-btn {
     position: fixed;
     left: 12px;
@@ -137,7 +137,7 @@
     z-index: 9999;
   }
 
-  /* === Window === */
+  /* Window */
   .ttd-window {
     width: 520px;
     background: #c0c0c0;
@@ -188,7 +188,7 @@
     gap: 4px;
   }
 
-  /* === LEFT SIDE === */
+  /* Left side */
   .current-track-box {
     border: 1px solid #404040;
     background: #c0c0c0;
@@ -278,7 +278,7 @@
     color: #fff;
   }
 
-  /* === RIGHT SIDE === */
+  /* Right side */
   .playlist-box {
     border: 1px solid #404040;
     background: #c0c0c0;
@@ -310,9 +310,7 @@
     font-size: 9px;
   }
 
-  /* ============================================================
-     ✅ FILE PICKER MODAL (for choosing which file to export)
-     ============================================================ */
+  /* File picker modal (for choosing which file to export) */
   #filePickerModal {
     position: fixed;
     inset: 0;
@@ -371,9 +369,7 @@
   }
   #filePickerActions button:hover{ background:#2b2b2b; }
 
-  /* ============================================================
-     ✅ FIX: Show normal mouse cursor over file picker modal
-     ============================================================ */
+  /* Show normal mouse cursor over file picker modal */
   #filePickerModal,
   #filePickerModal * {
     cursor: default !important;
@@ -390,7 +386,7 @@
       
 </head>
 
-<!-- === Jazz Jukebox script, wrapped in DOMContentLoaded === -->
+<!-- Jazz Jukebox script, wrapped in DOMContentLoaded -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const playlist = [
@@ -452,7 +448,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let isShuffle = false;
   let isRepeat = false;
 
-  /* === First-click autoplay helper (browser gesture requirement) === */
+  /* First-click autoplay helper (browser gesture requirement) */
   let firstPlayArmed = true;
   document.addEventListener("click", function onFirstClick() {
     if (!firstPlayArmed) return;
@@ -461,7 +457,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.removeEventListener("click", onFirstClick, true);
   }, { capture: true });
 
-  /* === LOAD TRACK === */
+  /* Load track */
   function loadTrack(index, autoplay = false) {
     currentIndex = index;
     const track = playlist[index];
@@ -477,7 +473,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* === BUILD PLAYLIST === */
+  /* Build playlist */
   function buildPlaylist() {
     playlistList.innerHTML = "";
     playlist.forEach((track, i) => {
@@ -491,7 +487,7 @@ document.addEventListener("DOMContentLoaded", () => {
     playlistCountLabel.textContent = playlist.length + " tracks";
   }
 
-  /* === NEXT / PREV === */
+  /* Next / Prev */
   function nextTrack(auto=false) {
     if (isRepeat && auto) {
       loadTrack(currentIndex, true);
@@ -520,17 +516,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  /* === WIRE UP NEXT / PREVIOUS BUTTONS (mouse + touch) === */
+  /* Wire up next / previous buttons (mouse + touch) */
   function bindTransportButton(btn, handler) {
     if (!btn) return;
 
-    // Mouse / desktop
     btn.addEventListener("click", (e) => {
       e.preventDefault();
       handler();
     });
 
-    // Mobile touch (prevents ghost clicks, works on iOS Safari, etc.)
     btn.addEventListener("touchend", (e) => {
       e.preventDefault();
       handler();
@@ -540,10 +534,9 @@ document.addEventListener("DOMContentLoaded", () => {
   bindTransportButton(btnNext, () => nextTrack(false));
   bindTransportButton(btnPrev, prevTrack);
 
-  /* === PLAY/PAUSE BUTTON (with dynamic icon) === */
+  /* Play/pause button (with dynamic icon) */
   function updatePlayPauseIcon() {
     if (!audio) return;
-    // ▶ (9658) when paused, ❚❚ (10074 x2) when playing
     btnPlayPause.innerHTML = audio.paused ? "&#9658;" : "&#10074;&#10074;";
   }
 
@@ -558,7 +551,7 @@ document.addEventListener("DOMContentLoaded", () => {
   audio.addEventListener("play", updatePlayPauseIcon);
   audio.addEventListener("pause", updatePlayPauseIcon);
 
-  /* === SHUFFLE / REPEAT === */
+  /* Shuffle / Repeat */
   btnShuffle.onclick = () => {
     isShuffle = !isShuffle;
     btnShuffle.classList.toggle("toggle-on", isShuffle);
@@ -569,10 +562,10 @@ document.addEventListener("DOMContentLoaded", () => {
     btnRepeat.classList.toggle("toggle-on", isRepeat);
   };
 
-  /* === VOLUME === */
+  /* Volume */
   volumeSlider.oninput = () => audio.volume = volumeSlider.value;
 
-  /* === SEEK === */
+  /* Seek */
   progressBarWrap.onclick = (e) => {
     const rect = progressBarWrap.getBoundingClientRect();
     const ratio = (e.clientX - rect.left) / rect.width;
@@ -581,7 +574,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  /* === TIME UPDATE === */
+  /* Time update */
   audio.ontimeupdate = () => {
     currentTimeLabel.textContent = formatTime(audio.currentTime);
     durationLabel.textContent = formatTime(audio.duration);
@@ -602,7 +595,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return m+":"+sec;
   }
 
-  /* === WINDOW DRAG === */
+  /* Window drag */
   const header = document.getElementById("ttdWindowHeader");
   let drag = false, dx = 0, dy = 0;
 
@@ -618,17 +611,16 @@ document.addEventListener("DOMContentLoaded", () => {
     ttdWindow.style.top = (e.clientY - dy) + "px";
   };
 
-  /* === OPEN / CLOSE === */
+  /* Open / Close */
   openMusicBtn.onclick = () => {
     ttdWindow.style.display = "flex";
-    // Try playing when opening too (in case first-click handler didn't fire yet)
     audio.play().catch(()=>{});
   };
 
   document.getElementById("btnClose").onclick = () =>
     ttdWindow.style.display="none";
 
-  /* === INIT === */
+  /* Init */
   buildPlaylist();
   loadTrack(0, false);
   audio.volume = 0.6;
@@ -665,9 +657,6 @@ document.addEventListener("DOMContentLoaded", () => {
   <img id="logo" src="overgrown.png" alt="Overgrown logo">
   <div id="filesystem">Saving files…</div>
 
-  <!-- ============================================================
-       ✅ File picker modal (choose which file to export)
-       ============================================================ -->
   <div id="filePickerModal" role="dialog" aria-modal="true" aria-labelledby="filePickerTitle">
     <div id="filePickerCard">
       <div id="filePickerTitle">Choose a file</div>
@@ -681,25 +670,21 @@ document.addEventListener("DOMContentLoaded", () => {
   </div>
 
   <script>
-    /* --- Paths --- */
-    const LIVE_ROOT  = '/home/web_user/.openttd';           // where OpenTTD reads/writes
+    const LIVE_ROOT  = '/home/web_user/.openttd';
     const SAVE_DIR   = LIVE_ROOT + '/save/';
     const SCEN_DIR   = LIVE_ROOT + '/scenario/';
     const HEIGHT_DIR = LIVE_ROOT + '/scenario/heightmap/';
 
-    const IDB_ROOT   = '/idb';                               // our IndexedDB mount
-    const IDB_MIRROR = IDB_ROOT + LIVE_ROOT;                 // mirror path inside IDBFS
+    const IDB_ROOT   = '/idb';
+    const IDB_MIRROR = IDB_ROOT + LIVE_ROOT;
 
-    /* --- Build stamp (prevents stale IDB/caches from crashing new builds) --- */
-    const BUILD_ID  = "15.1-20260213"; // change on each deploy
+    const BUILD_ID  = "15.1-20260213";
     const BUILD_KEY = "openttd_build_id";
 
-    /* UI refs */
     const toolbar   = document.getElementById('toolbar');
     const toggleBtn = document.getElementById('toolbar-toggle');
     const logo      = document.getElementById('logo');
 
-    /* Toolbar toggle + persistence */
     const TOOLBAR_KEY = 'openttd_toolbar_visible';
     function setToolbar(visible, {persist=true} = {}){
       toolbar.style.display = visible ? 'flex' : 'none';
@@ -712,7 +697,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     try{ setToolbar(localStorage.getItem(TOOLBAR_KEY) === '1', {persist:false}); }catch(_){ setToolbar(false,{persist:false}); }
 
-    /* Auto-hide on outside click/tap + Esc */
     function clickOutsideHandler(e){
       const isOutside = !toolbar.contains(e.target) && !toggleBtn.contains(e.target);
       if (toolbar.style.display === 'flex' && isOutside) setToolbar(false);
@@ -723,7 +707,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (e.key === 'Escape' && toolbar.style.display === 'flex') setToolbar(false);
     });
 
-    /* Overlay helpers */
     function showGameUI(){
       const ov=document.getElementById('overlay');
       ov.style.opacity=0;
@@ -739,12 +722,11 @@ document.addEventListener("DOMContentLoaded", () => {
       logo.style.opacity=1;
     }
 
-    /* ---------- IDBFS at /idb (mirror strategy) ---------- */
     let __idbReady = false;
 
     function mkdirp(path){
       const parts = path.replace(/\/+$/,'').split('/').filter(Boolean);
-      let cur=''; for(const p of parts){ cur+='/'+p; try{ FS.mkdir(cur); }catch(_){/*exists*/} }
+      let cur=''; for(const p of parts){ cur+='/'+p; try{ FS.mkdir(cur); }catch(_){ } }
     }
     function exists(path){
       try{ FS.stat(path); return true; }catch(_){ return false; }
@@ -763,7 +745,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const s = srcDir + '/' + name;
         const d = dstDir + '/' + name;
         const st = FS.stat(s);
-        if (st.mode && (st.mode & 0x4000)) { // S_IFDIR
+        if (st.mode && (st.mode & 0x4000)) {
           copyTree(s, d);
         } else {
           copyFile(s, d);
@@ -775,7 +757,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return new Promise((resolve, reject) => {
         try {
 
-          /* --- Clear stale storage on build change (prevents returning-user crashes) --- */
           const prev = (() => { try { return localStorage.getItem(BUILD_KEY); } catch(_) { return null; } })();
           const changed = prev && prev !== BUILD_ID;
 
@@ -789,7 +770,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
           if (__idbReady) return resolve();
           mkdirp(IDB_ROOT);
-          // If not mounted yet, mount IDBFS at /idb
           let mounted = false;
           try { mounted = !!FS.lookupPath(IDB_ROOT).node.mounted; } catch(_) {}
           if (!mounted) {
@@ -798,7 +778,6 @@ document.addEventListener("DOMContentLoaded", () => {
           FS.syncfs(true, (err) => {
             if (err) { console.error('IDBFS initial sync failed', err); reject(err); return; }
             __idbReady = true;
-            // After pulling from IndexedDB, restore into the live tree
             if (exists(IDB_MIRROR)) {
               mkdirp(LIVE_ROOT);
               copyTree(IDB_MIRROR, LIVE_ROOT);
@@ -815,7 +794,6 @@ document.addEventListener("DOMContentLoaded", () => {
     function persistToIDB() {
       return new Promise((resolve, reject) => {
         try {
-          // Mirror live tree -> /idb mirror
           mkdirp(IDB_MIRROR);
           copyTree(LIVE_ROOT, IDB_MIRROR);
           FS.syncfs(false, (err) => err ? reject(err) : resolve());
@@ -823,19 +801,16 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // Emergency flush on unload
     window.addEventListener('beforeunload', () => {
       try { FS && FS.syncfs && FS.syncfs(false, ()=>{}); } catch(_) {}
     });
 
-    // Small autosync so in-game saves persist without pressing anything (every 10s)
     setInterval(() => {
       if (__idbReady) {
         try { persistToIDB().catch(()=>{}); } catch(_) {}
       }
     }, 10000);
 
-    /* FS helpers */
     function newestByMtime(dir, exts){
       try{
         const items = FS.readdir(dir)
@@ -851,9 +826,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }catch(_){ return null; }
     }
 
-    /* ============================================================
-       ✅ NEW: File picker helpers (choose which file to export)
-       ============================================================ */
     const filePickerModal   = document.getElementById('filePickerModal');
     const filePickerSelect  = document.getElementById('filePickerSelect');
     const filePickerCancel  = document.getElementById('filePickerCancel');
@@ -880,7 +852,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         filePickerModal.style.display = 'flex';
 
-        // Focus select for desktop convenience
         setTimeout(() => {
           try { filePickerSelect.focus(); } catch(_) {}
         }, 0);
@@ -901,12 +872,10 @@ document.addEventListener("DOMContentLoaded", () => {
     filePickerCancel.addEventListener('click', () => finishPicker(null));
     filePickerConfirm.addEventListener('click', () => finishPicker(filePickerSelect.value || null));
 
-    // Click outside card closes
     filePickerModal.addEventListener('click', (e) => {
       if (e.target === filePickerModal) finishPicker(null);
     });
 
-    // Esc closes
     document.addEventListener('keydown', (e) => {
       if (filePickerModal.style.display === 'flex' && e.key === 'Escape') finishPicker(null);
     });
@@ -925,14 +894,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    /* Emscripten Module */
     var Module = window.Module || {};
     Module.preRun=[]; Module.postRun=[]; Module.arguments=[];
     Module.totalDependencies=42; Module.doneDependencies=0; Module.lastDependencies=1;
 
-    // Mount /idb and restore before the game starts
     Module.preRun.push(function(){
-      return ensureIDBMounted().catch(()=>{ /* let game start anyway */ });
+      return ensureIDBMounted().catch(()=>{ });
     });
 
     Module.print  = (...a)=>console.log(a.join(' '));
@@ -995,7 +962,6 @@ document.addEventListener("DOMContentLoaded", () => {
     Module.locateFile=p=>p;
     window.onerror=()=>Module.onAbort();
 
-    /* Download helper */
     function downloadBinary(name, data, type='application/octet-stream'){
       const a=document.createElement('a');
       a.href=URL.createObjectURL(new Blob([data],{type}));
@@ -1003,7 +969,6 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(()=>URL.revokeObjectURL(a.href),100);
     }
 
-    /* Save import/export (live + persistent mirror) */
     async function exportSave(){
       try{
         const files = listFilesWithExts(SAVE_DIR, ['.sav']);
@@ -1032,8 +997,8 @@ document.addEventListener("DOMContentLoaded", () => {
         try{
           await ensureIDBMounted();
           mkdirp(SAVE_DIR); mkdirp(IDB_MIRROR + '/save/');
-          FS.writeFile(SAVE_DIR + f.name, new Uint8Array(buf));                 // live
-          FS.writeFile(IDB_MIRROR + '/save/' + f.name, new Uint8Array(buf));    // persistent
+          FS.writeFile(SAVE_DIR + f.name, new Uint8Array(buf));
+          FS.writeFile(IDB_MIRROR + '/save/' + f.name, new Uint8Array(buf));
           await new Promise((res,rej)=>FS.syncfs(false,(err)=>err?rej(err):res()));
           alert('Imported & saved to browser storage:\n' + SAVE_DIR+f.name);
         }catch(err){console.error(err); alert('Import failed: '+err.message);}
@@ -1041,7 +1006,6 @@ document.addEventListener("DOMContentLoaded", () => {
       input.click();
     }
 
-    /* Scenario import/export */
     async function exportScenario(){
       try{
         const files = listFilesWithExts(SCEN_DIR, ['.scn']);
@@ -1079,7 +1043,6 @@ document.addEventListener("DOMContentLoaded", () => {
       input.click();
     }
 
-    /* Heightmap import/export */
     async function exportHeightmap(){
       try{
         const files = listFilesWithExts(HEIGHT_DIR, ['.png','.bmp']);
@@ -1121,12 +1084,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   </script>
 
-  <!-- Load the Emscripten build last -->
   <script src="openttd.js?v=15.1-20260213"></script>
 
   <script>
   (function(){
-  const SENSITIVITY = 0.2; // smaller = slower zoom (try 0.3–0.6)
+  const SENSITIVITY = 0.2;
 
   function attach(){
     const canvas = (window.Module && Module.canvas) || document.getElementById('canvas');
@@ -1159,14 +1121,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const dist = pinchDist(t1, t2);
       const scale = dist / lastDist;
 
-      if (Math.abs(scale - 1) > 0.01) { // smaller deadzone = more responsive
+      if (Math.abs(scale - 1) > 0.01) {
         const cx = (t1.clientX + t2.clientX) / 2;
         const cy = (t1.clientY + t2.clientY) / 2;
 
-        // translate scale to wheel motion with sensitivity applied
         const delta = (Math.log(scale) / Math.log(1.05)) * 120 * SENSITIVITY;
         canvas.dispatchEvent(new WheelEvent('wheel', {
-          deltaY: -delta,  // negative = zoom in
+          deltaY: -delta,
           clientX: cx,
           clientY: cy,
           bubbles: true
@@ -1197,11 +1158,9 @@ document.addEventListener("DOMContentLoaded", () => {
   </script>
 
   <script>
-    // Disable right-click context menu globally
     document.addEventListener('contextmenu', event => event.preventDefault());
   </script>
 
-  <!-- === Jazz Jukebox Music Player === -->
   <button class="open-music-btn" id="openMusicBtn">Jazz Jukebox</button>
 
   <div class="ttd-window" id="ttdWindow" style="display:none;">
@@ -1212,7 +1171,6 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
 
     <div class="ttd-window-body">
-      <!-- LEFT SIDE -->
       <div class="current-track-box">
 
         <div class="button-row-top">
@@ -1247,7 +1205,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       </div>
 
-      <!-- RIGHT SIDE -->
       <div class="playlist-box">
         <div class="playlist-header">Track List</div>
         <div class="playlist-list" id="playlistList"></div>
