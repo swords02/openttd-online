@@ -10,7 +10,7 @@
 #---------------------------------------------------------------------------
 DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = "OpenTTD AI API"
-PROJECT_NUMBER         = 15.1
+PROJECT_NUMBER         = 15.2
 PROJECT_BRIEF          =
 PROJECT_LOGO           =
 OUTPUT_DIRECTORY       = /src/build/docs/ai-api/
