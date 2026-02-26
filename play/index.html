@@ -35,13 +35,21 @@
 <meta http-equiv="Content-Security-Policy"
       content="
         default-src 'self' data: blob:;
-        script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://static.cloudflareinsights.com;
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval'
+          https://static.cloudflareinsights.com
+          https://accounts.google.com
+          https://apis.google.com;
         style-src 'self' 'unsafe-inline';
-        img-src 'self' data: blob:;
+        img-src 'self' data: blob: https://*.googleusercontent.com https://lh3.googleusercontent.com;
         font-src 'self' data:;
         object-src 'none';
         worker-src 'self' blob:;
         base-uri 'self';
+        frame-src
+          'self'
+          https://drive.google.com
+          https://docs.google.com
+          https://accounts.google.com;
         connect-src
           'self'
           https://cdn.openttd.org
@@ -50,7 +58,8 @@
           wss://bananas-server.openttd.org
           https://content.openttd.org
           wss://content.openttd.org:3978
-          https://cloudflareinsights.com;
+          https://cloudflareinsights.com
+          https://www.googleapis.com;
         upgrade-insecure-requests;
       ">
 
@@ -651,6 +660,15 @@ document.addEventListener("DOMContentLoaded", () => {
     <button type="button" onclick="importScenario()">Import Scenario</button>
     <button type="button" onclick="exportHeightmap()">Export Heightmap</button>
     <button type="button" onclick="importHeightmap()">Import Heightmap</button>
+
+    <!-- Google Drive (added) -->
+    <button type="button" onclick="exportSaveToDrive()">Export Save to Drive</button>
+    <button type="button" onclick="importSaveFromDrive()">Import Save from Drive</button>
+    <button type="button" onclick="exportScenarioToDrive()">Export Scenario to Drive</button>
+    <button type="button" onclick="importScenarioFromDrive()">Import Scenario from Drive</button>
+    <button type="button" onclick="exportHeightmapToDrive()">Export Heightmap to Drive</button>
+    <button type="button" onclick="importHeightmapFromDrive()">Import Heightmap from Drive</button>
+
     <a href="https://embed.openttdonline.com/" target="_blank" rel="noopener">Embed to page</a>
   </div>
 
@@ -678,6 +696,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   </div>
 
+  <!-- FULL SCRIPT (original logic + Drive additions appended) -->
   <script>
     const LIVE_ROOT  = '/home/web_user/.openttd';
     const SAVE_DIR   = LIVE_ROOT + '/save/';
@@ -1090,6 +1109,387 @@ document.addEventListener("DOMContentLoaded", () => {
         }catch(err){console.error(err); alert('Import failed: '+err.message);}
       };
       input.click();
+    }
+
+    /* ============================================================
+       Google Drive Picker + OAuth (added; does not change existing logic)
+    ============================================================ */
+
+    const DRIVE_CLIENT_ID = '581025654151-jo5frdt1seff1dqninacnm0ib5l9f886.apps.googleusercontent.com';
+    const DRIVE_API_KEY   = 'AIzaSyDT7GTwgqfsuN9kzSkOMhdbZnOkPrEpuQ0';
+    const DRIVE_APP_ID    = '581025654151';
+    const DRIVE_SCOPES    = 'https://www.googleapis.com/auth/drive.file';
+
+    let __driveInitPromise = null;
+    let __tokenClient = null;
+    let __accessToken = null;
+    let __tokenExpiryMs = 0;
+
+    function __loadScriptOnce(src){
+      return new Promise((resolve, reject) => {
+        const existing = Array.from(document.getElementsByTagName('script')).find(s => s.src === src);
+        if (existing && existing.dataset.loaded === '1') return resolve();
+        if (existing && existing.dataset.loading === '1') {
+          existing.addEventListener('load', () => resolve(), { once: true });
+          existing.addEventListener('error', () => reject(new Error('Failed to load ' + src)), { once: true });
+          return;
+        }
+        const s = existing || document.createElement('script');
+        if (!existing) {
+          s.src = src;
+          s.async = true;
+          document.head.appendChild(s);
+        }
+        s.dataset.loading = '1';
+        s.addEventListener('load', () => { s.dataset.loaded = '1'; resolve(); }, { once: true });
+        s.addEventListener('error', () => reject(new Error('Failed to load ' + src)), { once: true });
+      });
+    }
+
+    function __ensureDriveInit(){
+      if (__driveInitPromise) return __driveInitPromise;
+
+      __driveInitPromise = (async () => {
+        await __loadScriptOnce('https://accounts.google.com/gsi/client');
+        await __loadScriptOnce('https://apis.google.com/js/api.js');
+
+        __tokenClient = google.accounts.oauth2.initTokenClient({
+          client_id: DRIVE_CLIENT_ID,
+          scope: DRIVE_SCOPES,
+          callback: () => {}
+        });
+
+        await new Promise((resolve) => {
+          gapi.load('picker', { callback: resolve });
+        });
+
+        return true;
+      })();
+
+      return __driveInitPromise;
+    }
+
+    function __getAccessToken({ prompt } = { prompt: '' }){
+      return new Promise(async (resolve, reject) => {
+        try{
+          await __ensureDriveInit();
+
+          const now = Date.now();
+          if (__accessToken && now < (__tokenExpiryMs - 30_000)) {
+            resolve(__accessToken);
+            return;
+          }
+
+          __tokenClient.callback = (resp) => {
+            if (resp && resp.access_token) {
+              __accessToken = resp.access_token;
+              const expiresIn = Number(resp.expires_in || 3600);
+              __tokenExpiryMs = Date.now() + expiresIn * 1000;
+              resolve(__accessToken);
+            } else {
+              reject(new Error(resp && resp.error ? resp.error : 'No access token returned'));
+            }
+          };
+
+          __tokenClient.requestAccessToken({ prompt: prompt ?? '' });
+        }catch(e){ reject(e); }
+      });
+    }
+
+    function __pickSingleFile(){
+      return new Promise(async (resolve, reject) => {
+        try{
+          const token = await __getAccessToken({ prompt: '' });
+
+          const view = new google.picker.DocsView(google.picker.ViewId.DOCS)
+            .setIncludeFolders(false);
+
+          const origin = window.location.origin;
+
+          const picker = new google.picker.PickerBuilder()
+            .setAppId(DRIVE_APP_ID)
+            .setDeveloperKey(DRIVE_API_KEY)
+            .setOAuthToken(token)
+            .setOrigin(origin)
+            .addView(view)
+            .enableFeature(google.picker.Feature.NAV_HIDDEN)
+            .setCallback((data) => {
+              if (data.action === google.picker.Action.CANCEL) return resolve(null);
+              if (data.action === google.picker.Action.PICKED) {
+                const doc = (data.docs && data.docs[0]) ? data.docs[0] : null;
+                if (!doc) return resolve(null);
+                resolve({ id: doc.id, name: doc.name, mimeType: doc.mimeType });
+              }
+            })
+            .build();
+
+          picker.setVisible(true);
+        }catch(e){ reject(e); }
+      });
+    }
+
+    function __pickFolder(){
+      return new Promise(async (resolve, reject) => {
+        try{
+          const token = await __getAccessToken({ prompt: '' });
+
+          const view = new google.picker.DocsView(google.picker.ViewId.FOLDERS)
+            .setIncludeFolders(true)
+            .setSelectFolderEnabled(true);
+
+          const origin = window.location.origin;
+
+          const picker = new google.picker.PickerBuilder()
+            .setAppId(DRIVE_APP_ID)
+            .setDeveloperKey(DRIVE_API_KEY)
+            .setOAuthToken(token)
+            .setOrigin(origin)
+            .addView(view)
+            .enableFeature(google.picker.Feature.NAV_HIDDEN)
+            .setCallback((data) => {
+              if (data.action === google.picker.Action.CANCEL) return resolve(null);
+              if (data.action === google.picker.Action.PICKED) {
+                const doc = (data.docs && data.docs[0]) ? data.docs[0] : null;
+                if (!doc) return resolve(null);
+                resolve({ id: doc.id, name: doc.name });
+              }
+            })
+            .build();
+
+          picker.setVisible(true);
+        }catch(e){ reject(e); }
+      });
+    }
+
+    async function __driveDownloadBytes(fileId){
+      const token = await __getAccessToken({ prompt: '' });
+      const url = 'https://www.googleapis.com/drive/v3/files/' + encodeURIComponent(fileId) + '?alt=media';
+      const res = await fetch(url, { headers: { 'Authorization': 'Bearer ' + token } });
+      if (!res.ok) {
+        const txt = await res.text().catch(()=> '');
+        throw new Error('Drive download failed (' + res.status + '): ' + (txt || res.statusText));
+      }
+      return new Uint8Array(await res.arrayBuffer());
+    }
+
+    async function __driveUploadBytes({ name, bytes, mimeType, parentId }){
+      const token = await __getAccessToken({ prompt: '' });
+
+      const metadata = { name: name || 'file.bin' };
+      if (parentId) metadata.parents = [parentId];
+
+      const boundary = '-------openttdonline' + Math.random().toString(16).slice(2);
+      const delimiter = '\r\n--' + boundary + '\r\n';
+      const closeDelim = '\r\n--' + boundary + '--';
+
+      const metaPart =
+        delimiter +
+        'Content-Type: application/json; charset=UTF-8\r\n\r\n' +
+        JSON.stringify(metadata);
+
+      const filePartHeader =
+        delimiter +
+        'Content-Type: ' + (mimeType || 'application/octet-stream') + '\r\n\r\n';
+
+      const body = new Blob([metaPart, filePartHeader, bytes, closeDelim], {
+        type: 'multipart/related; boundary=' + boundary
+      });
+
+      const uploadUrl = 'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart';
+      const res = await fetch(uploadUrl, {
+        method: 'POST',
+        headers: { 'Authorization': 'Bearer ' + token },
+        body
+      });
+
+      if (!res.ok) {
+        const txt = await res.text().catch(()=> '');
+        throw new Error('Drive upload failed (' + res.status + '): ' + (txt || res.statusText));
+      }
+      return await res.json().catch(()=> ({}));
+    }
+
+    function __ensureExt(name, exts){
+      const low = (name || '').toLowerCase();
+      return (Array.isArray(exts) ? exts : [exts]).some(ext => low.endsWith(ext));
+    }
+
+    // ----- Save (.sav) -----
+    async function exportSaveToDrive(){
+      try{
+        const files = listFilesWithExts(SAVE_DIR, ['.sav']);
+        if(!files.length){ alert('No .sav found in ' + SAVE_DIR); return; }
+
+        let chosen = files[0];
+        if (files.length > 1) {
+          chosen = await showFilePicker({
+            title: 'Export Save to Google Drive',
+            hint: 'Choose which .sav file to export from /save/',
+            files
+          });
+          if (!chosen) return;
+        }
+
+        const folder = await __pickFolder();
+        if (!folder) return;
+
+        const data = FS.readFile(SAVE_DIR + chosen);
+        await __driveUploadBytes({
+          name: chosen,
+          bytes: data,
+          mimeType: 'application/octet-stream',
+          parentId: folder.id
+        });
+
+        alert('Uploaded to Google Drive:\n' + chosen + '\n\nFolder: ' + folder.name);
+      }catch(e){
+        console.error(e);
+        alert('Google Drive export failed: ' + (e && e.message ? e.message : e));
+      }
+    }
+
+    async function importSaveFromDrive(){
+      try{
+        const picked = await __pickSingleFile();
+        if (!picked) return;
+        if (!__ensureExt(picked.name, ['.sav'])) {
+          alert('That file does not look like an OpenTTD save (.sav):\n' + picked.name);
+          return;
+        }
+
+        const bytes = await __driveDownloadBytes(picked.id);
+
+        await ensureIDBMounted();
+        mkdirp(SAVE_DIR); mkdirp(IDB_MIRROR + '/save/');
+        FS.writeFile(SAVE_DIR + picked.name, bytes);
+        FS.writeFile(IDB_MIRROR + '/save/' + picked.name, bytes);
+        await new Promise((res,rej)=>FS.syncfs(false,(err)=>err?rej(err):res()));
+
+        alert('Imported from Google Drive & saved to browser storage:\n' + SAVE_DIR + picked.name);
+      }catch(e){
+        console.error(e);
+        alert('Google Drive import failed: ' + (e && e.message ? e.message : e));
+      }
+    }
+
+    // ----- Scenario (.scn) -----
+    async function exportScenarioToDrive(){
+      try{
+        const files = listFilesWithExts(SCEN_DIR, ['.scn']);
+        if(!files.length){ alert('No .scn found in ' + SCEN_DIR); return; }
+
+        let chosen = files[0];
+        if (files.length > 1) {
+          chosen = await showFilePicker({
+            title: 'Export Scenario to Google Drive',
+            hint: 'Choose which .scn file to export from /scenario/',
+            files
+          });
+          if (!chosen) return;
+        }
+
+        const folder = await __pickFolder();
+        if (!folder) return;
+
+        const data = FS.readFile(SCEN_DIR + chosen);
+        await __driveUploadBytes({
+          name: chosen,
+          bytes: data,
+          mimeType: 'application/octet-stream',
+          parentId: folder.id
+        });
+
+        alert('Uploaded to Google Drive:\n' + chosen + '\n\nFolder: ' + folder.name);
+      }catch(e){
+        console.error(e);
+        alert('Google Drive export failed: ' + (e && e.message ? e.message : e));
+      }
+    }
+
+    async function importScenarioFromDrive(){
+      try{
+        const picked = await __pickSingleFile();
+        if (!picked) return;
+        if (!__ensureExt(picked.name, ['.scn'])) {
+          alert('That file does not look like an OpenTTD scenario (.scn):\n' + picked.name);
+          return;
+        }
+
+        const bytes = await __driveDownloadBytes(picked.id);
+
+        await ensureIDBMounted();
+        mkdirp(SCEN_DIR); mkdirp(IDB_MIRROR + '/scenario/');
+        FS.writeFile(SCEN_DIR + picked.name, bytes);
+        FS.writeFile(IDB_MIRROR + '/scenario/' + picked.name, bytes);
+        await new Promise((res,rej)=>FS.syncfs(false,(err)=>err?rej(err):res()));
+
+        alert('Imported from Google Drive & saved to browser storage:\n' + SCEN_DIR + picked.name);
+      }catch(e){
+        console.error(e);
+        alert('Google Drive import failed: ' + (e && e.message ? e.message : e));
+      }
+    }
+
+    // ----- Heightmap (.png/.bmp) -----
+    async function exportHeightmapToDrive(){
+      try{
+        const files = listFilesWithExts(HEIGHT_DIR, ['.png','.bmp']);
+        if(!files.length){ alert('No heightmap (.png or .bmp) found in ' + HEIGHT_DIR); return; }
+
+        let chosen = files[0];
+        if (files.length > 1) {
+          chosen = await showFilePicker({
+            title: 'Export Heightmap to Google Drive',
+            hint: 'Choose which heightmap to export from /scenario/heightmap/',
+            files
+          });
+          if (!chosen) return;
+        }
+
+        const folder = await __pickFolder();
+        if (!folder) return;
+
+        const data = FS.readFile(HEIGHT_DIR + chosen);
+        const type = chosen.toLowerCase().endsWith('.png') ? 'image/png'
+                   : chosen.toLowerCase().endsWith('.bmp') ? 'image/bmp'
+                   : 'application/octet-stream';
+
+        await __driveUploadBytes({
+          name: chosen,
+          bytes: data,
+          mimeType: type,
+          parentId: folder.id
+        });
+
+        alert('Uploaded to Google Drive:\n' + chosen + '\n\nFolder: ' + folder.name);
+      }catch(e){
+        console.error(e);
+        alert('Google Drive export failed: ' + (e && e.message ? e.message : e));
+      }
+    }
+
+    async function importHeightmapFromDrive(){
+      try{
+        const picked = await __pickSingleFile();
+        if (!picked) return;
+        if (!__ensureExt(picked.name, ['.png','.bmp'])) {
+          alert('That file does not look like a heightmap (.png or .bmp):\n' + picked.name);
+          return;
+        }
+
+        const bytes = await __driveDownloadBytes(picked.id);
+
+        await ensureIDBMounted();
+        mkdirp(HEIGHT_DIR); mkdirp(IDB_MIRROR + '/scenario/heightmap/');
+        FS.writeFile(HEIGHT_DIR + picked.name, bytes);
+        FS.writeFile(IDB_MIRROR + '/scenario/heightmap/' + picked.name, bytes);
+        await new Promise((res,rej)=>FS.syncfs(false,(err)=>err?rej(err):res()));
+
+        alert('Imported heightmap from Google Drive & saved to browser storage:\n' + HEIGHT_DIR + picked.name + '\n\nLoad via Scenario Editor → Heightmap.');
+      }catch(e){
+        console.error(e);
+        alert('Google Drive import failed: ' + (e && e.message ? e.message : e));
+      }
     }
   </script>
 
