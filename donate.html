@@ -1,4 +1,4 @@
-<!doctype html>
+<!doctype html> 
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
@@ -160,6 +160,58 @@
       color:var(--text);
     }
 
+    /* ===== Donation Progress Bar (theme-matched) ===== */
+    .donation-progress{
+      margin-top:14px;
+      padding:14px;
+      border-radius:12px;
+      background:rgba(245,158,11,.06);
+      border:1px solid #2a3145;
+    }
+    .donation-progress .top{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .donation-progress .title{
+      font-weight:700;
+      color:var(--text);
+    }
+    .donation-progress .meta{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.2;
+      white-space:nowrap;
+    }
+    .donation-progress .bar{
+      margin-top:10px;
+      height:12px;
+      border-radius:999px;
+      background:#0b0e14;
+      border:1px solid #232838;
+      overflow:hidden;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+    }
+    .donation-progress .fill{
+      height:100%;
+      width:0%;
+      border-radius:999px;
+      background:linear-gradient(180deg,var(--accent),#dd8a05);
+      transition: width .35s ease;
+    }
+    .donation-progress .bottom{
+      margin-top:10px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size:13px;
+    }
+    /* ================================================ */
+
     @media (max-width:720px){
       :root{--space:18px}
       .pill{display:none}
@@ -169,6 +221,8 @@
       .grid-2{grid-template-columns:1fr}
       .btn-row{width:100%}
       .btn-row > *{flex:1 1 auto}
+      /* keep progress meta readable on small screens */
+      .donation-progress .meta{white-space:normal}
     }
   </style>
 
@@ -216,6 +270,21 @@
             Buy Me a Coffee
           </a>
           <a class="cta secondary" href="#how-used">How it’s used</a>
+        </div>
+
+        <!-- Donation progress bar (added) -->
+        <div class="donation-progress" id="donation-progress" role="group" aria-label="Donation goal progress">
+          <div class="top">
+            <div class="title">Donation goal</div>
+            <div class="meta" id="donation-meta">Loading…</div>
+          </div>
+          <div class="bar" aria-hidden="true">
+            <div class="fill" id="donation-fill"></div>
+          </div>
+          <div class="bottom">
+            <span id="donation-left">—</span>
+            <span id="donation-deadline">—</span>
+          </div>
         </div>
 
         <div class="kpi">
@@ -375,6 +444,35 @@
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
 
+    // ===== Donation progress (easy to update) =====
+    const DONATION_GOAL = 200;
+    const DONATION_DEADLINE = "2026-08-01"; // YYYY-MM-DD
+    const DONATION_RAISED = 0; // <-- update this number anytime
+
+    (function renderDonationProgress(){
+      const goal = Number(DONATION_GOAL) || 0;
+      const raised = Math.max(0, Number(DONATION_RAISED) || 0);
+      const pct = goal > 0 ? Math.min(100, (raised / goal) * 100) : 0;
+
+      const fill = document.getElementById("donation-fill");
+      const meta = document.getElementById("donation-meta");
+      const left = document.getElementById("donation-left");
+      const dl = document.getElementById("donation-deadline");
+
+      if (fill) fill.style.width = pct.toFixed(2) + "%";
+
+      const fmt = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+      const remaining = Math.max(0, goal - raised);
+
+      if (meta) meta.textContent = `${fmt.format(raised)} raised • ${Math.round(pct)}% of ${fmt.format(goal)}`;
+      if (left) left.textContent = remaining > 0 ? `${fmt.format(remaining)} to go` : `Goal reached 🎉`;
+
+      const d = new Date(DONATION_DEADLINE + "T00:00:00");
+      const nice = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "long", day: "numeric" }).format(d);
+      if (dl) dl.textContent = `Deadline: ${nice}`;
+    })();
+    // ============================================
+
     // Suggested amount pills -> PayPal opens with amount prefilled
     const PAYPAL_BASE = "https://www.paypal.com/donate/?hosted_button_id=W3T3ZUCGZMJCA";
     document.querySelectorAll(".donate-pill").forEach(pill => {
@@ -389,6 +487,3 @@
 </body>
 
 </html>
-
-
-
