@@ -15,11 +15,9 @@
     :root{
       --bg:#0e1117;
       --card:#171a22;
-      --card2:#141a26;
       --text:#e6edf3;
       --muted:#97a3b6;
       --accent:#f59e0b;
-      --accent-2:#22c55e;
       --maxw:1100px;
       --radius:14px;
       --shadow:0 10px 30px rgba(0,0,0,.35);
@@ -42,7 +40,7 @@
       position:fixed;inset:-20%;
       background:
         radial-gradient(600px 280px at 20% 0%, rgba(245,158,11,.10), transparent 60%),
-        radial-gradient(520px 260px at 85% 10%, rgba(34,197,94,.08), transparent 60%),
+        radial-gradient(520px 260px at 85% 10%, rgba(151,163,182,.07), transparent 60%),
         radial-gradient(520px 320px at 60% 100%, rgba(151,163,182,.06), transparent 60%);
       pointer-events:none;
       z-index:-1;
@@ -51,7 +49,7 @@
 
     .container{width:100%;max-width:var(--maxw);margin:0 auto;padding:var(--space)}
 
-    /* ===== Header (matches your other pages) ===== */
+    /* Header matches other pages */
     header{
       position:sticky;
       top:0;
@@ -65,7 +63,6 @@
     .pill{
       padding:8px 12px;border:1px solid #2a3145;border-radius:999px;
       color:var(--muted);font-size:12px;line-height:1;
-      background:rgba(151,163,182,.05);
     }
     .btn-row{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
     .cta{
@@ -81,7 +78,6 @@
       border:1px solid #2a3145;
       box-shadow:none;
     }
-    /* =========================================== */
 
     section{padding:34px 0}
     h1,h2,h3{letter-spacing:-.015em}
@@ -146,6 +142,7 @@
       margin:0 0 16px;
     }
 
+    /* Neutral pills only (no colored variants) */
     .kpi{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
     .kpi .pill{
       color:var(--text);
@@ -161,17 +158,16 @@
       opacity:.9;
     }
 
-    /* Updates list */
+    /* Updates: easier to fill out */
     .updates{display:grid;gap:12px;margin-top:16px}
+
+    /* Single “template” update card */
     .update{
-      display:grid;
-      grid-template-columns: 150px 1fr;
-      gap:14px;
-      padding:16px 16px;
       border-radius:14px;
       border:1px solid var(--line);
       background:rgba(23,26,34,.72);
       box-shadow: 0 10px 30px rgba(0,0,0,.22);
+      padding:16px 16px;
       transition: transform .18s ease, border-color .18s ease, background-color .18s ease;
     }
     .update:hover{
@@ -179,32 +175,47 @@
       border-color:#2f3650;
       background:rgba(26,30,40,.78);
     }
-    .date{
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.2;
-      white-space:nowrap;
-      padding-top:2px;
+
+    /* Header row inside update */
+    .update-head{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:10px;
     }
-    .title{
+    .update-title{
       font-weight:900;
-      margin:0 0 6px;
       font-size:16px;
       letter-spacing:-.01em;
-    }
-    .body{
       margin:0;
+    }
+    .update-meta{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
       color:var(--muted);
-      line-height:1.55;
+      font-size:13px;
     }
-    .tagrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-    .tag{
-      display:inline-flex;align-items:center;gap:6px;
-      padding:6px 10px;border-radius:999px;font-size:12px;line-height:1;
-      border:1px solid #2a3145;color:var(--muted);background:rgba(151,163,182,.06);
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      line-height:1;
+      border:1px solid #2a3145;
+      color:var(--muted);
+      background:rgba(151,163,182,.06);
+      white-space:nowrap;
     }
-    .tag.accent{border-color:rgba(245,158,11,.35);color:var(--text);background:rgba(245,158,11,.08)}
-    .tag.good{border-color:rgba(34,197,94,.35);color:var(--text);background:rgba(34,197,94,.08)}
+
+    /* Simple list blocks */
+    .update-body{color:var(--muted);line-height:1.55;margin:0}
+    .bullets{margin:10px 0 0;padding-left:18px;color:var(--muted)}
+    .bullets li{margin:6px 0}
 
     footer{padding:28px 0 60px;color:var(--muted);border-top:1px solid var(--line)}
 
@@ -216,14 +227,11 @@
       .hero{grid-template-columns:1fr}
       .btn-row{width:100%}
       .btn-row > *{flex:1 1 auto}
-      .update{grid-template-columns: 1fr}
-      .date{white-space:normal}
     }
   </style>
 </head>
 
 <body>
-  <!-- Header matched to your other pages -->
   <header>
     <div class="container nav">
       <a class="brand" href="/" style="text-decoration:none;">
@@ -231,7 +239,7 @@
         OpenTTD Online
       </a>
 
-      <span class="pill">OpenTTD 15.1 • Browser Play</span>
+      <span class="pill">OpenTTD 15.2 • Browser Play</span>
 
       <div class="btn-row">
         <a class="cta secondary" href="/#about">About</a>
@@ -280,28 +288,16 @@
         <div class="card">
           <h3>Stability</h3>
           <p>Fix regressions quickly, reduce crash reports, and harden the edges.</p>
-          <div class="tagrow">
-            <span class="tag good">Live</span>
-            <span class="tag">Bugfixes</span>
-          </div>
         </div>
 
         <div class="card">
           <h3>Performance</h3>
           <p>Faster load times, better caching, and smoother play on low-end devices.</p>
-          <div class="tagrow">
-            <span class="tag accent">In progress</span>
-            <span class="tag">Caching</span>
-          </div>
         </div>
 
         <div class="card">
           <h3>Quality of life</h3>
           <p>Small UX improvements that make the experience feel cleaner and easier.</p>
-          <div class="tagrow">
-            <span class="tag">UI</span>
-            <span class="tag">Accessibility</span>
-          </div>
         </div>
       </div>
     </section>
@@ -310,53 +306,70 @@
     <section id="updates">
       <h2>Latest updates</h2>
       <p class="lead">
-        Add a new entry at the top when you post. Keep it short: what changed, why it matters, what’s next.
+        To add a new post: copy one <code>&lt;article class="update"&gt;</code> block, paste it at the top, and edit the 3 lines in the header + bullets.
       </p>
 
       <div class="updates">
-        <div class="update">
-          <div class="date">Feb 27, 2026</div>
-          <div>
-            <div class="title">Update title goes here</div>
-            <p class="body">
-              One or two paragraphs describing what shipped and what you’re working on next.
-              Link out to details like <a href="#" style="text-decoration:underline;">a PR</a> or <a href="#" style="text-decoration:underline;">an issue</a>.
-            </p>
-            <div class="tagrow">
-              <span class="tag accent">Shipped</span>
-              <span class="tag">Web</span>
-              <span class="tag">UI</span>
+        <!-- NEW UPDATE: Feb 27 -->
+        <article class="update">
+          <div class="update-head">
+            <h3 class="update-title">Google Drive support</h3>
+            <div class="update-meta">
+              <span class="chip">Feb 27, 2026</span>
+              <span class="chip">Update</span>
             </div>
           </div>
-        </div>
+          <p class="update-body">
+            You can now use Google Drive for easier file management and smoother workflows across devices.
+          </p>
+          <ul class="bullets">
+            <li>Added Google Drive integration for saving/loading files.</li>
+            <li>Improved compatibility for players switching between desktop and mobile.</li>
+            <li>More cloud options are on the radar—feedback welcome.</li>
+          </ul>
+        </article>
 
-        <div class="update">
-          <div class="date">Feb 10, 2026</div>
-          <div>
-            <div class="title">Another update headline</div>
-            <p class="body">
-              Short progress note. Mention any known issues, and what’s happening next week.
-            </p>
-            <div class="tagrow">
-              <span class="tag">Fix</span>
-              <span class="tag good">Improvement</span>
+        <!-- UPDATE: Feb 24 -->
+        <article class="update">
+          <div class="update-head">
+            <h3 class="update-title">Version 15.2 released (multiple language support)</h3>
+            <div class="update-meta">
+              <span class="chip">Feb 24, 2026</span>
+              <span class="chip">Release</span>
+              <span class="chip">v15.2</span>
             </div>
           </div>
-        </div>
+          <p class="update-body">
+            OpenTTD Online has been updated to <strong>v15.2</strong> with improved support for multiple languages across the site and UI.
+          </p>
+          <ul class="bullets">
+            <li>Added multi-language support to make the experience more accessible worldwide.</li>
+            <li>Cleaned up text rendering and spacing for longer translations.</li>
+            <li>More languages and polish updates will continue to roll out.</li>
+          </ul>
+        </article>
 
-        <div class="update">
-          <div class="date">Jan 30, 2026</div>
-          <div>
-            <div class="title">Milestone / release note</div>
-            <p class="body">
-              Summarize a bigger drop: performance gains, new features, and how to report problems.
-            </p>
-            <div class="tagrow">
-              <span class="tag accent">Release</span>
-              <span class="tag">v1.2.3</span>
+        <!-- TEMPLATE (copy this block, paste at top, and edit) -->
+        <!--
+        <article class="update">
+          <div class="update-head">
+            <h3 class="update-title">Short update title</h3>
+            <div class="update-meta">
+              <span class="chip">MMM DD, YYYY</span>
+              <span class="chip">Update or Release</span>
+              <span class="chip">Optional: version</span>
             </div>
           </div>
-        </div>
+          <p class="update-body">
+            One sentence summary of what changed and why it matters.
+          </p>
+          <ul class="bullets">
+            <li>Bullet 1 (what shipped)</li>
+            <li>Bullet 2 (impact / detail)</li>
+            <li>Bullet 3 (what’s next)</li>
+          </ul>
+        </article>
+        -->
       </div>
     </section>
   </main>
