@@ -165,6 +165,22 @@
       border-color:#2f3650;
       box-shadow:0 0 0 3px rgba(245,158,11,.15);
     }
+
+    /* Reviews pagination */
+    #reviewPager .pagebtn{
+      padding:8px 12px;
+      border:1px solid #2a3145;
+      border-radius:999px;
+      background:#22293a;
+      color:var(--text);
+      cursor:pointer;
+      font-size:12px;
+      line-height:1;
+    }
+    #reviewPager .pagebtn:disabled{
+      opacity:.5;
+      cursor:not-allowed;
+    }
   </style>
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9145511719373088"
@@ -377,8 +393,8 @@
         </div>
 
         <div>
-          <div class="cards" id="reviewCards" style="grid-template-columns:1fr; gap:14px;">
-          </div>
+          <div class="cards" id="reviewCards" style="grid-template-columns:1fr; gap:14px;"></div>
+          <div id="reviewPager" style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:12px;"></div>
         </div>
       </div>
     </section>
@@ -392,6 +408,12 @@
       const summaryEl = document.getElementById("reviewSummary");
       const formEl = document.getElementById("reviewForm");
       const refreshBtn = document.getElementById("refreshReviews");
+
+      // Pagination additions (no other logic changed)
+      const pagerEl = document.getElementById("reviewPager");
+      const REVIEWS_PER_PAGE = 5;
+      let allReviews = [];
+      let currentPage = 1;
 
       function escapeHtml(s) {
         return String(s).replace(/[&<>"']/g, c => ({
@@ -420,6 +442,62 @@
         `;
       }
 
+      // Pagination helpers
+      function renderPager(total, page) {
+        const pageCount = Math.max(1, Math.ceil(total / REVIEWS_PER_PAGE));
+        currentPage = Math.min(Math.max(1, page), pageCount);
+
+        pagerEl.innerHTML = `
+          <button class="pagebtn" id="prevPage" ${currentPage === 1 ? "disabled" : ""}>Prev</button>
+          <span class="pill">Page ${currentPage} / ${pageCount}</span>
+          <button class="pagebtn" id="nextPage" ${currentPage === pageCount ? "disabled" : ""}>Next</button>
+        `;
+
+        document.getElementById("prevPage").addEventListener("click", () => renderPage(currentPage - 1));
+        document.getElementById("nextPage").addEventListener("click", () => renderPage(currentPage + 1));
+      }
+
+      function renderPage(page) {
+        const total = allReviews.length;
+
+        if (!total) {
+          cardsEl.innerHTML = `
+            <div class="card">
+              <h3 style="margin-top:0;">No reviews yet</h3>
+              <p style="margin:0; color:var(--muted);">Be the first to leave one!</p>
+            </div>
+          `;
+          pagerEl.innerHTML = "";
+          return;
+        }
+
+        const pageCount = Math.ceil(total / REVIEWS_PER_PAGE);
+        currentPage = Math.min(Math.max(1, page), pageCount);
+
+        const start = (currentPage - 1) * REVIEWS_PER_PAGE;
+        const slice = allReviews.slice(start, start + REVIEWS_PER_PAGE);
+
+        cardsEl.innerHTML = slice.map(r => `
+          <div class="card">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+              <h3 style="margin:0;">${escapeHtml(r.name)}</h3>
+              <span style="color:var(--accent); font-size:14px;">
+                ${starEmoji(r.rating)}
+              </span>
+            </div>
+
+            <!-- Fix indent issue: keep pre-wrap but remove template indentation + trim() -->
+            <p style="margin:10px 0 0; color:var(--text); white-space:pre-wrap;">${escapeHtml((r.text ?? "").trim())}</p>
+
+            <p style="margin:10px 0 0; color:var(--muted); font-size:13px;">
+              ${new Date(r.created_at).toLocaleDateString()}
+            </p>
+          </div>
+        `).join("");
+
+        renderPager(total, currentPage);
+      }
+
       async function loadReviews() {
         cardsEl.innerHTML = `
           <div class="card">
@@ -427,6 +505,7 @@
           </div>
         `;
         summaryEl.innerHTML = `<span class="pill">Loading…</span>`;
+        pagerEl.innerHTML = "";
 
         const res = await fetch(`${API_BASE}/api/reviews?game=${encodeURIComponent(GAME_SLUG)}`);
         const data = await res.json().catch(() => ({}));
@@ -439,40 +518,15 @@
               <p style="margin:0; color:var(--muted);">Try again in a moment.</p>
             </div>
           `;
+          pagerEl.innerHTML = "";
           return;
         }
 
         const reviews = data.reviews || [];
-        renderSummary(reviews);
+        allReviews = reviews;
 
-        if (!reviews.length) {
-          cardsEl.innerHTML = `
-            <div class="card">
-              <h3 style="margin-top:0;">No reviews yet</h3>
-              <p style="margin:0; color:var(--muted);">Be the first to leave one!</p>
-            </div>
-          `;
-          return;
-        }
-
-        cardsEl.innerHTML = reviews.map(r => `
-          <div class="card">
-            <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
-              <h3 style="margin:0;">${escapeHtml(r.name)}</h3>
-              <span style="color:var(--accent); font-size:14px;">
-                ${starEmoji(r.rating)}
-              </span>
-            </div>
-
-            <p style="margin:10px 0 0; color:var(--text); white-space:pre-wrap;">
-              ${escapeHtml(r.text)}
-            </p>
-
-            <p style="margin:10px 0 0; color:var(--muted); font-size:13px;">
-              ${new Date(r.created_at).toLocaleDateString()}
-            </p>
-          </div>
-        `).join("");
+        renderSummary(allReviews);
+        renderPage(1);
       }
 
       formEl.addEventListener("submit", async (e) => {
