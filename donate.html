@@ -148,7 +148,17 @@
     .use-list{margin:10px 0 0;padding-left:18px}
     .use-list li{margin:8px 0;color:var(--muted)}
     .kpi{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-    .kpi .pill{color:var(--text);border-color:#2f3650;background:rgba(245,158,11,.06)}
+    /* Make KPI pills gray instead of orangish */
+    .kpi .pill{
+      color: var(--text);
+      border-color: #2f3650;              /* keep as-is, or tweak */
+      background: rgba(151,163,182,.10);  /* gray using your --muted tone */
+    }
+
+    /* Optional: slightly grayer border too */
+    .kpi .pill{
+      border-color: #3a435c;
+    }
 
     /* Suggested amount pills (clickable) */
     .pill.donate-pill{
@@ -487,4 +497,5 @@
 </body>
 
 </html>
+
 
