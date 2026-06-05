@@ -1,0 +1,1 @@
+/emsdk/upstream/emscripten/em++ -sUSE_FREETYPE=1 -O3 -DNDEBUG -sUSE_FREETYPE=1 --pre-js /src/build/preload_langs.js -rdynamic @CMakeFiles/openttd_test.dir/objects1.rsp -o openttd_test.js @CMakeFiles/openttd_test.dir/linklibs.rsp

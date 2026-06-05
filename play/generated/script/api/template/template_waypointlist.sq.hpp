@@ -1,0 +1,28 @@
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
+ */
+
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "../script_waypointlist.hpp"
+
+namespace SQConvert {
+	/* Allow ScriptWaypointList to be used as Squirrel parameter */
+	template <> struct Param<ScriptWaypointList *> { static inline ScriptWaypointList *Get(HSQUIRRELVM vm, int index) { return  static_cast<ScriptWaypointList *>(Squirrel::GetRealInstance(vm, index, "WaypointList")); } };
+	template <> struct Param<ScriptWaypointList &> { static inline ScriptWaypointList &Get(HSQUIRRELVM vm, int index) { return *static_cast<ScriptWaypointList *>(Squirrel::GetRealInstance(vm, index, "WaypointList")); } };
+	template <> struct Param<const ScriptWaypointList *> { static inline const ScriptWaypointList *Get(HSQUIRRELVM vm, int index) { return  static_cast<ScriptWaypointList *>(Squirrel::GetRealInstance(vm, index, "WaypointList")); } };
+	template <> struct Param<const ScriptWaypointList &> { static inline const ScriptWaypointList &Get(HSQUIRRELVM vm, int index) { return *static_cast<ScriptWaypointList *>(Squirrel::GetRealInstance(vm, index, "WaypointList")); } };
+	template <> struct Return<ScriptWaypointList *> { static inline int Set(HSQUIRRELVM vm, ScriptWaypointList *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "WaypointList", res, nullptr, DefSQDestructorCallback<ScriptWaypointList>, true); return 1; } };
+} // namespace SQConvert
+
+namespace SQConvert {
+	/* Allow ScriptWaypointList_Vehicle to be used as Squirrel parameter */
+	template <> struct Param<ScriptWaypointList_Vehicle *> { static inline ScriptWaypointList_Vehicle *Get(HSQUIRRELVM vm, int index) { return  static_cast<ScriptWaypointList_Vehicle *>(Squirrel::GetRealInstance(vm, index, "WaypointList_Vehicle")); } };
+	template <> struct Param<ScriptWaypointList_Vehicle &> { static inline ScriptWaypointList_Vehicle &Get(HSQUIRRELVM vm, int index) { return *static_cast<ScriptWaypointList_Vehicle *>(Squirrel::GetRealInstance(vm, index, "WaypointList_Vehicle")); } };
+	template <> struct Param<const ScriptWaypointList_Vehicle *> { static inline const ScriptWaypointList_Vehicle *Get(HSQUIRRELVM vm, int index) { return  static_cast<ScriptWaypointList_Vehicle *>(Squirrel::GetRealInstance(vm, index, "WaypointList_Vehicle")); } };
+	template <> struct Param<const ScriptWaypointList_Vehicle &> { static inline const ScriptWaypointList_Vehicle &Get(HSQUIRRELVM vm, int index) { return *static_cast<ScriptWaypointList_Vehicle *>(Squirrel::GetRealInstance(vm, index, "WaypointList_Vehicle")); } };
+	template <> struct Return<ScriptWaypointList_Vehicle *> { static inline int Set(HSQUIRRELVM vm, ScriptWaypointList_Vehicle *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "WaypointList_Vehicle", res, nullptr, DefSQDestructorCallback<ScriptWaypointList_Vehicle>, true); return 1; } };
+} // namespace SQConvert

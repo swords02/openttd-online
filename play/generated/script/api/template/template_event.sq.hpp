@@ -1,0 +1,28 @@
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
+ */
+
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "../script_event.hpp"
+
+namespace SQConvert {
+	/* Allow ScriptEvent to be used as Squirrel parameter */
+	template <> struct Param<ScriptEvent *> { static inline ScriptEvent *Get(HSQUIRRELVM vm, int index) { return  static_cast<ScriptEvent *>(Squirrel::GetRealInstance(vm, index, "Event")); } };
+	template <> struct Param<ScriptEvent &> { static inline ScriptEvent &Get(HSQUIRRELVM vm, int index) { return *static_cast<ScriptEvent *>(Squirrel::GetRealInstance(vm, index, "Event")); } };
+	template <> struct Param<const ScriptEvent *> { static inline const ScriptEvent *Get(HSQUIRRELVM vm, int index) { return  static_cast<ScriptEvent *>(Squirrel::GetRealInstance(vm, index, "Event")); } };
+	template <> struct Param<const ScriptEvent &> { static inline const ScriptEvent &Get(HSQUIRRELVM vm, int index) { return *static_cast<ScriptEvent *>(Squirrel::GetRealInstance(vm, index, "Event")); } };
+	template <> struct Return<ScriptEvent *> { static inline int Set(HSQUIRRELVM vm, ScriptEvent *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } Squirrel::CreateClassInstanceVM(vm, "Event", res, nullptr, DefSQDestructorCallback<ScriptEvent>, true); return 1; } };
+} // namespace SQConvert
+
+namespace SQConvert {
+	/* Allow ScriptEventController to be used as Squirrel parameter */
+	template <> struct Param<ScriptEventController *> { static inline ScriptEventController *Get(HSQUIRRELVM vm, int index) { return  static_cast<ScriptEventController *>(Squirrel::GetRealInstance(vm, index, "EventController")); } };
+	template <> struct Param<ScriptEventController &> { static inline ScriptEventController &Get(HSQUIRRELVM vm, int index) { return *static_cast<ScriptEventController *>(Squirrel::GetRealInstance(vm, index, "EventController")); } };
+	template <> struct Param<const ScriptEventController *> { static inline const ScriptEventController *Get(HSQUIRRELVM vm, int index) { return  static_cast<ScriptEventController *>(Squirrel::GetRealInstance(vm, index, "EventController")); } };
+	template <> struct Param<const ScriptEventController &> { static inline const ScriptEventController &Get(HSQUIRRELVM vm, int index) { return *static_cast<ScriptEventController *>(Squirrel::GetRealInstance(vm, index, "EventController")); } };
+	template <> struct Return<ScriptEventController *> { static inline int Set(HSQUIRRELVM vm, ScriptEventController *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "EventController", res, nullptr, DefSQDestructorCallback<ScriptEventController>, true); return 1; } };
+} // namespace SQConvert

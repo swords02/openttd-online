@@ -1,0 +1,115 @@
+The target system is: Emscripten - 1 - x86
+The host system is: Linux - 6.6.87.2-microsoft-standard-WSL2 - x86_64
+Performing C++ SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD succeeded with the following output:
+Change Dir: /src/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_8fe00/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_8fe00.dir/build.make CMakeFiles/cmTC_8fe00.dir/build
+gmake[1]: Entering directory '/src/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_8fe00.dir/src.cxx.o
+/emsdk/upstream/emscripten/em++ -DCMAKE_HAVE_LIBC_PTHREAD  -sUSE_FREETYPE=1  -std=c++20 -MD -MT CMakeFiles/cmTC_8fe00.dir/src.cxx.o -MF CMakeFiles/cmTC_8fe00.dir/src.cxx.o.d -o CMakeFiles/cmTC_8fe00.dir/src.cxx.o -c /src/build/CMakeFiles/CMakeTmp/src.cxx
+ports:INFO: retrieving port: freetype from https://github.com/emscripten-ports/FreeType/archive/version_1.zip
+ports:INFO: unpacking port: freetype
+cache:INFO: generating port: sysroot/lib/wasm32-emscripten/libfreetype.a... (this will be cached in "/emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/libfreetype.a" for subsequent builds)
+system_libs:INFO: compiled 52 inputs in 1.33s
+cache:INFO:  - ok
+Linking CXX executable cmTC_8fe00.js
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8fe00.dir/link.txt --verbose=1
+/emsdk/upstream/emscripten/em++ -sUSE_FREETYPE=1  -sUSE_FREETYPE=1 --pre-js /src/build/preload_langs.js -rdynamic  @CMakeFiles/cmTC_8fe00.dir/objects1.rsp -o cmTC_8fe00.js 
+cache:INFO: generating system asset: symbol_lists/7fe120d89c5abc1b23e6aba650b15f27c9e26e93.json... (this will be cached in "/emsdk/upstream/emscripten/cache/symbol_lists/7fe120d89c5abc1b23e6aba650b15f27c9e26e93.json" for subsequent builds)
+cache:INFO:  - ok
+gmake[1]: Leaving directory '/src/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Performing C++ SOURCE FILE Test LIBLZMA_FOUND succeeded with the following output:
+Change Dir: /src/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_87897/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_87897.dir/build.make CMakeFiles/cmTC_87897.dir/build
+gmake[1]: Entering directory '/src/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_87897.dir/src.cxx.o
+/emsdk/upstream/emscripten/em++ -DLIBLZMA_FOUND  -sUSE_FREETYPE=1 --use-port=contrib.liblzma -std=c++20 -MD -MT CMakeFiles/cmTC_87897.dir/src.cxx.o -MF CMakeFiles/cmTC_87897.dir/src.cxx.o.d -o CMakeFiles/cmTC_87897.dir/src.cxx.o -c /src/build/CMakeFiles/CMakeTmp/src.cxx
+ports:INFO: retrieving port: contrib.liblzma from https://github.com/tukaani-project/xz/releases/download/v5.4.6/xz-5.4.6.tar.xz
+ports:INFO: unpacking port: contrib.liblzma
+cache:INFO: generating port: sysroot/lib/wasm32-emscripten/liblzma.a... (this will be cached in "/emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/liblzma.a" for subsequent builds)
+root:INFO: building port: contrib.liblzma
+system_libs:INFO: compiled 78 inputs in 0.87s
+cache:INFO:  - ok
+Linking CXX executable cmTC_87897.js
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_87897.dir/link.txt --verbose=1
+/emsdk/upstream/emscripten/em++ -sUSE_FREETYPE=1 --use-port=contrib.liblzma -sUSE_FREETYPE=1 --pre-js /src/build/preload_langs.js -rdynamic  @CMakeFiles/cmTC_87897.dir/objects1.rsp -o cmTC_87897.js 
+gmake[1]: Leaving directory '/src/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+
+    #include <lzma.h>
+    int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_ATOMICS_WITHOUT_LIB succeeded with the following output:
+Change Dir: /src/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_bb026/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_bb026.dir/build.make CMakeFiles/cmTC_bb026.dir/build
+gmake[1]: Entering directory '/src/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_bb026.dir/src.cxx.o
+/emsdk/upstream/emscripten/em++ -DHAVE_CXX_ATOMICS_WITHOUT_LIB  -sUSE_FREETYPE=1  -std=c++17 -std=c++20 -MD -MT CMakeFiles/cmTC_bb026.dir/src.cxx.o -MF CMakeFiles/cmTC_bb026.dir/src.cxx.o.d -o CMakeFiles/cmTC_bb026.dir/src.cxx.o -c /src/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_bb026.js
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bb026.dir/link.txt --verbose=1
+/emsdk/upstream/emscripten/em++ -sUSE_FREETYPE=1  -std=c++17 -sUSE_FREETYPE=1 --pre-js /src/build/preload_langs.js -rdynamic  @CMakeFiles/cmTC_bb026.dir/objects1.rsp -o cmTC_bb026.js 
+gmake[1]: Leaving directory '/src/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+
+#include <atomic>
+std::atomic<int> x;
+std::atomic<short> y;
+std::atomic<char> z;
+int main() {
+  ++z;
+  ++y;
+  return ++x;
+}
+
+Performing C++ SOURCE FILE Test HAVE_CXX_ATOMICS64_WITHOUT_LIB succeeded with the following output:
+Change Dir: /src/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_1a5d2/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_1a5d2.dir/build.make CMakeFiles/cmTC_1a5d2.dir/build
+gmake[1]: Entering directory '/src/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_1a5d2.dir/src.cxx.o
+/emsdk/upstream/emscripten/em++ -DHAVE_CXX_ATOMICS64_WITHOUT_LIB  -sUSE_FREETYPE=1 -std=c++17 -std=c++20 -MD -MT CMakeFiles/cmTC_1a5d2.dir/src.cxx.o -MF CMakeFiles/cmTC_1a5d2.dir/src.cxx.o.d -o CMakeFiles/cmTC_1a5d2.dir/src.cxx.o -c /src/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_1a5d2.js
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1a5d2.dir/link.txt --verbose=1
+/emsdk/upstream/emscripten/em++ -sUSE_FREETYPE=1 -std=c++17 -sUSE_FREETYPE=1 --pre-js /src/build/preload_langs.js -rdynamic  @CMakeFiles/cmTC_1a5d2.dir/objects1.rsp -o cmTC_1a5d2.js 
+gmake[1]: Leaving directory '/src/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+
+#include <atomic>
+#include <cstdint>
+std::atomic<uint64_t> x (0);
+int main() {
+  uint64_t i = x.load(std::memory_order_relaxed);
+  (void)i;
+  return 0;
+}
+

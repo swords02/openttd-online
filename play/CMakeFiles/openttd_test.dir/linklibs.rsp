@@ -1,0 +1,1 @@
+ -sUSE_LIBPNG=1 -sUSE_ZLIB=1 --use-port=contrib.liblzma -sUSE_SDL=2 /emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/libfreetype.a 

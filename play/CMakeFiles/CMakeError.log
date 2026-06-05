@@ -1,0 +1,19 @@
+Performing C++ SOURCE FILE Test SSE_FOUND failed with the following output:
+Change Dir: /src/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_722b9/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_722b9.dir/build.make CMakeFiles/cmTC_722b9.dir/build
+gmake[1]: Entering directory '/src/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_722b9.dir/src.cxx.o
+/emsdk/upstream/emscripten/em++ -DSSE_FOUND  -sUSE_FREETYPE=1 -msse4.1 -std=c++20 -MD -MT CMakeFiles/cmTC_722b9.dir/src.cxx.o -MF CMakeFiles/cmTC_722b9.dir/src.cxx.o.d -o CMakeFiles/cmTC_722b9.dir/src.cxx.o -c /src/build/CMakeFiles/CMakeTmp/src.cxx
+em++: error: passing any of -msse, -msse2, -msse3, -mssse3, -msse4.1, -msse4.2, -msse4, -mavx, -mfpu=neon flags also requires passing -msimd128 (or -mrelaxed-simd)!
+gmake[1]: *** [CMakeFiles/cmTC_722b9.dir/build.make:79: CMakeFiles/cmTC_722b9.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/src/build/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_722b9/fast] Error 2
+
+
+Source file was:
+
+    #include <xmmintrin.h>
+    #include <smmintrin.h>
+    #include <tmmintrin.h>
+    int main() { return 0; }

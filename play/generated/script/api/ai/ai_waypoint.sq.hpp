@@ -1,0 +1,39 @@
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
+ */
+
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "../script_waypoint.hpp"
+#include "../template/template_waypoint.sq.hpp"
+
+
+template <> SQInteger PushClassName<ScriptWaypoint, ScriptType::AI>(HSQUIRRELVM vm) { sq_pushstring(vm, "AIWaypoint"); return 1; }
+
+void SQAIWaypoint_Register(Squirrel &engine)
+{
+	DefSQClass<ScriptWaypoint, ScriptType::AI> SQAIWaypoint("AIWaypoint");
+	SQAIWaypoint.PreRegister(engine, "AIBaseStation");
+
+	SQAIWaypoint.DefSQConst(engine, ScriptWaypoint::ERR_WAYPOINT_BASE,                          "ERR_WAYPOINT_BASE");
+	SQAIWaypoint.DefSQConst(engine, ScriptWaypoint::ERR_WAYPOINT_TOO_CLOSE_TO_ANOTHER_WAYPOINT, "ERR_WAYPOINT_TOO_CLOSE_TO_ANOTHER_WAYPOINT");
+	SQAIWaypoint.DefSQConst(engine, ScriptWaypoint::ERR_WAYPOINT_ADJOINS_MULTIPLE_WAYPOINTS,    "ERR_WAYPOINT_ADJOINS_MULTIPLE_WAYPOINTS");
+	SQAIWaypoint.DefSQConst(engine, ScriptWaypoint::WAYPOINT_RAIL,                              "WAYPOINT_RAIL");
+	SQAIWaypoint.DefSQConst(engine, ScriptWaypoint::WAYPOINT_BUOY,                              "WAYPOINT_BUOY");
+	SQAIWaypoint.DefSQConst(engine, ScriptWaypoint::WAYPOINT_ANY,                               "WAYPOINT_ANY");
+
+	ScriptError::RegisterErrorMap(STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT,           ScriptWaypoint::ERR_WAYPOINT_TOO_CLOSE_TO_ANOTHER_WAYPOINT);
+	ScriptError::RegisterErrorMap(STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING, ScriptWaypoint::ERR_WAYPOINT_ADJOINS_MULTIPLE_WAYPOINTS);
+
+	ScriptError::RegisterErrorMapString(ScriptWaypoint::ERR_WAYPOINT_TOO_CLOSE_TO_ANOTHER_WAYPOINT, "ERR_WAYPOINT_TOO_CLOSE_TO_ANOTHER_WAYPOINT");
+	ScriptError::RegisterErrorMapString(ScriptWaypoint::ERR_WAYPOINT_ADJOINS_MULTIPLE_WAYPOINTS,    "ERR_WAYPOINT_ADJOINS_MULTIPLE_WAYPOINTS");
+
+	SQAIWaypoint.DefSQStaticMethod(engine, &ScriptWaypoint::IsValidWaypoint, "IsValidWaypoint", ".i");
+	SQAIWaypoint.DefSQStaticMethod(engine, &ScriptWaypoint::GetWaypointID,   "GetWaypointID",   ".i");
+	SQAIWaypoint.DefSQStaticMethod(engine, &ScriptWaypoint::HasWaypointType, "HasWaypointType", ".ii");
+
+	SQAIWaypoint.PostRegister(engine);
+}

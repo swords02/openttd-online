@@ -1,0 +1,115 @@
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
+ */
+
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "../script_order.hpp"
+#include "../template/template_order.sq.hpp"
+
+
+template <> SQInteger PushClassName<ScriptOrder, ScriptType::AI>(HSQUIRRELVM vm) { sq_pushstring(vm, "AIOrder"); return 1; }
+
+void SQAIOrder_Register(Squirrel &engine)
+{
+	DefSQClass<ScriptOrder, ScriptType::AI> SQAIOrder("AIOrder");
+	SQAIOrder.PreRegister(engine, "AIObject");
+
+	SQAIOrder.DefSQConst(engine, ScriptOrder::ERR_ORDER_BASE,                                   "ERR_ORDER_BASE");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::ERR_ORDER_TOO_MANY,                               "ERR_ORDER_TOO_MANY");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION, "ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::ERR_ORDER_AIRCRAFT_NOT_ENOUGH_RANGE,              "ERR_ORDER_AIRCRAFT_NOT_ENOUGH_RANGE");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::OF_NONE,                                          "OF_NONE");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::OF_NON_STOP_INTERMEDIATE,                         "OF_NON_STOP_INTERMEDIATE");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::OF_NON_STOP_DESTINATION,                          "OF_NON_STOP_DESTINATION");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::OF_UNLOAD,                                        "OF_UNLOAD");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::OF_TRANSFER,                                      "OF_TRANSFER");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::OF_NO_UNLOAD,                                     "OF_NO_UNLOAD");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::OF_FULL_LOAD,                                     "OF_FULL_LOAD");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::OF_FULL_LOAD_ANY,                                 "OF_FULL_LOAD_ANY");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::OF_NO_LOAD,                                       "OF_NO_LOAD");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::OF_SERVICE_IF_NEEDED,                             "OF_SERVICE_IF_NEEDED");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::OF_STOP_IN_DEPOT,                                 "OF_STOP_IN_DEPOT");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::OF_GOTO_NEAREST_DEPOT,                            "OF_GOTO_NEAREST_DEPOT");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::OF_NON_STOP_FLAGS,                                "OF_NON_STOP_FLAGS");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::OF_UNLOAD_FLAGS,                                  "OF_UNLOAD_FLAGS");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::OF_LOAD_FLAGS,                                    "OF_LOAD_FLAGS");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::OF_DEPOT_FLAGS,                                   "OF_DEPOT_FLAGS");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::OF_INVALID,                                       "OF_INVALID");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::OC_LOAD_PERCENTAGE,                               "OC_LOAD_PERCENTAGE");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::OC_RELIABILITY,                                   "OC_RELIABILITY");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::OC_MAX_RELIABILITY,                               "OC_MAX_RELIABILITY");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::OC_MAX_SPEED,                                     "OC_MAX_SPEED");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::OC_AGE,                                           "OC_AGE");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::OC_REQUIRES_SERVICE,                              "OC_REQUIRES_SERVICE");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::OC_UNCONDITIONALLY,                               "OC_UNCONDITIONALLY");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::OC_REMAINING_LIFETIME,                            "OC_REMAINING_LIFETIME");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::OC_INVALID,                                       "OC_INVALID");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::CF_EQUALS,                                        "CF_EQUALS");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::CF_NOT_EQUALS,                                    "CF_NOT_EQUALS");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::CF_LESS_THAN,                                     "CF_LESS_THAN");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::CF_LESS_EQUALS,                                   "CF_LESS_EQUALS");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::CF_MORE_THAN,                                     "CF_MORE_THAN");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::CF_MORE_EQUALS,                                   "CF_MORE_EQUALS");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::CF_IS_TRUE,                                       "CF_IS_TRUE");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::CF_IS_FALSE,                                      "CF_IS_FALSE");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::CF_INVALID,                                       "CF_INVALID");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::ORDER_CURRENT,                                    "ORDER_CURRENT");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::ORDER_INVALID,                                    "ORDER_INVALID");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::STOPLOCATION_NEAR,                                "STOPLOCATION_NEAR");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::STOPLOCATION_MIDDLE,                              "STOPLOCATION_MIDDLE");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::STOPLOCATION_FAR,                                 "STOPLOCATION_FAR");
+	SQAIOrder.DefSQConst(engine, ScriptOrder::STOPLOCATION_INVALID,                             "STOPLOCATION_INVALID");
+
+	ScriptError::RegisterErrorMap(STR_ERROR_NO_MORE_SPACE_FOR_ORDERS,          ScriptOrder::ERR_ORDER_TOO_MANY);
+	ScriptError::RegisterErrorMap(STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION, ScriptOrder::ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION);
+	ScriptError::RegisterErrorMap(STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE,         ScriptOrder::ERR_ORDER_AIRCRAFT_NOT_ENOUGH_RANGE);
+
+	ScriptError::RegisterErrorMapString(ScriptOrder::ERR_ORDER_TOO_MANY,                               "ERR_ORDER_TOO_MANY");
+	ScriptError::RegisterErrorMapString(ScriptOrder::ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION, "ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION");
+	ScriptError::RegisterErrorMapString(ScriptOrder::ERR_ORDER_AIRCRAFT_NOT_ENOUGH_RANGE,              "ERR_ORDER_AIRCRAFT_NOT_ENOUGH_RANGE");
+
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::IsValidVehicleOrder,           "IsValidVehicleOrder",           ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::IsGotoStationOrder,            "IsGotoStationOrder",            ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::IsGotoDepotOrder,              "IsGotoDepotOrder",              ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::IsGotoWaypointOrder,           "IsGotoWaypointOrder",           ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::IsConditionalOrder,            "IsConditionalOrder",            ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::IsVoidOrder,                   "IsVoidOrder",                   ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::IsRefitOrder,                  "IsRefitOrder",                  ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::IsCurrentOrderPartOfOrderList, "IsCurrentOrderPartOfOrderList", ".i");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::ResolveOrderPosition,          "ResolveOrderPosition",          ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::AreOrderFlagsValid,            "AreOrderFlagsValid",            ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::IsValidConditionalOrder,       "IsValidConditionalOrder",       ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::GetOrderCount,                 "GetOrderCount",                 ".i");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::GetOrderDestination,           "GetOrderDestination",           ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::GetOrderFlags,                 "GetOrderFlags",                 ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::GetOrderJumpTo,                "GetOrderJumpTo",                ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::GetOrderCondition,             "GetOrderCondition",             ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::GetOrderCompareFunction,       "GetOrderCompareFunction",       ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::GetOrderCompareValue,          "GetOrderCompareValue",          ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::GetStopLocation,               "GetStopLocation",               ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::GetOrderRefit,                 "GetOrderRefit",                 ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::SetOrderJumpTo,                "SetOrderJumpTo",                ".iii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::SetOrderCondition,             "SetOrderCondition",             ".iii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::SetOrderCompareFunction,       "SetOrderCompareFunction",       ".iii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::SetOrderCompareValue,          "SetOrderCompareValue",          ".iii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::SetStopLocation,               "SetStopLocation",               ".iii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::SetOrderRefit,                 "SetOrderRefit",                 ".iii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::AppendOrder,                   "AppendOrder",                   ".iii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::AppendConditionalOrder,        "AppendConditionalOrder",        ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::InsertOrder,                   "InsertOrder",                   ".iiii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::InsertConditionalOrder,        "InsertConditionalOrder",        ".iii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::RemoveOrder,                   "RemoveOrder",                   ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::SetOrderFlags,                 "SetOrderFlags",                 ".iii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::MoveOrder,                     "MoveOrder",                     ".iii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::SkipToOrder,                   "SkipToOrder",                   ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::CopyOrders,                    "CopyOrders",                    ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::ShareOrders,                   "ShareOrders",                   ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::UnshareOrders,                 "UnshareOrders",                 ".i");
+	SQAIOrder.DefSQStaticMethod(engine, &ScriptOrder::GetOrderDistance,              "GetOrderDistance",              ".iii");
+
+	SQAIOrder.PostRegister(engine);
+}

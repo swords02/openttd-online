@@ -1,0 +1,19 @@
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
+ */
+
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "../script_execmode.hpp"
+
+namespace SQConvert {
+	/* Allow ScriptExecMode to be used as Squirrel parameter */
+	template <> struct Param<ScriptExecMode *> { static inline ScriptExecMode *Get(HSQUIRRELVM vm, int index) { return  static_cast<ScriptExecMode *>(Squirrel::GetRealInstance(vm, index, "ExecMode")); } };
+	template <> struct Param<ScriptExecMode &> { static inline ScriptExecMode &Get(HSQUIRRELVM vm, int index) { return *static_cast<ScriptExecMode *>(Squirrel::GetRealInstance(vm, index, "ExecMode")); } };
+	template <> struct Param<const ScriptExecMode *> { static inline const ScriptExecMode *Get(HSQUIRRELVM vm, int index) { return  static_cast<ScriptExecMode *>(Squirrel::GetRealInstance(vm, index, "ExecMode")); } };
+	template <> struct Param<const ScriptExecMode &> { static inline const ScriptExecMode &Get(HSQUIRRELVM vm, int index) { return *static_cast<ScriptExecMode *>(Squirrel::GetRealInstance(vm, index, "ExecMode")); } };
+	template <> struct Return<ScriptExecMode *> { static inline int Set(HSQUIRRELVM vm, ScriptExecMode *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "ExecMode", res, nullptr, DefSQDestructorCallback<ScriptExecMode>, true); return 1; } };
+} // namespace SQConvert

@@ -1,0 +1,28 @@
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
+ */
+
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "../script_bridgelist.hpp"
+
+namespace SQConvert {
+	/* Allow ScriptBridgeList to be used as Squirrel parameter */
+	template <> struct Param<ScriptBridgeList *> { static inline ScriptBridgeList *Get(HSQUIRRELVM vm, int index) { return  static_cast<ScriptBridgeList *>(Squirrel::GetRealInstance(vm, index, "BridgeList")); } };
+	template <> struct Param<ScriptBridgeList &> { static inline ScriptBridgeList &Get(HSQUIRRELVM vm, int index) { return *static_cast<ScriptBridgeList *>(Squirrel::GetRealInstance(vm, index, "BridgeList")); } };
+	template <> struct Param<const ScriptBridgeList *> { static inline const ScriptBridgeList *Get(HSQUIRRELVM vm, int index) { return  static_cast<ScriptBridgeList *>(Squirrel::GetRealInstance(vm, index, "BridgeList")); } };
+	template <> struct Param<const ScriptBridgeList &> { static inline const ScriptBridgeList &Get(HSQUIRRELVM vm, int index) { return *static_cast<ScriptBridgeList *>(Squirrel::GetRealInstance(vm, index, "BridgeList")); } };
+	template <> struct Return<ScriptBridgeList *> { static inline int Set(HSQUIRRELVM vm, ScriptBridgeList *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "BridgeList", res, nullptr, DefSQDestructorCallback<ScriptBridgeList>, true); return 1; } };
+} // namespace SQConvert
+
+namespace SQConvert {
+	/* Allow ScriptBridgeList_Length to be used as Squirrel parameter */
+	template <> struct Param<ScriptBridgeList_Length *> { static inline ScriptBridgeList_Length *Get(HSQUIRRELVM vm, int index) { return  static_cast<ScriptBridgeList_Length *>(Squirrel::GetRealInstance(vm, index, "BridgeList_Length")); } };
+	template <> struct Param<ScriptBridgeList_Length &> { static inline ScriptBridgeList_Length &Get(HSQUIRRELVM vm, int index) { return *static_cast<ScriptBridgeList_Length *>(Squirrel::GetRealInstance(vm, index, "BridgeList_Length")); } };
+	template <> struct Param<const ScriptBridgeList_Length *> { static inline const ScriptBridgeList_Length *Get(HSQUIRRELVM vm, int index) { return  static_cast<ScriptBridgeList_Length *>(Squirrel::GetRealInstance(vm, index, "BridgeList_Length")); } };
+	template <> struct Param<const ScriptBridgeList_Length &> { static inline const ScriptBridgeList_Length &Get(HSQUIRRELVM vm, int index) { return *static_cast<ScriptBridgeList_Length *>(Squirrel::GetRealInstance(vm, index, "BridgeList_Length")); } };
+	template <> struct Return<ScriptBridgeList_Length *> { static inline int Set(HSQUIRRELVM vm, ScriptBridgeList_Length *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "BridgeList_Length", res, nullptr, DefSQDestructorCallback<ScriptBridgeList_Length>, true); return 1; } };
+} // namespace SQConvert

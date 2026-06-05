@@ -1,0 +1,81 @@
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
+ */
+
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "../script_town.hpp"
+#include "../template/template_town.sq.hpp"
+
+
+template <> SQInteger PushClassName<ScriptTown, ScriptType::AI>(HSQUIRRELVM vm) { sq_pushstring(vm, "AITown"); return 1; }
+
+void SQAITown_Register(Squirrel &engine)
+{
+	DefSQClass<ScriptTown, ScriptType::AI> SQAITown("AITown");
+	SQAITown.PreRegister(engine, "AIObject");
+
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_ACTION_ADVERTISE_SMALL,  "TOWN_ACTION_ADVERTISE_SMALL");
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_ACTION_ADVERTISE_MEDIUM, "TOWN_ACTION_ADVERTISE_MEDIUM");
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_ACTION_ADVERTISE_LARGE,  "TOWN_ACTION_ADVERTISE_LARGE");
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_ACTION_ROAD_REBUILD,     "TOWN_ACTION_ROAD_REBUILD");
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_ACTION_BUILD_STATUE,     "TOWN_ACTION_BUILD_STATUE");
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_ACTION_FUND_BUILDINGS,   "TOWN_ACTION_FUND_BUILDINGS");
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_ACTION_BUY_RIGHTS,       "TOWN_ACTION_BUY_RIGHTS");
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_ACTION_BRIBE,            "TOWN_ACTION_BRIBE");
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_RATING_NONE,             "TOWN_RATING_NONE");
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_RATING_APPALLING,        "TOWN_RATING_APPALLING");
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_RATING_VERY_POOR,        "TOWN_RATING_VERY_POOR");
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_RATING_POOR,             "TOWN_RATING_POOR");
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_RATING_MEDIOCRE,         "TOWN_RATING_MEDIOCRE");
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_RATING_GOOD,             "TOWN_RATING_GOOD");
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_RATING_VERY_GOOD,        "TOWN_RATING_VERY_GOOD");
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_RATING_EXCELLENT,        "TOWN_RATING_EXCELLENT");
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_RATING_OUTSTANDING,      "TOWN_RATING_OUTSTANDING");
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_RATING_INVALID,          "TOWN_RATING_INVALID");
+	SQAITown.DefSQConst(engine, ScriptTown::ROAD_LAYOUT_ORIGINAL,         "ROAD_LAYOUT_ORIGINAL");
+	SQAITown.DefSQConst(engine, ScriptTown::ROAD_LAYOUT_BETTER_ROADS,     "ROAD_LAYOUT_BETTER_ROADS");
+	SQAITown.DefSQConst(engine, ScriptTown::ROAD_LAYOUT_2x2,              "ROAD_LAYOUT_2x2");
+	SQAITown.DefSQConst(engine, ScriptTown::ROAD_LAYOUT_3x3,              "ROAD_LAYOUT_3x3");
+	SQAITown.DefSQConst(engine, ScriptTown::ROAD_LAYOUT_RANDOM,           "ROAD_LAYOUT_RANDOM");
+	SQAITown.DefSQConst(engine, ScriptTown::ROAD_LAYOUT_INVALID,          "ROAD_LAYOUT_INVALID");
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_SIZE_SMALL,              "TOWN_SIZE_SMALL");
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_SIZE_MEDIUM,             "TOWN_SIZE_MEDIUM");
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_SIZE_LARGE,              "TOWN_SIZE_LARGE");
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_SIZE_INVALID,            "TOWN_SIZE_INVALID");
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_GROWTH_NONE,             "TOWN_GROWTH_NONE");
+	SQAITown.DefSQConst(engine, ScriptTown::TOWN_GROWTH_NORMAL,           "TOWN_GROWTH_NORMAL");
+
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetTownCount,                      "GetTownCount",                      ".");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::IsValidTown,                       "IsValidTown",                       ".i");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetName,                           "GetName",                           ".i");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetPopulation,                     "GetPopulation",                     ".i");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetHouseCount,                     "GetHouseCount",                     ".i");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetLocation,                       "GetLocation",                       ".i");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetLastMonthProduction,            "GetLastMonthProduction",            ".ii");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetLastMonthSupplied,              "GetLastMonthSupplied",              ".ii");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetLastMonthTransportedPercentage, "GetLastMonthTransportedPercentage", ".ii");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetLastMonthReceived,              "GetLastMonthReceived",              ".ii");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetCargoGoal,                      "GetCargoGoal",                      ".ii");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetGrowthRate,                     "GetGrowthRate",                     ".i");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetDistanceManhattanToTile,        "GetDistanceManhattanToTile",        ".ii");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetDistanceSquareToTile,           "GetDistanceSquareToTile",           ".ii");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::IsWithinTownInfluence,             "IsWithinTownInfluence",             ".ii");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::HasStatue,                         "HasStatue",                         ".i");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::IsCity,                            "IsCity",                            ".i");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetRoadReworkDuration,             "GetRoadReworkDuration",             ".i");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetFundBuildingsDuration,          "GetFundBuildingsDuration",          ".i");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetExclusiveRightsCompany,         "GetExclusiveRightsCompany",         ".i");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetExclusiveRightsDuration,        "GetExclusiveRightsDuration",        ".i");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::IsActionAvailable,                 "IsActionAvailable",                 ".ii");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::PerformTownAction,                 "PerformTownAction",                 ".ii");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::FoundTown,                         "FoundTown",                         ".iibi.");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetRating,                         "GetRating",                         ".ii");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetAllowedNoise,                   "GetAllowedNoise",                   ".i");
+	SQAITown.DefSQStaticMethod(engine, &ScriptTown::GetRoadLayout,                     "GetRoadLayout",                     ".i");
+
+	SQAITown.PostRegister(engine);
+}

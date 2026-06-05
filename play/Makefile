@@ -3175,6 +3175,30 @@ src/fontcache.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/fontcache.cpp.s
 .PHONY : src/fontcache.cpp.s
 
+src/fontcache/freetypefontcache.o: src/fontcache/freetypefontcache.cpp.o
+.PHONY : src/fontcache/freetypefontcache.o
+
+# target to build an object file
+src/fontcache/freetypefontcache.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/fontcache/freetypefontcache.cpp.o
+.PHONY : src/fontcache/freetypefontcache.cpp.o
+
+src/fontcache/freetypefontcache.i: src/fontcache/freetypefontcache.cpp.i
+.PHONY : src/fontcache/freetypefontcache.i
+
+# target to preprocess a source file
+src/fontcache/freetypefontcache.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/fontcache/freetypefontcache.cpp.i
+.PHONY : src/fontcache/freetypefontcache.cpp.i
+
+src/fontcache/freetypefontcache.s: src/fontcache/freetypefontcache.cpp.s
+.PHONY : src/fontcache/freetypefontcache.s
+
+# target to generate assembly for a file
+src/fontcache/freetypefontcache.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/openttd_lib.dir/build.make CMakeFiles/openttd_lib.dir/src/fontcache/freetypefontcache.cpp.s
+.PHONY : src/fontcache/freetypefontcache.cpp.s
+
 src/fontcache/spritefontcache.o: src/fontcache/spritefontcache.cpp.o
 .PHONY : src/fontcache/spritefontcache.o
 
@@ -13635,6 +13659,9 @@ help:
 	@echo "... src/fontcache.o"
 	@echo "... src/fontcache.i"
 	@echo "... src/fontcache.s"
+	@echo "... src/fontcache/freetypefontcache.o"
+	@echo "... src/fontcache/freetypefontcache.i"
+	@echo "... src/fontcache/freetypefontcache.s"
 	@echo "... src/fontcache/spritefontcache.o"
 	@echo "... src/fontcache/spritefontcache.i"
 	@echo "... src/fontcache/spritefontcache.s"

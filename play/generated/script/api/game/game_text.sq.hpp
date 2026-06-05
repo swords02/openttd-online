@@ -1,0 +1,27 @@
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
+ */
+
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "../script_text.hpp"
+#include "../template/template_text.sq.hpp"
+
+
+template <> SQInteger PushClassName<ScriptText, ScriptType::GS>(HSQUIRRELVM vm) { sq_pushstring(vm, "GSText"); return 1; }
+
+void SQGSText_Register(Squirrel &engine)
+{
+	DefSQClass<ScriptText, ScriptType::GS> SQGSText("GSText");
+	SQGSText.PreRegister(engine);
+	SQGSText.AddSQAdvancedConstructor(engine);
+
+	SQGSText.DefSQAdvancedMethod(engine, &ScriptText::_set, "_set");
+	SQGSText.DefSQAdvancedMethod(engine, &ScriptText::SetParam, "SetParam");
+	SQGSText.DefSQAdvancedMethod(engine, &ScriptText::AddParam, "AddParam");
+
+	SQGSText.PostRegister(engine);
+}

@@ -1,0 +1,46 @@
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
+ */
+
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "../script_cargolist.hpp"
+
+namespace SQConvert {
+	/* Allow ScriptCargoList to be used as Squirrel parameter */
+	template <> struct Param<ScriptCargoList *> { static inline ScriptCargoList *Get(HSQUIRRELVM vm, int index) { return  static_cast<ScriptCargoList *>(Squirrel::GetRealInstance(vm, index, "CargoList")); } };
+	template <> struct Param<ScriptCargoList &> { static inline ScriptCargoList &Get(HSQUIRRELVM vm, int index) { return *static_cast<ScriptCargoList *>(Squirrel::GetRealInstance(vm, index, "CargoList")); } };
+	template <> struct Param<const ScriptCargoList *> { static inline const ScriptCargoList *Get(HSQUIRRELVM vm, int index) { return  static_cast<ScriptCargoList *>(Squirrel::GetRealInstance(vm, index, "CargoList")); } };
+	template <> struct Param<const ScriptCargoList &> { static inline const ScriptCargoList &Get(HSQUIRRELVM vm, int index) { return *static_cast<ScriptCargoList *>(Squirrel::GetRealInstance(vm, index, "CargoList")); } };
+	template <> struct Return<ScriptCargoList *> { static inline int Set(HSQUIRRELVM vm, ScriptCargoList *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "CargoList", res, nullptr, DefSQDestructorCallback<ScriptCargoList>, true); return 1; } };
+} // namespace SQConvert
+
+namespace SQConvert {
+	/* Allow ScriptCargoList_IndustryAccepting to be used as Squirrel parameter */
+	template <> struct Param<ScriptCargoList_IndustryAccepting *> { static inline ScriptCargoList_IndustryAccepting *Get(HSQUIRRELVM vm, int index) { return  static_cast<ScriptCargoList_IndustryAccepting *>(Squirrel::GetRealInstance(vm, index, "CargoList_IndustryAccepting")); } };
+	template <> struct Param<ScriptCargoList_IndustryAccepting &> { static inline ScriptCargoList_IndustryAccepting &Get(HSQUIRRELVM vm, int index) { return *static_cast<ScriptCargoList_IndustryAccepting *>(Squirrel::GetRealInstance(vm, index, "CargoList_IndustryAccepting")); } };
+	template <> struct Param<const ScriptCargoList_IndustryAccepting *> { static inline const ScriptCargoList_IndustryAccepting *Get(HSQUIRRELVM vm, int index) { return  static_cast<ScriptCargoList_IndustryAccepting *>(Squirrel::GetRealInstance(vm, index, "CargoList_IndustryAccepting")); } };
+	template <> struct Param<const ScriptCargoList_IndustryAccepting &> { static inline const ScriptCargoList_IndustryAccepting &Get(HSQUIRRELVM vm, int index) { return *static_cast<ScriptCargoList_IndustryAccepting *>(Squirrel::GetRealInstance(vm, index, "CargoList_IndustryAccepting")); } };
+	template <> struct Return<ScriptCargoList_IndustryAccepting *> { static inline int Set(HSQUIRRELVM vm, ScriptCargoList_IndustryAccepting *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "CargoList_IndustryAccepting", res, nullptr, DefSQDestructorCallback<ScriptCargoList_IndustryAccepting>, true); return 1; } };
+} // namespace SQConvert
+
+namespace SQConvert {
+	/* Allow ScriptCargoList_IndustryProducing to be used as Squirrel parameter */
+	template <> struct Param<ScriptCargoList_IndustryProducing *> { static inline ScriptCargoList_IndustryProducing *Get(HSQUIRRELVM vm, int index) { return  static_cast<ScriptCargoList_IndustryProducing *>(Squirrel::GetRealInstance(vm, index, "CargoList_IndustryProducing")); } };
+	template <> struct Param<ScriptCargoList_IndustryProducing &> { static inline ScriptCargoList_IndustryProducing &Get(HSQUIRRELVM vm, int index) { return *static_cast<ScriptCargoList_IndustryProducing *>(Squirrel::GetRealInstance(vm, index, "CargoList_IndustryProducing")); } };
+	template <> struct Param<const ScriptCargoList_IndustryProducing *> { static inline const ScriptCargoList_IndustryProducing *Get(HSQUIRRELVM vm, int index) { return  static_cast<ScriptCargoList_IndustryProducing *>(Squirrel::GetRealInstance(vm, index, "CargoList_IndustryProducing")); } };
+	template <> struct Param<const ScriptCargoList_IndustryProducing &> { static inline const ScriptCargoList_IndustryProducing &Get(HSQUIRRELVM vm, int index) { return *static_cast<ScriptCargoList_IndustryProducing *>(Squirrel::GetRealInstance(vm, index, "CargoList_IndustryProducing")); } };
+	template <> struct Return<ScriptCargoList_IndustryProducing *> { static inline int Set(HSQUIRRELVM vm, ScriptCargoList_IndustryProducing *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "CargoList_IndustryProducing", res, nullptr, DefSQDestructorCallback<ScriptCargoList_IndustryProducing>, true); return 1; } };
+} // namespace SQConvert
+
+namespace SQConvert {
+	/* Allow ScriptCargoList_StationAccepting to be used as Squirrel parameter */
+	template <> struct Param<ScriptCargoList_StationAccepting *> { static inline ScriptCargoList_StationAccepting *Get(HSQUIRRELVM vm, int index) { return  static_cast<ScriptCargoList_StationAccepting *>(Squirrel::GetRealInstance(vm, index, "CargoList_StationAccepting")); } };
+	template <> struct Param<ScriptCargoList_StationAccepting &> { static inline ScriptCargoList_StationAccepting &Get(HSQUIRRELVM vm, int index) { return *static_cast<ScriptCargoList_StationAccepting *>(Squirrel::GetRealInstance(vm, index, "CargoList_StationAccepting")); } };
+	template <> struct Param<const ScriptCargoList_StationAccepting *> { static inline const ScriptCargoList_StationAccepting *Get(HSQUIRRELVM vm, int index) { return  static_cast<ScriptCargoList_StationAccepting *>(Squirrel::GetRealInstance(vm, index, "CargoList_StationAccepting")); } };
+	template <> struct Param<const ScriptCargoList_StationAccepting &> { static inline const ScriptCargoList_StationAccepting &Get(HSQUIRRELVM vm, int index) { return *static_cast<ScriptCargoList_StationAccepting *>(Squirrel::GetRealInstance(vm, index, "CargoList_StationAccepting")); } };
+	template <> struct Return<ScriptCargoList_StationAccepting *> { static inline int Set(HSQUIRRELVM vm, ScriptCargoList_StationAccepting *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "CargoList_StationAccepting", res, nullptr, DefSQDestructorCallback<ScriptCargoList_StationAccepting>, true); return 1; } };
+} // namespace SQConvert

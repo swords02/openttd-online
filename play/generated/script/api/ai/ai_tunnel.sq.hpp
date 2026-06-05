@@ -1,0 +1,43 @@
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
+ */
+
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "../script_tunnel.hpp"
+#include "../template/template_tunnel.sq.hpp"
+
+
+template <> SQInteger PushClassName<ScriptTunnel, ScriptType::AI>(HSQUIRRELVM vm) { sq_pushstring(vm, "AITunnel"); return 1; }
+
+void SQAITunnel_Register(Squirrel &engine)
+{
+	DefSQClass<ScriptTunnel, ScriptType::AI> SQAITunnel("AITunnel");
+	SQAITunnel.PreRegister(engine, "AIObject");
+
+	SQAITunnel.DefSQConst(engine, ScriptTunnel::ERR_TUNNEL_BASE,                      "ERR_TUNNEL_BASE");
+	SQAITunnel.DefSQConst(engine, ScriptTunnel::ERR_TUNNEL_CANNOT_BUILD_ON_WATER,     "ERR_TUNNEL_CANNOT_BUILD_ON_WATER");
+	SQAITunnel.DefSQConst(engine, ScriptTunnel::ERR_TUNNEL_START_SITE_UNSUITABLE,     "ERR_TUNNEL_START_SITE_UNSUITABLE");
+	SQAITunnel.DefSQConst(engine, ScriptTunnel::ERR_TUNNEL_ANOTHER_TUNNEL_IN_THE_WAY, "ERR_TUNNEL_ANOTHER_TUNNEL_IN_THE_WAY");
+	SQAITunnel.DefSQConst(engine, ScriptTunnel::ERR_TUNNEL_END_SITE_UNSUITABLE,       "ERR_TUNNEL_END_SITE_UNSUITABLE");
+
+	ScriptError::RegisterErrorMap(STR_ERROR_CAN_T_BUILD_ON_WATER,       ScriptTunnel::ERR_TUNNEL_CANNOT_BUILD_ON_WATER);
+	ScriptError::RegisterErrorMap(STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL, ScriptTunnel::ERR_TUNNEL_START_SITE_UNSUITABLE);
+	ScriptError::RegisterErrorMap(STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY,  ScriptTunnel::ERR_TUNNEL_ANOTHER_TUNNEL_IN_THE_WAY);
+	ScriptError::RegisterErrorMap(STR_ERROR_UNABLE_TO_EXCAVATE_LAND,    ScriptTunnel::ERR_TUNNEL_END_SITE_UNSUITABLE);
+
+	ScriptError::RegisterErrorMapString(ScriptTunnel::ERR_TUNNEL_CANNOT_BUILD_ON_WATER,     "ERR_TUNNEL_CANNOT_BUILD_ON_WATER");
+	ScriptError::RegisterErrorMapString(ScriptTunnel::ERR_TUNNEL_START_SITE_UNSUITABLE,     "ERR_TUNNEL_START_SITE_UNSUITABLE");
+	ScriptError::RegisterErrorMapString(ScriptTunnel::ERR_TUNNEL_ANOTHER_TUNNEL_IN_THE_WAY, "ERR_TUNNEL_ANOTHER_TUNNEL_IN_THE_WAY");
+	ScriptError::RegisterErrorMapString(ScriptTunnel::ERR_TUNNEL_END_SITE_UNSUITABLE,       "ERR_TUNNEL_END_SITE_UNSUITABLE");
+
+	SQAITunnel.DefSQStaticMethod(engine, &ScriptTunnel::IsTunnelTile,      "IsTunnelTile",      ".i");
+	SQAITunnel.DefSQStaticMethod(engine, &ScriptTunnel::GetOtherTunnelEnd, "GetOtherTunnelEnd", ".i");
+	SQAITunnel.DefSQStaticMethod(engine, &ScriptTunnel::BuildTunnel,       "BuildTunnel",       ".ii");
+	SQAITunnel.DefSQStaticMethod(engine, &ScriptTunnel::RemoveTunnel,      "RemoveTunnel",      ".i");
+
+	SQAITunnel.PostRegister(engine);
+}

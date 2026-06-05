@@ -1,0 +1,62 @@
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <https://www.gnu.org/licenses/old-licenses/gpl-2.0>.
+ */
+
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "../script_cargo.hpp"
+#include "../template/template_cargo.sq.hpp"
+
+
+template <> SQInteger PushClassName<ScriptCargo, ScriptType::AI>(HSQUIRRELVM vm) { sq_pushstring(vm, "AICargo"); return 1; }
+
+void SQAICargo_Register(Squirrel &engine)
+{
+	DefSQClass<ScriptCargo, ScriptType::AI> SQAICargo("AICargo");
+	SQAICargo.PreRegister(engine, "AIObject");
+
+	SQAICargo.DefSQConst(engine, ScriptCargo::CC_PASSENGERS,             "CC_PASSENGERS");
+	SQAICargo.DefSQConst(engine, ScriptCargo::CC_MAIL,                   "CC_MAIL");
+	SQAICargo.DefSQConst(engine, ScriptCargo::CC_EXPRESS,                "CC_EXPRESS");
+	SQAICargo.DefSQConst(engine, ScriptCargo::CC_ARMOURED,               "CC_ARMOURED");
+	SQAICargo.DefSQConst(engine, ScriptCargo::CC_BULK,                   "CC_BULK");
+	SQAICargo.DefSQConst(engine, ScriptCargo::CC_PIECE_GOODS,            "CC_PIECE_GOODS");
+	SQAICargo.DefSQConst(engine, ScriptCargo::CC_LIQUID,                 "CC_LIQUID");
+	SQAICargo.DefSQConst(engine, ScriptCargo::CC_REFRIGERATED,           "CC_REFRIGERATED");
+	SQAICargo.DefSQConst(engine, ScriptCargo::CC_HAZARDOUS,              "CC_HAZARDOUS");
+	SQAICargo.DefSQConst(engine, ScriptCargo::CC_COVERED,                "CC_COVERED");
+	SQAICargo.DefSQConst(engine, ScriptCargo::CC_OVERSIZED,              "CC_OVERSIZED");
+	SQAICargo.DefSQConst(engine, ScriptCargo::CC_POWDERIZED,             "CC_POWDERIZED");
+	SQAICargo.DefSQConst(engine, ScriptCargo::CC_NON_POURABLE,           "CC_NON_POURABLE");
+	SQAICargo.DefSQConst(engine, ScriptCargo::CC_POTABLE,                "CC_POTABLE");
+	SQAICargo.DefSQConst(engine, ScriptCargo::CC_NON_POTABLE,            "CC_NON_POTABLE");
+	SQAICargo.DefSQConst(engine, ScriptCargo::TE_NONE,                   "TE_NONE");
+	SQAICargo.DefSQConst(engine, ScriptCargo::TE_PASSENGERS,             "TE_PASSENGERS");
+	SQAICargo.DefSQConst(engine, ScriptCargo::TE_MAIL,                   "TE_MAIL");
+	SQAICargo.DefSQConst(engine, ScriptCargo::TE_GOODS,                  "TE_GOODS");
+	SQAICargo.DefSQConst(engine, ScriptCargo::TE_WATER,                  "TE_WATER");
+	SQAICargo.DefSQConst(engine, ScriptCargo::TE_FOOD,                   "TE_FOOD");
+	SQAICargo.DefSQConst(engine, ScriptCargo::CT_AUTO_REFIT,             "CT_AUTO_REFIT");
+	SQAICargo.DefSQConst(engine, ScriptCargo::CT_NO_REFIT,               "CT_NO_REFIT");
+	SQAICargo.DefSQConst(engine, ScriptCargo::CT_INVALID,                "CT_INVALID");
+	SQAICargo.DefSQConst(engine, ScriptCargo::DT_MANUAL,                 "DT_MANUAL");
+	SQAICargo.DefSQConst(engine, ScriptCargo::DT_ASYMMETRIC,             "DT_ASYMMETRIC");
+	SQAICargo.DefSQConst(engine, ScriptCargo::DT_SYMMETRIC,              "DT_SYMMETRIC");
+	SQAICargo.DefSQConst(engine, ScriptCargo::INVALID_DISTRIBUTION_TYPE, "INVALID_DISTRIBUTION_TYPE");
+
+	SQAICargo.DefSQStaticMethod(engine, &ScriptCargo::IsValidCargo,        "IsValidCargo",        ".i");
+	SQAICargo.DefSQStaticMethod(engine, &ScriptCargo::IsValidTownEffect,   "IsValidTownEffect",   ".i");
+	SQAICargo.DefSQStaticMethod(engine, &ScriptCargo::GetName,             "GetName",             ".i");
+	SQAICargo.DefSQStaticMethod(engine, &ScriptCargo::GetCargoLabel,       "GetCargoLabel",       ".i");
+	SQAICargo.DefSQStaticMethod(engine, &ScriptCargo::IsFreight,           "IsFreight",           ".i");
+	SQAICargo.DefSQStaticMethod(engine, &ScriptCargo::HasCargoClass,       "HasCargoClass",       ".ii");
+	SQAICargo.DefSQStaticMethod(engine, &ScriptCargo::GetTownEffect,       "GetTownEffect",       ".i");
+	SQAICargo.DefSQStaticMethod(engine, &ScriptCargo::GetCargoIncome,      "GetCargoIncome",      ".iii");
+	SQAICargo.DefSQStaticMethod(engine, &ScriptCargo::GetDistributionType, "GetDistributionType", ".i");
+	SQAICargo.DefSQStaticMethod(engine, &ScriptCargo::GetWeight,           "GetWeight",           ".ii");
+
+	SQAICargo.PostRegister(engine);
+}
